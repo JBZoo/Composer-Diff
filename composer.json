@@ -1,5 +1,5 @@
 {
-    "name"              : "jbzoo/skeleton-php",
+    "name"              : "jbzoo/composer-diff",
     "type"              : "library",
     "description"       : "__DESCRIPTION__",
     "license"           : "MIT",
@@ -22,7 +22,7 @@
 
     "autoload"          : {
         "psr-4" : {
-            "JBZoo\\__NS__\\" : "src"
+            "JBZoo\\ComposerDiff\\" : "src"
         }
     },
 

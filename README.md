@@ -1,19 +1,29 @@
-# JBZoo - Skeleton (PHP)
+# JBZoo / Composer-Diff
+  
+  
+[![Build Status](https://travis-ci.org/JBZoo/Composer-Diff.svg?branch=master)](https://travis-ci.org/JBZoo/Composer-Diff)    [![Coverage Status](https://coveralls.io/repos/JBZoo/Composer-Diff/badge.svg)](https://coveralls.io/github/JBZoo/Composer-Diff?branch=master)    [![Psalm Coverage](https://shepherd.dev/github/JBZoo/Composer-Diff/coverage.svg)](https://shepherd.dev/github/JBZoo/Composer-Diff)    
+[![Latest Stable Version](https://poser.pugx.org/JBZoo/Composer-Diff/v)](https://packagist.org/packages/JBZoo/Composer-Diff)    [![Latest Unstable Version](https://poser.pugx.org/JBZoo/Composer-Diff/v/unstable)](https://packagist.org/packages/JBZoo/Composer-Diff)    [![Dependents](https://poser.pugx.org/JBZoo/Composer-Diff/dependents)](https://packagist.org/packages/JBZoo/Composer-Diff/dependents?order_by=downloads)    [![GitHub Issues](https://img.shields.io/github/issues/JBZoo/Composer-Diff)](https://github.com/JBZoo/Composer-Diff/issues)    [![Total Downloads](https://poser.pugx.org/JBZoo/Composer-Diff/downloads)](https://packagist.org/packages/JBZoo/Composer-Diff/stats)    [![GitHub License](https://img.shields.io/github/license/JBZoo/Composer-Diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
 
 
-[![Build Status](https://travis-ci.org/JBZoo/Skeleton-Php.svg?branch=master)](https://travis-ci.org/JBZoo/Skeleton-Php)    [![GitHub Issues](https://img.shields.io/github/issues/JBZoo/Skeleton-Php)](https://github.com/JBZoo/Skeleton-Php/issues)    [![GitHub License](https://img.shields.io/github/license/JBZoo/Skeleton-Php)](https://github.com/JBZoo/Skeleton-Php/blob/master/LICENSE)
+### Example
+
+```php
+require_once './vendor/autoload.php'; // composer autoload.php
+
+// Get needed classes
+use JBZoo\ComposerDiff\ComposerDiff;
+
+// Just use it!
+$object = new ComposerDiff();
+$object->doSomeStreetMagic(':)');
+```
 
 
-This is not a completed library, but only a blank.
-It aims to clean up the minds of programmers and standardize the development of open-source libraries for JBZoo.
-
-
-### Action plan
-
- * Create a new repository (MIT, without .gitignore).
- * Make a checkout of a clean repository for a working machine.
- * [Download the latest version of the skeleton](https://github.com/JBZoo/Skeleton/archive/master.zip).
- * Run the skeleton script for your package through `php ./create-new-project.php Skeleton-Php`
+## Unit tests and check code style
+```sh
+make update
+make test-all
+```
 
 
 ### License
