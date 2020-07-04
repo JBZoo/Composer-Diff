@@ -1,7 +1,7 @@
 {
     "name"              : "jbzoo/composer-diff",
     "type"              : "library",
-    "description"       : "__DESCRIPTION__",
+    "description"       : "See what has changed after a composer update.",
     "license"           : "MIT",
 
     "authors"           : [
@@ -9,11 +9,24 @@
             "name"  : "Denis Smetannikov",
             "email" : "admin@jbzoo.com",
             "role"  : "lead"
+        },
+        {
+            "name"     : "David Jonas",
+            "homepage" : "https://github.com/davidrjonas",
+            "role"     : "Original Idea"
         }
     ],
 
     "require"           : {
-        "php" : ">=7.2"
+        "php"             : ">=7.2",
+        "ext-json"        : "*",
+        "ext-filter"      : "*",
+
+        "jbzoo/data"      : "4.0.x-dev",
+        "jbzoo/utils"     : "4.0.x-dev",
+        "symfony/console" : "^4.4||^5.0",
+        "symfony/process" : "^4.4||^5.0",
+        "composer/semver" : "^1.0||^2.0||^3.0"
     },
 
     "require-dev"       : {
@@ -30,6 +43,7 @@
         "classmap" : ["tests"]
     },
 
+    "bin"               : ["jbzoo-composer-diff"],
     "minimum-stability" : "dev",
     "prefer-stable"     : true,
     "config"            : {

@@ -26,3 +26,25 @@ update: ##@Project Install/Update all 3rd party dependencies
 test-all: ##@Project Run all project tests at once
 	@make test
 	@make codestyle
+	@-make report-merge-coverage
+
+
+test-drupal:
+	@php ./jbzoo-composer-diff                                            \
+        --source="`pwd`/tests/fixtures/testDrupal/composer-8.9.1.lock"    \
+        --target="`pwd`/tests/fixtures/testDrupal/composer-9.0.1.lock"    \
+        --env=require                                                     \
+        -vvv
+
+
+test-internal:
+	@php ./jbzoo-composer-diff                                                                \
+        --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
+        --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
+        --env=require                                                                         \
+        -vvv
+	@php ./jbzoo-composer-diff                                                                \
+        --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
+        --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
+        --output=markdown                                                                     \
+        -vvv

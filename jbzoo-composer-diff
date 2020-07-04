@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /**
@@ -13,19 +14,4 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
-namespace JBZoo\ComposerDiff;
-
-/**
- * Class Composer-Diff
- * @package JBZoo\ComposerDiff
- */
-class ComposerDiff
-{
-    /**
-     * @return string
-     */
-    public function doSomeStreetMagic()
-    {
-        return 'street magic';
-    }
-}
+require_once __DIR__ . '/jbzoo-composer-diff.php';

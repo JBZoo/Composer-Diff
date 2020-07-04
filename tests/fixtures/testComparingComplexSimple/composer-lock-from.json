@@ -1,0 +1,79 @@
+{
+    "packages"     : [
+        {
+            "name"    : "vendor/upgraded",
+            "version" : "1.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/upgraded.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/removed",
+            "version" : "1.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/removed.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/downgraded",
+            "version" : "2.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/downgraded.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/same",
+            "version" : "2.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/same.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        }
+    ],
+
+    "packages-dev" : [
+        {
+            "name"    : "vendor/upgraded-dev",
+            "version" : "1.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/upgraded-dev.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/removed-dev",
+            "version" : "1.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/removed-dev.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/downgraded-dev",
+            "version" : "2.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/downgraded-dev.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/same-dev",
+            "version" : "2.0.0",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor/same-dev.git",
+                "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
+            }
+        }
+    ]
+}

@@ -13,15 +13,13 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
-$default = include __DIR__ . '/../vendor/jbzoo/codestyle/src/phan/default.php';
+namespace JBZoo\ComposerDiff\Commands;
 
-return array_merge($default, [
-    'directory_list' => [
-        'src',
+/**
+ * Class Exception
+ * @package JBZoo\ComposerDiff\Commands
+ */
+class Exception extends \JBZoo\ComposerDiff\Exception
+{
 
-        'vendor/jbzoo/data/src',
-        'vendor/jbzoo/utils/src',
-        'vendor/symfony/console',
-        'vendor/composer/semver/src',
-    ]
-]);
+}
