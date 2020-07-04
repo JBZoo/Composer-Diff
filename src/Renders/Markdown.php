@@ -50,21 +50,33 @@ class Markdown extends AbstractRender
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
-        $this->headers = ['Package', 'Action', 'Old Version', 'New Version', ''];
-        $this->alignments = [self::A_LEFT, self::A_LEFT, self::A_RIGHT, self::A_RIGHT, self::A_LEFT];
+        if ($this->showLinks()) {
+            $this->headers = ['Package', 'Action', 'Old Version', 'New Version', ''];
+            $this->alignments = [self::A_LEFT, self::A_LEFT, self::A_RIGHT, self::A_RIGHT, self::A_LEFT];
+        } else {
+            $this->headers = ['Package', 'Action', 'Old Version', 'New Version'];
+            $this->alignments = [self::A_LEFT, self::A_LEFT, self::A_RIGHT, self::A_RIGHT];
+        }
+
 
         $this->rows = [];
-
         foreach ($changeLog as $diff) {
             $row = $diff->toArray();
 
-            $this->rows[] = [
-                $this->getLink($row['name'], $row['url']),
-                $row['mode'],
-                $row['version_from'] ?: '-',
-                $row['version_to'] ?: '-',
-                $this->getLink('See details', $row['compare']),
-            ];
+            $fromVersion = $row['version_from'] ?: '-';
+            $toVersion = $row['version_to'] ?: '-';
+
+            if ($this->showLinks()) {
+                $this->rows[] = [
+                    $this->getLink($row['name'], $row['url']),
+                    $row['mode'],
+                    $fromVersion,
+                    $toVersion,
+                    $this->getLink('See details', $row['compare']),
+                ];
+            } else {
+                $this->rows[] = [$row['name'], $row['mode'], $fromVersion, $toVersion];
+            }
         }
 
         $widths = $this->calculateWidths();

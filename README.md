@@ -5,10 +5,18 @@
 [![Latest Stable Version](https://poser.pugx.org/JBZoo/Composer-Diff/v)](https://packagist.org/packages/JBZoo/Composer-Diff)    [![Latest Unstable Version](https://poser.pugx.org/JBZoo/Composer-Diff/v/unstable)](https://packagist.org/packages/JBZoo/Composer-Diff)    [![Dependents](https://poser.pugx.org/JBZoo/Composer-Diff/dependents)](https://packagist.org/packages/JBZoo/Composer-Diff/dependents?order_by=downloads)    [![GitHub Issues](https://img.shields.io/github/issues/JBZoo/Composer-Diff)](https://github.com/JBZoo/Composer-Diff/issues)    [![Total Downloads](https://poser.pugx.org/JBZoo/Composer-Diff/downloads)](https://packagist.org/packages/JBZoo/Composer-Diff/stats)    [![GitHub License](https://img.shields.io/github/license/JBZoo/Composer-Diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
 
 
+## Installation
+
+```
+composer require        jbzoo/composer-diff # For specific project
+composer require global jbzoo/composer-diff # As global tool
+```
+
 ## Usage
 
 ```
-jbzoo-composer-diff --help
+./vendor/bin/jbzoo-composer-diff --help
+
 Description:
   Show difference between two versions of composer.lock files
 
@@ -20,7 +28,8 @@ Options:
       --target=TARGET   The file, git ref, or git ref with filename to compare TO [default: "./composer.lock"]
       --env=ENV         Show only selected environment. Available options: both, require, require-dev [default: "both"]
       --output=OUTPUT   Output format. Available options: console, markdown, json [default: "console"]
-      --strict          Return exit code if you have some difference
+      --no-links        Hide all links in tables
+      --strict          Return exit code if you have any difference
   -h, --help            Display this help message
   -q, --quiet           Do not output any message
   -V, --version         Display this application version
@@ -34,6 +43,8 @@ Options:
 # Output Examples
 
 ### Default view (--output=console)
+
+Also, see colored example based on [Drupal v8.9.1 vs v9.0.1](https://travis-ci.org/github/JBZoo/Composer-Diff/jobs/705011296#L452)
 
 ```
 Required by Production (require)

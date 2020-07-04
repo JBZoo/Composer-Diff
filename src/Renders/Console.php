@@ -28,15 +28,23 @@ class Console extends AbstractRender
 {
     /**
      * @inheritDoc
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
+        $showLinks = $this->showLinks();
+
         $output->writeln("  <blue>{$this->getTitle($env)}</blue> ({$env})");
 
         $table = (new Table($output))
-            ->setHeaders(['Package', 'Action', 'Old Version', 'New Version', 'Details'])
             ->setColumnStyle(2, (new TableStyle())->setPadType(STR_PAD_LEFT))
             ->setColumnStyle(3, (new TableStyle())->setPadType(STR_PAD_LEFT));
+
+        if ($showLinks) {
+            $table->setHeaders(['Package', 'Action', 'Old Version', 'New Version', 'Details']);
+        } else {
+            $table->setHeaders(['Package', 'Action', 'Old Version', 'New Version']);
+        }
 
         foreach ($changeLog as $diff) {
             $row = $diff->toArray();
@@ -55,13 +63,14 @@ class Console extends AbstractRender
                 $mode = "<cyan>{$mode}</cyan>";
             }
 
-            $table->addRow([
-                $row['name'],
-                $mode,
-                $row['version_from'] ?: '-',
-                $row['version_to'] ?: '-',
-                $row['compare']
-            ]);
+            $fromVersion = $row['version_from'] ?: '-';
+            $toVersion = $row['version_to'] ?: '-';
+
+            if ($showLinks) {
+                $table->addRow([$row['name'], $mode, $fromVersion, $toVersion, $row['compare']]);
+            } else {
+                $table->addRow([$row['name'], $mode, $fromVersion, $toVersion]);
+            }
         }
 
         $table->render();

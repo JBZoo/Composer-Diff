@@ -18,6 +18,7 @@ namespace JBZoo\ComposerDiff\Renders;
 use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Diff;
 use JBZoo\ComposerDiff\Exception;
+use JBZoo\Data\Data;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -41,23 +42,41 @@ abstract class AbstractRender
     protected $env = Comparator::ENV_BOTH;
 
     /**
+     * @var Data
+     */
+    protected $params;
+
+    /**
+     * AbstractRender constructor.
+     * @param array $params
+     */
+    public function __construct(array $params)
+    {
+        $this->params = new Data(array_merge([
+            'show-links'  => true,
+            'strict-mode' => false,
+        ], $params));
+    }
+
+    /**
      * @param string $outputFormat
+     * @param array  $params
      * @return AbstractRender
      */
-    public static function factory(string $outputFormat): self
+    public static function factory(string $outputFormat, array $params): self
     {
         $outputFormat = strtolower(trim($outputFormat));
 
         if (self::CONSOLE === $outputFormat) {
-            return new Console();
+            return new Console($params);
         }
 
         if (self::MARKDOWN === $outputFormat) {
-            return new Markdown();
+            return new Markdown($params);
         }
 
         if (self::JSON === $outputFormat) {
-            return new JsonOutput();
+            return new JsonOutput($params);
         }
 
         throw new Exception("Output format \"{$outputFormat}\" not found");
@@ -81,6 +100,14 @@ abstract class AbstractRender
     {
         $this->env = $env;
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function showLinks(): bool
+    {
+        return (bool)$this->params->get('show-links');
     }
 
     /**

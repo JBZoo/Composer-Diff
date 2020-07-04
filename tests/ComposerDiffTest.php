@@ -236,7 +236,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testMarkdownFormatOutput()
+    public function testConsoleFormatOutput()
     {
         $expectedProd = implode("\n", [
             '  Required by Production (require)',
@@ -289,6 +289,42 @@ class ComposerDiffTest extends PHPUnit
         isContain($expectedDev, $cliOutput);
     }
 
+    public function testConsoleFormatOutputNoLinks()
+    {
+        $expectedProd = implode("\n", [
+            '  Required by Production (require)',
+            '+-------------------+------------+-------------+-------------+',
+            '| Package           | Action     | Old Version | New Version |',
+            '+-------------------+------------+-------------+-------------+',
+            '| vendor/downgraded | Downgraded |       2.0.0 |       1.0.0 |',
+            '| vendor/new        | New        |           - |       1.0.0 |',
+            '| vendor/removed    | Removed    |       1.0.0 |           - |',
+            '| vendor/upgraded   | Upgraded   |       1.0.0 |       2.0.0 |',
+            '+-------------------+------------+-------------+-------------+',
+        ]);
+
+        $expectedDev = implode("\n", [
+            '  Required by Development (require-dev)',
+            '+-----------------------+------------+-------------+-------------+',
+            '| Package               | Action     | Old Version | New Version |',
+            '+-----------------------+------------+-------------+-------------+',
+            '| vendor/downgraded-dev | Downgraded |       2.0.0 |       1.0.0 |',
+            '| vendor/new-dev        | New        |           - |       1.0.0 |',
+            '| vendor/removed-dev    | Removed    |       1.0.0 |           - |',
+            '| vendor/upgraded-dev   | Upgraded   |       1.0.0 |       2.0.0 |',
+            '+-----------------------+------------+-------------+-------------+',
+        ]);
+
+        $cliOutput = $this->task([
+            'source'   => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
+            'target'   => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-to.json',
+            'no-links' => null,
+        ]);
+
+        isContain($expectedProd, $cliOutput);
+        isContain($expectedDev, $cliOutput);
+    }
+
     public function testJsonFormatOutput()
     {
         $cliOutput = $this->task([
@@ -304,7 +340,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testConsoleFormatOutput()
+    public function testMarkdownFormatOutput()
     {
         $expectedProd = implode("\n", [
             '## Required by Production (require)',
@@ -355,6 +391,41 @@ class ComposerDiffTest extends PHPUnit
         ]);
 
         isNotContain($expectedProd, $cliOutput);
+        isContain($expectedDev, $cliOutput);
+    }
+
+    public function testMarkdownFormatOutputNoLinks()
+    {
+        $expectedProd = implode("\n", [
+            '## Required by Production (require)',
+            '',
+            '| Package           | Action     | Old Version | New Version |',
+            '|-------------------|------------|------------:|------------:|',
+            '| vendor/downgraded | Downgraded |       2.0.0 |       1.0.0 |',
+            '| vendor/new        | New        |           - |       1.0.0 |',
+            '| vendor/removed    | Removed    |       1.0.0 |           - |',
+            '| vendor/upgraded   | Upgraded   |       1.0.0 |       2.0.0 |',
+        ]);
+
+        $expectedDev = implode("\n", [
+            '## Required by Development (require-dev)',
+            '',
+            '| Package               | Action     | Old Version | New Version |',
+            '|-----------------------|------------|------------:|------------:|',
+            '| vendor/downgraded-dev | Downgraded |       2.0.0 |       1.0.0 |',
+            '| vendor/new-dev        | New        |           - |       1.0.0 |',
+            '| vendor/removed-dev    | Removed    |       1.0.0 |           - |',
+            '| vendor/upgraded-dev   | Upgraded   |       1.0.0 |       2.0.0 |',
+        ]);
+
+        $cliOutput = $this->task([
+            'source'   => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
+            'target'   => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-to.json',
+            'output'   => 'markdown',
+            'no-links' => null,
+        ]);
+
+        isContain($expectedProd, $cliOutput);
         isContain($expectedDev, $cliOutput);
     }
 
@@ -431,6 +502,14 @@ class ComposerDiffTest extends PHPUnit
             'output' => 'json',
         ]));
         isContain("```json\n{$jsonFormat}\n```", $readmeContent);
+    }
+
+    public function testHelpInReadme()
+    {
+        $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
+        $helpOutput = trim($this->task(['help' => null]));
+
+        isContain("```\n./vendor/bin/jbzoo-composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
     }
 
     #### Testing Tools /////////////////////////////////////////////////////////////////////////////////////////////////

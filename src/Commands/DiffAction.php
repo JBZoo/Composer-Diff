@@ -48,7 +48,8 @@ class DiffAction extends AbstractCommand
                 "Available options: <info>{$envs}</info>", Comparator::ENV_BOTH)
             ->addOption('output', null, InputOption::VALUE_REQUIRED, "Output format. " .
                 "Available options: <info>{$outputFormats}</info>", AbstractRender::CONSOLE)
-            ->addOption('strict', null, InputOption::VALUE_NONE, 'Return exit code if you have some difference');
+            ->addOption('no-links', null, InputOption::VALUE_NONE, 'Hide all links in tables')
+            ->addOption('strict', null, InputOption::VALUE_NONE, 'Return exit code if you have any difference');
     }
 
     /**
@@ -63,13 +64,18 @@ class DiffAction extends AbstractCommand
         $env = strtolower((string)$this->opt('env'));
         $isStrictMode = (bool)$this->opt('strict');
 
+        $params = [
+            'show-links'  => !(bool)$this->opt('no-links'),
+            'strict-mode' => $isStrictMode,
+        ];
+
         $fullChangeLog = Comparator::compare($sourcePath, $targetPath);
 
         $errorCode = 0;
 
         if (in_array($env, [Comparator::ENV_BOTH, Comparator::ENV_PROD], true)) {
             $changeLog = $fullChangeLog[Comparator::ENV_PROD];
-            $this->renderOutput($outputFormat, $changeLog, Comparator::ENV_PROD);
+            $this->renderOutput($outputFormat, $changeLog, Comparator::ENV_PROD, $params);
             if ($isStrictMode && count($changeLog) > 0) {
                 $errorCode++;
             }
@@ -77,7 +83,7 @@ class DiffAction extends AbstractCommand
 
         if (in_array($env, [Comparator::ENV_BOTH, Comparator::ENV_DEV], true)) {
             $changeLog = $fullChangeLog[Comparator::ENV_DEV];
-            $this->renderOutput($outputFormat, $changeLog, Comparator::ENV_DEV);
+            $this->renderOutput($outputFormat, $changeLog, Comparator::ENV_DEV, $params);
             if ($isStrictMode && count($changeLog) > 0) {
                 $errorCode++;
             }
@@ -90,11 +96,12 @@ class DiffAction extends AbstractCommand
      * @param string $outputFormat
      * @param array  $fullChangeLog
      * @param string $env
+     * @param array  $params
      * @return bool
      */
-    private function renderOutput(string $outputFormat, array $fullChangeLog, string $env): bool
+    private function renderOutput(string $outputFormat, array $fullChangeLog, string $env, array $params): bool
     {
-        return AbstractRender::factory($outputFormat)
+        return AbstractRender::factory($outputFormat, $params)
             ->setFullChangeLog($fullChangeLog)
             ->setEnv($env)
             ->render($this->output);

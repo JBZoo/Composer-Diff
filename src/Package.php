@@ -61,6 +61,7 @@ class Package
     {
         $version = (string)$this->data->get('version');
         if ($clean) {
+            $version = (string)preg_replace('#^v\.#i', '', $version);
             $version = (string)preg_replace('#^v#i', '', $version);
         }
 
