@@ -28,6 +28,7 @@ abstract class AbstractRender
 {
     public const CONSOLE  = 'console';
     public const MARKDOWN = 'markdown';
+    public const JSON     = 'json';
 
     /**
      * @var Diff[]
@@ -53,6 +54,10 @@ abstract class AbstractRender
 
         if (self::MARKDOWN === $outputFormat) {
             return new Markdown();
+        }
+
+        if (self::JSON === $outputFormat) {
+            return new JsonOutput();
         }
 
         throw new Exception("Output format \"{$outputFormat}\" not found");

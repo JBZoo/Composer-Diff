@@ -50,7 +50,7 @@ class Markdown extends AbstractRender
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
-        $this->headers = ['Package', 'Action', 'Old Version', 'New Version', 'Details'];
+        $this->headers = ['Package', 'Action', 'Old Version', 'New Version', ''];
         $this->alignments = [self::A_LEFT, self::A_LEFT, self::A_RIGHT, self::A_RIGHT, self::A_LEFT];
 
         $this->rows = [];
@@ -63,7 +63,7 @@ class Markdown extends AbstractRender
                 $row['mode'],
                 $row['version_from'] ?: '-',
                 $row['version_to'] ?: '-',
-                $this->getLink('Details', $row['compare']),
+                $this->getLink('See details', $row['compare']),
             ];
         }
 

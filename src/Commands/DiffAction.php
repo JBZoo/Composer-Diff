@@ -33,7 +33,7 @@ class DiffAction extends AbstractCommand
     protected function configure(): void
     {
         $envs = implode(', ', [Comparator::ENV_BOTH, Comparator::ENV_PROD, Comparator::ENV_DEV]);
-        $outputFormats = implode(', ', [AbstractRender::CONSOLE, AbstractRender::MARKDOWN]);
+        $outputFormats = implode(', ', [AbstractRender::CONSOLE, AbstractRender::MARKDOWN, AbstractRender::JSON]);
 
         $this
             ->setName('diff')

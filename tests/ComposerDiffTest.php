@@ -21,6 +21,7 @@ use JBZoo\ComposerDiff\Url;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
 
+use function JBZoo\Data\json;
 use function JBZoo\Data\phpArray;
 
 /**
@@ -288,28 +289,43 @@ class ComposerDiffTest extends PHPUnit
         isContain($expectedDev, $cliOutput);
     }
 
+    public function testJsonFormatOutput()
+    {
+        $cliOutput = $this->task([
+            'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
+            'target' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-to.json',
+            'env'    => 'require',
+            'output' => 'json',
+        ]);
+
+        isSame(
+            phpArray(__DIR__ . '/fixtures/testComparingComplexSimple/expected-diff-json.php')->getArrayCopy(),
+            json($cliOutput)->getArrayCopy()
+        );
+    }
+
     public function testConsoleFormatOutput()
     {
         $expectedProd = implode("\n", [
             '## Required by Production (require)',
             '',
-            '| Package                                                   | Action     | Old Version | New Version | Details                                                               |',
-            '|-----------------------------------------------------------|------------|------------:|------------:|-----------------------------------------------------------------------|',
-            '| [vendor/downgraded](https://gitlab.com/vendor/downgraded) | Downgraded |       2.0.0 |       1.0.0 | [Details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0) |',
-            '| [vendor/new](https://gitlab.com/vendor/new)               | New        |           - |       1.0.0 |                                                                       |',
-            '| [vendor/removed](https://gitlab.com/vendor/removed)       | Removed    |       1.0.0 |           - |                                                                       |',
-            '| [vendor/upgraded](https://gitlab.com/vendor/upgraded)     | Upgraded   |       1.0.0 |       2.0.0 | [Details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)   |',
+            '| Package                                                   | Action     | Old Version | New Version |                                                                           |',
+            '|-----------------------------------------------------------|------------|------------:|------------:|---------------------------------------------------------------------------|',
+            '| [vendor/downgraded](https://gitlab.com/vendor/downgraded) | Downgraded |       2.0.0 |       1.0.0 | [See details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0) |',
+            '| [vendor/new](https://gitlab.com/vendor/new)               | New        |           - |       1.0.0 |                                                                           |',
+            '| [vendor/removed](https://gitlab.com/vendor/removed)       | Removed    |       1.0.0 |           - |                                                                           |',
+            '| [vendor/upgraded](https://gitlab.com/vendor/upgraded)     | Upgraded   |       1.0.0 |       2.0.0 | [See details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)   |',
         ]);
 
         $expectedDev = implode("\n", [
             '## Required by Development (require-dev)',
             '',
-            '| Package                                                           | Action     | Old Version | New Version | Details                                                                   |',
-            '|-------------------------------------------------------------------|------------|------------:|------------:|---------------------------------------------------------------------------|',
-            '| [vendor/downgraded-dev](https://gitlab.com/vendor/downgraded-dev) | Downgraded |       2.0.0 |       1.0.0 | [Details](https://gitlab.com/vendor/downgraded-dev/compare/2.0.0...1.0.0) |',
-            '| [vendor/new-dev](https://gitlab.com/vendor/new-dev)               | New        |           - |       1.0.0 |                                                                           |',
-            '| [vendor/removed-dev](https://gitlab.com/vendor/removed-dev)       | Removed    |       1.0.0 |           - |                                                                           |',
-            '| [vendor/upgraded-dev](https://gitlab.com/vendor/upgraded-dev)     | Upgraded   |       1.0.0 |       2.0.0 | [Details](https://gitlab.com/vendor/upgraded-dev/compare/1.0.0...2.0.0)   |',
+            '| Package                                                           | Action     | Old Version | New Version |                                                                               |',
+            '|-------------------------------------------------------------------|------------|------------:|------------:|-------------------------------------------------------------------------------|',
+            '| [vendor/downgraded-dev](https://gitlab.com/vendor/downgraded-dev) | Downgraded |       2.0.0 |       1.0.0 | [See details](https://gitlab.com/vendor/downgraded-dev/compare/2.0.0...1.0.0) |',
+            '| [vendor/new-dev](https://gitlab.com/vendor/new-dev)               | New        |           - |       1.0.0 |                                                                               |',
+            '| [vendor/removed-dev](https://gitlab.com/vendor/removed-dev)       | Removed    |       1.0.0 |           - |                                                                               |',
+            '| [vendor/upgraded-dev](https://gitlab.com/vendor/upgraded-dev)     | Upgraded   |       1.0.0 |       2.0.0 | [See details](https://gitlab.com/vendor/upgraded-dev/compare/1.0.0...2.0.0)   |',
         ]);
 
         $cliOutput = $this->task([
@@ -387,6 +403,34 @@ class ComposerDiffTest extends PHPUnit
 
         isContain('There is no difference (require)', $cliOutput);
         isContain('There is no difference (require-dev)', $cliOutput);
+    }
+
+    public function testExamplesInReadme()
+    {
+        $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
+        $consoleFormat = trim($this->task([
+            'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
+            'target' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-to.json',
+            'env'    => 'require',
+        ]));
+
+        isContain("```\n{$consoleFormat}\n```", $readmeContent);
+
+        $markdownFormat = trim($this->task([
+            'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
+            'target' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-to.json',
+            'env'    => 'require',
+            'output' => 'markdown',
+        ]));
+        isContain("```markdown\n{$markdownFormat}\n```", $readmeContent);
+
+        $jsonFormat = trim($this->task([
+            'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
+            'target' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-to.json',
+            'env'    => 'require',
+            'output' => 'json',
+        ]));
+        isContain("```json\n{$jsonFormat}\n```", $readmeContent);
     }
 
     #### Testing Tools /////////////////////////////////////////////////////////////////////////////////////////////////

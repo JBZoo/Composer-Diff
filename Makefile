@@ -25,11 +25,14 @@ update: ##@Project Install/Update all 3rd party dependencies
 
 test-all: ##@Project Run all project tests at once
 	@make test
+	@make test-drupal
+	@make test-manual
 	@make codestyle
 	@-make report-merge-coverage
 
 
 test-drupal:
+	$(call title,"Testing real project - Drupal")
 	@php ./jbzoo-composer-diff                                            \
         --source="`pwd`/tests/fixtures/testDrupal/composer-8.9.1.lock"    \
         --target="`pwd`/tests/fixtures/testDrupal/composer-9.0.1.lock"    \
@@ -37,7 +40,8 @@ test-drupal:
         -vvv
 
 
-test-internal:
+test-manual:
+	$(call title,"Testing output")
 	@php ./jbzoo-composer-diff                                                                \
         --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
         --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
@@ -46,5 +50,12 @@ test-internal:
 	@php ./jbzoo-composer-diff                                                                \
         --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
         --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
+        --env=require                                                                         \
         --output=markdown                                                                     \
+        -vvv
+	@php ./jbzoo-composer-diff                                                                \
+        --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
+        --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
+        --env=require                                                                         \
+        --output=json                                                                         \
         -vvv
