@@ -2,6 +2,7 @@
     "name"              : "jbzoo/composer-diff",
     "type"              : "library",
     "description"       : "See what has changed after a composer update.",
+    "keywords"          : ["composer", "php", "composer.lock", "composer.json"],
     "license"           : "MIT",
 
     "authors"           : [

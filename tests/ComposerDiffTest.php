@@ -239,7 +239,7 @@ class ComposerDiffTest extends PHPUnit
     public function testConsoleFormatOutput()
     {
         $expectedProd = implode("\n", [
-            '  Required by Production (require)',
+            '  PHP Production Dependencies (require)',
             '+-------------------+------------+-------------+-------------+------------------------------------------------------------+',
             '| Package           | Action     | Old Version | New Version | Details                                                    |',
             '+-------------------+------------+-------------+-------------+------------------------------------------------------------+',
@@ -251,7 +251,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
 
         $expectedDev = implode("\n", [
-            '  Required by Development (require-dev)',
+            '  PHP Dev Dependencies (require-dev)',
             '+-----------------------+------------+-------------+-------------+----------------------------------------------------------------+',
             '| Package               | Action     | Old Version | New Version | Details                                                        |',
             '+-----------------------+------------+-------------+-------------+----------------------------------------------------------------+',
@@ -292,7 +292,7 @@ class ComposerDiffTest extends PHPUnit
     public function testConsoleFormatOutputNoLinks()
     {
         $expectedProd = implode("\n", [
-            '  Required by Production (require)',
+            '  PHP Production Dependencies (require)',
             '+-------------------+------------+-------------+-------------+',
             '| Package           | Action     | Old Version | New Version |',
             '+-------------------+------------+-------------+-------------+',
@@ -304,7 +304,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
 
         $expectedDev = implode("\n", [
-            '  Required by Development (require-dev)',
+            '  PHP Dev Dependencies (require-dev)',
             '+-----------------------+------------+-------------+-------------+',
             '| Package               | Action     | Old Version | New Version |',
             '+-----------------------+------------+-------------+-------------+',
@@ -343,7 +343,7 @@ class ComposerDiffTest extends PHPUnit
     public function testMarkdownFormatOutput()
     {
         $expectedProd = implode("\n", [
-            '## Required by Production (require)',
+            '## PHP Production Dependencies (require)',
             '',
             '| Package                                                   | Action     | Old Version | New Version |                                                                           |',
             '|-----------------------------------------------------------|------------|------------:|------------:|---------------------------------------------------------------------------|',
@@ -354,7 +354,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
 
         $expectedDev = implode("\n", [
-            '## Required by Development (require-dev)',
+            '## PHP Dev Dependencies (require-dev)',
             '',
             '| Package                                                           | Action     | Old Version | New Version |                                                                               |',
             '|-------------------------------------------------------------------|------------|------------:|------------:|-------------------------------------------------------------------------------|',
@@ -397,7 +397,7 @@ class ComposerDiffTest extends PHPUnit
     public function testMarkdownFormatOutputNoLinks()
     {
         $expectedProd = implode("\n", [
-            '## Required by Production (require)',
+            '## PHP Production Dependencies (require)',
             '',
             '| Package           | Action     | Old Version | New Version |',
             '|-------------------|------------|------------:|------------:|',
@@ -408,7 +408,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
 
         $expectedDev = implode("\n", [
-            '## Required by Development (require-dev)',
+            '## PHP Dev Dependencies (require-dev)',
             '',
             '| Package               | Action     | Old Version | New Version |',
             '|-----------------------|------------|------------:|------------:|',

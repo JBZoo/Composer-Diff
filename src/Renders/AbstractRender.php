@@ -116,7 +116,9 @@ abstract class AbstractRender
      */
     protected function getTitle(string $env): string
     {
-        return $env === Comparator::ENV_PROD ? 'Required by Production' : 'Required by Development';
+        return $env === Comparator::ENV_PROD
+            ? 'PHP Production Dependencies'
+            : 'PHP Dev Dependencies';
     }
 
     /**
