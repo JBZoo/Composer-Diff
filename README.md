@@ -51,7 +51,7 @@ Options:
 
 ### Default view (--output=console)
 
-Also, see colored example based on [Drupal v8.9.1 vs v9.0.1](https://travis-ci.org/github/JBZoo/Composer-Diff/jobs/705011296#L452)
+
 
 ```
 PHP Production Dependencies (require)
@@ -66,6 +66,12 @@ PHP Production Dependencies (require)
 | vendor/upgraded   | Upgraded   |              1.0.0 |               2.0.0 | https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0      |
 +-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+
 ```
+
+Rendered in your terminal:
+![Dummy example](/resources/dummy.png)
+
+Also, see [colored example in travis-ci](https://travis-ci.org/github/JBZoo/Composer-Diff/jobs/705011296#L452)
+![Real project](/resources/drupal.png)
 
 
 

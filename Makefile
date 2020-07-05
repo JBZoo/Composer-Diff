@@ -33,6 +33,9 @@ test-all: ##@Project Run all project tests at once
 
 test-drupal:
 	$(call title,"Testing real project - Drupal")
+	@echo ""
+	@echo "  Example. Comparing Drupal v8.9.1 vs v9.0.1 (required only)"
+	@echo ""
 	@php ./jbzoo-composer-diff                                            \
         --source="`pwd`/tests/fixtures/testDrupal/composer-8.9.1.lock"    \
         --target="`pwd`/tests/fixtures/testDrupal/composer-9.0.1.lock"    \
@@ -42,6 +45,9 @@ test-drupal:
 
 test-manual:
 	$(call title,"Testing output")
+	@echo ""
+	@echo "  Example. Just dummy example"
+	@echo ""
 	@php ./jbzoo-composer-diff                                                                \
         --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
         --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
