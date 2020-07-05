@@ -30,13 +30,13 @@ $vendorPaths = [
 
 foreach ($vendorPaths as $file) {
     if (file_exists($file)) {
-        define('PHPUNIT_COMPOSER_INSTALL', $file);
+        define('JBZOO_COMPOSER_DIFF_INSTALL', $file);
         break;
     }
 }
 
 /** @psalm-suppress UnresolvableInclude */
-require PHPUNIT_COMPOSER_INSTALL;
+require JBZOO_COMPOSER_DIFF_INSTALL;
 
 $application = new Application();
 $application->add(new DiffAction());
