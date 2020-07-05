@@ -18,11 +18,9 @@
 use JBZoo\ComposerDiff\Commands\DiffAction;
 use Symfony\Component\Console\Application;
 
-define('PATH_ROOT', dirname(__DIR__));
+define('PATH_ROOT', __DIR__);
 
 $vendorPaths = [
-    __DIR__ . '/../../../../autoload.php',
-    __DIR__ . '/../../../autoload.php',
     __DIR__ . '/../../autoload.php',
     __DIR__ . '/../vendor/autoload.php',
     __DIR__ . '/vendor/autoload.php'
