@@ -91,7 +91,7 @@ Source code:
 | [vendor/upgraded](https://gitlab.com/vendor/upgraded)      | Upgraded   |              1.0.0 |               2.0.0 | [See details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)      |
 ```
 
-Rendered in your readme:
+Rendered in your readme or PR/MR description:
 
 | Package                                                    | Action     |        Old Version |         New Version |                                                                              |
 |------------------------------------------------------------|------------|-------------------:|--------------------:|------------------------------------------------------------------------------|
