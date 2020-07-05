@@ -215,6 +215,10 @@ class Markdown extends AbstractRender
                 $cell = substr($cell, 1) . ':';
             }
 
+            if ($align === self::A_LEFT) {
+                $cell = ':' . substr($cell, 1);
+            }
+
             $row .= $cell . '|';
         }
 

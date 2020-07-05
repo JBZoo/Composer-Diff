@@ -350,7 +350,7 @@ class ComposerDiffTest extends PHPUnit
             '## PHP Production Dependencies (require)',
             '',
             '| Package                                                    | Action     |        Old Version |         New Version |                                                                              |',
-            '|------------------------------------------------------------|------------|-------------------:|--------------------:|------------------------------------------------------------------------------|',
+            '|:-----------------------------------------------------------|:-----------|-------------------:|--------------------:|:-----------------------------------------------------------------------------|',
             '| [vendor/downgraded](https://gitlab.com/vendor/downgraded)  | Downgraded |              2.0.0 |               1.0.0 | [See details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0)    |',
             '| [vendor/new](https://gitlab.com/vendor/new)                | New        |                  - |               1.0.0 |                                                                              |',
             '| [vendor/no-tag](https://gitlab.com/vendor/package-1)       | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 | [See details](https://gitlab.com/vendor/package-1/compare/bbc0fba...f2f9280) |',
@@ -363,7 +363,7 @@ class ComposerDiffTest extends PHPUnit
             '## PHP Dev Dependencies (require-dev)',
             '',
             '| Package                                                           | Action     | Old Version | New Version |                                                                               |',
-            '|-------------------------------------------------------------------|------------|------------:|------------:|-------------------------------------------------------------------------------|',
+            '|:------------------------------------------------------------------|:-----------|------------:|------------:|:------------------------------------------------------------------------------|',
             '| [vendor/downgraded-dev](https://gitlab.com/vendor/downgraded-dev) | Downgraded |       2.0.0 |       1.0.0 | [See details](https://gitlab.com/vendor/downgraded-dev/compare/2.0.0...1.0.0) |',
             '| [vendor/new-dev](https://gitlab.com/vendor/new-dev)               | New        |           - |       1.0.0 |                                                                               |',
             '| [vendor/removed-dev](https://gitlab.com/vendor/removed-dev)       | Removed    |       1.0.0 |           - |                                                                               |',
@@ -406,7 +406,7 @@ class ComposerDiffTest extends PHPUnit
             '## PHP Production Dependencies (require)',
             '',
             '| Package           | Action     |        Old Version |         New Version |',
-            '|-------------------|------------|-------------------:|--------------------:|',
+            '|:------------------|:-----------|-------------------:|--------------------:|',
             '| vendor/downgraded | Downgraded |              2.0.0 |               1.0.0 |',
             '| vendor/new        | New        |                  - |               1.0.0 |',
             '| vendor/no-tag     | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 |',
@@ -419,7 +419,7 @@ class ComposerDiffTest extends PHPUnit
             '## PHP Dev Dependencies (require-dev)',
             '',
             '| Package               | Action     | Old Version | New Version |',
-            '|-----------------------|------------|------------:|------------:|',
+            '|:----------------------|:-----------|------------:|------------:|',
             '| vendor/downgraded-dev | Downgraded |       2.0.0 |       1.0.0 |',
             '| vendor/new-dev        | New        |           - |       1.0.0 |',
             '| vendor/removed-dev    | Removed    |       1.0.0 |           - |',
@@ -503,7 +503,7 @@ class ComposerDiffTest extends PHPUnit
         ]));
         isContain("```markdown\n{$markdownFormat}\n```", $readmeContent);
         $markdownFormat = str_replace("## PHP Production Dependencies (require)\n\n", '', $markdownFormat);
-        isContain("Rendered in your readme:\n\n{$markdownFormat}\n", $readmeContent);
+        isContain("Rendered in your readme or PR/MR description:\n\n{$markdownFormat}\n", $readmeContent);
 
         $jsonFormat = trim($this->task([
             'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
