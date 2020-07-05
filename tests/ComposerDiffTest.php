@@ -556,7 +556,7 @@ class ComposerDiffTest extends PHPUnit
             implode(' ', [
                 'COLUMNS=120',
                 Sys::getBinary(),
-                "{$rootDir}/jbzoo-composer-diff.php",
+                "{$rootDir}/tests/cli-wrapper.php",
                 '--no-interaction',
                 '--no-ansi'
             ]),
