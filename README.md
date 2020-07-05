@@ -167,6 +167,7 @@ Rendered in your readme or PR/MR description:
  * [ ] Supporting Drupal repos. [For example](https://git.drupalcode.org/project/fast_404).
  * [ ] Add action in the composer via API like `composer lock-diff`.
  * [ ] Fixes [the same issue](https://github.com/davidrjonas/composer-lock-diff/issues/26) with complex/custom name of tag.
+ * [ ] Auto detecting alias name of branch.
  * [ ] No warp links for markdown format.
  * [ ] (?) Support MS Windows... 
 

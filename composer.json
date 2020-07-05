@@ -31,7 +31,9 @@
     },
 
     "require-dev"       : {
-        "jbzoo/toolbox-dev" : "1.1.x-dev"
+        "jbzoo/phpunit"        : "4.0.x-dev",
+        "jbzoo/codestyle"      : "2.0.x-dev",
+        "jbzoo/composer-graph" : "1.0.x-dev"
     },
 
     "autoload"          : {
