@@ -14,4 +14,4 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
-require_once __DIR__ . '/jbzoo-composer-diff.php';
+require_once __DIR__ . '/src/binary.php';

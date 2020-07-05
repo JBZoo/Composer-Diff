@@ -70,7 +70,7 @@ PHP Production Dependencies (require)
 Rendered in your terminal:
 ![Dummy example](https://raw.githubusercontent.com/JBZoo/Composer-Diff/master/resources/dummy.png)
 
-Also, see [colored example in travis-ci](https://travis-ci.org/github/JBZoo/Composer-Diff/jobs/705011296#L452)
+Also, see [colored example in travis-ci](https://travis-ci.org/github/JBZoo/Composer-Diff/jobs/705031632#L414)
 ![Real project](https://raw.githubusercontent.com/JBZoo/Composer-Diff/master/resources/drupal.png)
 
 
@@ -160,6 +160,16 @@ Rendered in your readme or PR/MR description:
     }
 }
 ```
+
+
+## Roadmap
+
+ * [ ] Supporting Drupal repos. [For example](https://git.drupalcode.org/project/fast_404).
+ * [ ] Add action in the composer via API like `composer lock-diff`.
+ * [ ] Fixes [the same issue](https://github.com/davidrjonas/composer-lock-diff/issues/26) with complex/custom name of tag.
+ * [ ] No warp links for markdown format.
+ * [ ] (?) Support MS Windows... 
+
 
 ## Unit tests and check code style
 ```sh

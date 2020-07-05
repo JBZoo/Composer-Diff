@@ -556,7 +556,7 @@ class ComposerDiffTest extends PHPUnit
             implode(' ', [
                 'COLUMNS=120',
                 Sys::getBinary(),
-                "{$rootDir}/tests/cli-wrapper.php",
+                "{$rootDir}/src/binary.php",
                 '--no-interaction',
                 '--no-ansi'
             ]),
