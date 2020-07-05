@@ -502,6 +502,8 @@ class ComposerDiffTest extends PHPUnit
             'output' => 'markdown',
         ]));
         isContain("```markdown\n{$markdownFormat}\n```", $readmeContent);
+        $markdownFormat = str_replace("## PHP Production Dependencies (require)\n\n", '', $markdownFormat);
+        isContain("Rendered in your readme:\n\n{$markdownFormat}\n", $readmeContent);
 
         $jsonFormat = trim($this->task([
             'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
