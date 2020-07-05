@@ -31,10 +31,7 @@
     },
 
     "require-dev"       : {
-        "jbzoo/phpunit"             : "4.0.x-dev",
-        "jbzoo/codestyle"           : "2.0.x-dev",
-        "jbzoo/composer-graph"      : "1.0.x-dev",
-        "roave/security-advisories" : "dev-master"
+        "jbzoo/toolbox-dev" : "1.1.x-dev"
     },
 
     "autoload"          : {
