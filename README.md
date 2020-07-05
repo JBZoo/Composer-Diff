@@ -68,10 +68,10 @@ PHP Production Dependencies (require)
 ```
 
 Rendered in your terminal:
-![Dummy example](/resources/dummy.png)
+![Dummy example](https://raw.githubusercontent.com/JBZoo/Composer-Diff/master/resources/dummy.png)
 
 Also, see [colored example in travis-ci](https://travis-ci.org/github/JBZoo/Composer-Diff/jobs/705011296#L452)
-![Real project](/resources/drupal.png)
+![Real project](https://raw.githubusercontent.com/JBZoo/Composer-Diff/master/resources/drupal.png)
 
 
 
