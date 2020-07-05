@@ -35,6 +35,24 @@
                 "url"       : "git@gitlab.com:vendor/same.git",
                 "reference" : "bbc0fba999014432ff2f928045a3e4121ea4a825"
             }
+        },
+        {
+            "name"    : "vendor/no-tag",
+            "version" : "dev-master",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor-1/package-1.git",
+                "reference" : "f2f928045abbc0fba999014432f3e4121ea4a825"
+            }
+        },
+        {
+            "name"    : "vendor/no-tag-new",
+            "version" : "dev-develop",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor-1/package-1.git",
+                "reference" : "a99901443f2f928045abbc0fb2f3e4121ea4a825"
+            }
         }
     ],
 

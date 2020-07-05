@@ -54,13 +54,13 @@ class Package
     }
 
     /**
-     * @param bool $clean
+     * @param bool $pretyPrint
      * @return string
      */
-    public function getVersion($clean = false): string
+    public function getVersion($pretyPrint = false): string
     {
         $version = (string)$this->data->get('version');
-        if ($clean) {
+        if ($pretyPrint) {
             $version = (string)preg_replace('#^v\.#i', '', $version);
             $version = (string)preg_replace('#^v#i', '', $version);
         }
@@ -69,6 +69,9 @@ class Package
 
         if (strlen($reference) >= self::HASH_LENGTH && 0 === strpos($version, 'dev-')) {
             $version = substr($reference, 0, self::HASH_LENGTH) ?: '';
+            if ($pretyPrint) {
+                $version = "{$this->data->get('version')}@{$version}";
+            }
         }
 
         return $version;

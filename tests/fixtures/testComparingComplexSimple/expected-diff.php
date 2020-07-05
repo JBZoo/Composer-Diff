@@ -32,6 +32,22 @@ return [
             'compare'      => null,
         ],
         [
+            'name'         => 'vendor/no-tag',
+            'url'          => 'https://gitlab.com/vendor/package-1',
+            'version_from' => 'dev-master@bbc0fba',
+            'version_to'   => 'dev-master@f2f9280',
+            'mode'         => 'Changed',
+            'compare'      => 'https://gitlab.com/vendor/package-1/compare/bbc0fba...f2f9280',
+        ],
+        [
+            'name'         => 'vendor/no-tag-new',
+            'url'          => 'https://gitlab.com/vendor-1/package-1',
+            'version_from' => null,
+            'version_to'   => 'dev-develop@a999014',
+            'mode'         => 'New',
+            'compare'      => null,
+        ],
+        [
             'name'         => 'vendor/removed',
             'url'          => 'https://gitlab.com/vendor/removed',
             'version_from' => '1.0.0',

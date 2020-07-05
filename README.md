@@ -55,14 +55,16 @@ Also, see colored example based on [Drupal v8.9.1 vs v9.0.1](https://travis-ci.o
 
 ```
 PHP Production Dependencies (require)
-+-------------------+------------+-------------+-------------+------------------------------------------------------------+
-| Package           | Action     | Old Version | New Version | Details                                                    |
-+-------------------+------------+-------------+-------------+------------------------------------------------------------+
-| vendor/downgraded | Downgraded |       2.0.0 |       1.0.0 | https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0 |
-| vendor/new        | New        |           - |       1.0.0 |                                                            |
-| vendor/removed    | Removed    |       1.0.0 |           - |                                                            |
-| vendor/upgraded   | Upgraded   |       1.0.0 |       2.0.0 | https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0   |
-+-------------------+------------+-------------+-------------+------------------------------------------------------------+
++-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+
+| Package           | Action     |        Old Version |         New Version | Details                                                       |
++-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+
+| vendor/downgraded | Downgraded |              2.0.0 |               1.0.0 | https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0    |
+| vendor/new        | New        |                  - |               1.0.0 |                                                               |
+| vendor/no-tag     | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 | https://gitlab.com/vendor/package-1/compare/bbc0fba...f2f9280 |
+| vendor/no-tag-new | New        |                  - | dev-develop@a999014 |                                                               |
+| vendor/removed    | Removed    |              1.0.0 |                   - |                                                               |
+| vendor/upgraded   | Upgraded   |              1.0.0 |               2.0.0 | https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0      |
++-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+
 ```
 
 
@@ -73,15 +75,17 @@ Source code:
 ```markdown
 ## PHP Production Dependencies (require)
 
-| Package                                                   | Action     | Old Version | New Version |                                                                           |
-|-----------------------------------------------------------|------------|------------:|------------:|---------------------------------------------------------------------------|
-| [vendor/downgraded](https://gitlab.com/vendor/downgraded) | Downgraded |       2.0.0 |       1.0.0 | [See details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0) |
-| [vendor/new](https://gitlab.com/vendor/new)               | New        |           - |       1.0.0 |                                                                           |
-| [vendor/removed](https://gitlab.com/vendor/removed)       | Removed    |       1.0.0 |           - |                                                                           |
-| [vendor/upgraded](https://gitlab.com/vendor/upgraded)     | Upgraded   |       1.0.0 |       2.0.0 | [See details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)   |
+| Package                                                    | Action     |        Old Version |         New Version |                                                                              |
+|------------------------------------------------------------|------------|-------------------:|--------------------:|------------------------------------------------------------------------------|
+| [vendor/downgraded](https://gitlab.com/vendor/downgraded)  | Downgraded |              2.0.0 |               1.0.0 | [See details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0)    |
+| [vendor/new](https://gitlab.com/vendor/new)                | New        |                  - |               1.0.0 |                                                                              |
+| [vendor/no-tag](https://gitlab.com/vendor/package-1)       | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 | [See details](https://gitlab.com/vendor/package-1/compare/bbc0fba...f2f9280) |
+| [vendor/no-tag-new](https://gitlab.com/vendor-1/package-1) | New        |                  - | dev-develop@a999014 |                                                                              |
+| [vendor/removed](https://gitlab.com/vendor/removed)        | Removed    |              1.0.0 |                   - |                                                                              |
+| [vendor/upgraded](https://gitlab.com/vendor/upgraded)      | Upgraded   |              1.0.0 |               2.0.0 | [See details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)      |
 ```
 
-Rendered:
+Rendered in your readme:
 
 | Package                                                   | Action     | Old Version | New Version |                                                                           |
 |-----------------------------------------------------------|------------|------------:|------------:|---------------------------------------------------------------------------|
@@ -110,6 +114,22 @@ Rendered:
             "url": "https:\/\/gitlab.com\/vendor\/new",
             "version_from": null,
             "version_to": "1.0.0",
+            "mode": "New",
+            "compare": null
+        },
+        "vendor\/no-tag": {
+            "name": "vendor\/no-tag",
+            "url": "https:\/\/gitlab.com\/vendor\/package-1",
+            "version_from": "dev-master@bbc0fba",
+            "version_to": "dev-master@f2f9280",
+            "mode": "Changed",
+            "compare": "https:\/\/gitlab.com\/vendor\/package-1\/compare\/bbc0fba...f2f9280"
+        },
+        "vendor\/no-tag-new": {
+            "name": "vendor\/no-tag-new",
+            "url": "https:\/\/gitlab.com\/vendor-1\/package-1",
+            "version_from": null,
+            "version_to": "dev-develop@a999014",
             "mode": "New",
             "compare": null
         },

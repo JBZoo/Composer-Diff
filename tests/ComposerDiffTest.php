@@ -199,8 +199,8 @@ class ComposerDiffTest extends PHPUnit
                 [
                     'name'         => 'vendor-1/package-1',
                     'url'          => 'https://gitlab.com/vendor-1/package-1',
-                    'version_from' => 'bbc0fba',
-                    'version_to'   => '4121ea4',
+                    'version_from' => 'dev-master@bbc0fba',
+                    'version_to'   => 'dev-master@4121ea4',
                     'mode'         => 'Changed',
                     'compare'      => 'https://gitlab.com/vendor-1/package-1/compare/bbc0fba...4121ea4',
                 ]
@@ -240,14 +240,16 @@ class ComposerDiffTest extends PHPUnit
     {
         $expectedProd = implode("\n", [
             '  PHP Production Dependencies (require)',
-            '+-------------------+------------+-------------+-------------+------------------------------------------------------------+',
-            '| Package           | Action     | Old Version | New Version | Details                                                    |',
-            '+-------------------+------------+-------------+-------------+------------------------------------------------------------+',
-            '| vendor/downgraded | Downgraded |       2.0.0 |       1.0.0 | https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0 |',
-            '| vendor/new        | New        |           - |       1.0.0 |                                                            |',
-            '| vendor/removed    | Removed    |       1.0.0 |           - |                                                            |',
-            '| vendor/upgraded   | Upgraded   |       1.0.0 |       2.0.0 | https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0   |',
-            '+-------------------+------------+-------------+-------------+------------------------------------------------------------+',
+            '+-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+',
+            '| Package           | Action     |        Old Version |         New Version | Details                                                       |',
+            '+-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+',
+            '| vendor/downgraded | Downgraded |              2.0.0 |               1.0.0 | https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0    |',
+            '| vendor/new        | New        |                  - |               1.0.0 |                                                               |',
+            '| vendor/no-tag     | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 | https://gitlab.com/vendor/package-1/compare/bbc0fba...f2f9280 |',
+            '| vendor/no-tag-new | New        |                  - | dev-develop@a999014 |                                                               |',
+            '| vendor/removed    | Removed    |              1.0.0 |                   - |                                                               |',
+            '| vendor/upgraded   | Upgraded   |              1.0.0 |               2.0.0 | https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0      |',
+            '+-------------------+------------+--------------------+---------------------+---------------------------------------------------------------+',
         ]);
 
         $expectedDev = implode("\n", [
@@ -293,14 +295,16 @@ class ComposerDiffTest extends PHPUnit
     {
         $expectedProd = implode("\n", [
             '  PHP Production Dependencies (require)',
-            '+-------------------+------------+-------------+-------------+',
-            '| Package           | Action     | Old Version | New Version |',
-            '+-------------------+------------+-------------+-------------+',
-            '| vendor/downgraded | Downgraded |       2.0.0 |       1.0.0 |',
-            '| vendor/new        | New        |           - |       1.0.0 |',
-            '| vendor/removed    | Removed    |       1.0.0 |           - |',
-            '| vendor/upgraded   | Upgraded   |       1.0.0 |       2.0.0 |',
-            '+-------------------+------------+-------------+-------------+',
+            '+-------------------+------------+--------------------+---------------------+',
+            '| Package           | Action     |        Old Version |         New Version |',
+            '+-------------------+------------+--------------------+---------------------+',
+            '| vendor/downgraded | Downgraded |              2.0.0 |               1.0.0 |',
+            '| vendor/new        | New        |                  - |               1.0.0 |',
+            '| vendor/no-tag     | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 |',
+            '| vendor/no-tag-new | New        |                  - | dev-develop@a999014 |',
+            '| vendor/removed    | Removed    |              1.0.0 |                   - |',
+            '| vendor/upgraded   | Upgraded   |              1.0.0 |               2.0.0 |',
+            '+-------------------+------------+--------------------+---------------------+',
         ]);
 
         $expectedDev = implode("\n", [
@@ -345,12 +349,14 @@ class ComposerDiffTest extends PHPUnit
         $expectedProd = implode("\n", [
             '## PHP Production Dependencies (require)',
             '',
-            '| Package                                                   | Action     | Old Version | New Version |                                                                           |',
-            '|-----------------------------------------------------------|------------|------------:|------------:|---------------------------------------------------------------------------|',
-            '| [vendor/downgraded](https://gitlab.com/vendor/downgraded) | Downgraded |       2.0.0 |       1.0.0 | [See details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0) |',
-            '| [vendor/new](https://gitlab.com/vendor/new)               | New        |           - |       1.0.0 |                                                                           |',
-            '| [vendor/removed](https://gitlab.com/vendor/removed)       | Removed    |       1.0.0 |           - |                                                                           |',
-            '| [vendor/upgraded](https://gitlab.com/vendor/upgraded)     | Upgraded   |       1.0.0 |       2.0.0 | [See details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)   |',
+            '| Package                                                    | Action     |        Old Version |         New Version |                                                                              |',
+            '|------------------------------------------------------------|------------|-------------------:|--------------------:|------------------------------------------------------------------------------|',
+            '| [vendor/downgraded](https://gitlab.com/vendor/downgraded)  | Downgraded |              2.0.0 |               1.0.0 | [See details](https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0)    |',
+            '| [vendor/new](https://gitlab.com/vendor/new)                | New        |                  - |               1.0.0 |                                                                              |',
+            '| [vendor/no-tag](https://gitlab.com/vendor/package-1)       | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 | [See details](https://gitlab.com/vendor/package-1/compare/bbc0fba...f2f9280) |',
+            '| [vendor/no-tag-new](https://gitlab.com/vendor-1/package-1) | New        |                  - | dev-develop@a999014 |                                                                              |',
+            '| [vendor/removed](https://gitlab.com/vendor/removed)        | Removed    |              1.0.0 |                   - |                                                                              |',
+            '| [vendor/upgraded](https://gitlab.com/vendor/upgraded)      | Upgraded   |              1.0.0 |               2.0.0 | [See details](https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0)      |',
         ]);
 
         $expectedDev = implode("\n", [
@@ -399,12 +405,14 @@ class ComposerDiffTest extends PHPUnit
         $expectedProd = implode("\n", [
             '## PHP Production Dependencies (require)',
             '',
-            '| Package           | Action     | Old Version | New Version |',
-            '|-------------------|------------|------------:|------------:|',
-            '| vendor/downgraded | Downgraded |       2.0.0 |       1.0.0 |',
-            '| vendor/new        | New        |           - |       1.0.0 |',
-            '| vendor/removed    | Removed    |       1.0.0 |           - |',
-            '| vendor/upgraded   | Upgraded   |       1.0.0 |       2.0.0 |',
+            '| Package           | Action     |        Old Version |         New Version |',
+            '|-------------------|------------|-------------------:|--------------------:|',
+            '| vendor/downgraded | Downgraded |              2.0.0 |               1.0.0 |',
+            '| vendor/new        | New        |                  - |               1.0.0 |',
+            '| vendor/no-tag     | Changed    | dev-master@bbc0fba |  dev-master@f2f9280 |',
+            '| vendor/no-tag-new | New        |                  - | dev-develop@a999014 |',
+            '| vendor/removed    | Removed    |              1.0.0 |                   - |',
+            '| vendor/upgraded   | Upgraded   |              1.0.0 |               2.0.0 |',
         ]);
 
         $expectedDev = implode("\n", [
