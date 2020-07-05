@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+// @codingStandardsIgnoreFile
+
 use JBZoo\ComposerDiff\Commands\DiffAction;
 use Symfony\Component\Console\Application;
 
@@ -33,6 +35,7 @@ foreach ($vendorPaths as $file) {
     }
 }
 
+/** @psalm-suppress UnresolvableInclude */
 require PHPUNIT_COMPOSER_INSTALL;
 
 $application = new Application();
