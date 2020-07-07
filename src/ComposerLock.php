@@ -18,10 +18,10 @@ namespace JBZoo\ComposerDiff;
 use function JBZoo\Data\data;
 
 /**
- * Class PackageCollection
+ * Class ComposerLock
  * @package JBZoo\ComposerDiff
  */
-class CommploserLock
+class ComposerLock
 {
     /**
      * @var Package[]
@@ -55,7 +55,7 @@ class CommploserLock
     /**
      * @return Package[]
      */
-    public function getRequired()
+    public function getRequired(): array
     {
         return $this->listRequired;
     }
@@ -63,7 +63,7 @@ class CommploserLock
     /**
      * @return Package[]
      */
-    public function getRequiredDev()
+    public function getRequiredDev(): array
     {
         return $this->listRequiredDev;
     }

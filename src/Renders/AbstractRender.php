@@ -113,6 +113,7 @@ abstract class AbstractRender
     /**
      * @param string $env
      * @return string
+     * @phan-suppress PhanPluginPossiblyStaticProtectedMethod
      */
     protected function getTitle(string $env): string
     {

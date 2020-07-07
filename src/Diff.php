@@ -72,7 +72,7 @@ class Diff
     /**
      * @return string
      */
-    public function getMode()
+    public function getMode(): string
     {
         return $this->mode;
     }
@@ -80,7 +80,7 @@ class Diff
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         if ($this->source) {
             return [
@@ -132,7 +132,7 @@ class Diff
             return $this->setMode(self::MODE_SAME);
         }
 
-        if ($this->isHashVersion($sourceVersion) || $this->isHashVersion($targetVersion)) {
+        if (self::isHashVersion($sourceVersion) || Diff::isHashVersion($targetVersion)) {
             return $this->setMode(self::MODE_CHANGED);
         }
 
@@ -177,7 +177,7 @@ class Diff
      * @param string $version
      * @return bool
      */
-    private function isHashVersion(string $version): bool
+    private static function isHashVersion(string $version): bool
     {
         return strlen($version) === Package::HASH_LENGTH && strpos($version, '.') === false;
     }

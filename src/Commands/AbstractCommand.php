@@ -62,7 +62,7 @@ abstract class AbstractCommand extends Command
      * @phan-suppress PhanPartialTypeMismatchReturn
      * @phan-suppress PhanCoalescingNeverUndefined
      */
-    protected function opt($optionName): ?string
+    protected function opt(string $optionName): ?string
     {
         /** @var string|null $result */
         $result = $this->input->getOption($optionName);

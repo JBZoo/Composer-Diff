@@ -68,11 +68,11 @@ class Markdown extends AbstractRender
 
             if ($this->showLinks()) {
                 $this->rows[] = [
-                    $this->getLink($row['name'], $row['url']),
+                    self::getLink($row['name'], $row['url']),
                     $row['mode'],
                     $fromVersion,
                     $toVersion,
-                    $this->getLink('See details', $row['compare']),
+                    self::getLink('See details', $row['compare']),
                 ];
             } else {
                 $this->rows[] = [$row['name'], $row['mode'], $fromVersion, $toVersion];
@@ -108,7 +108,7 @@ class Markdown extends AbstractRender
         }
 
         // all columns must be at least 3 wide for the markdown to work
-        $widths = array_map(function ($width) {
+        $widths = array_map(static function (int $width) {
             return $width >= self::CELL_MIN_LENGTH ? $width : self::CELL_MIN_LENGTH;
         }, $widths);
 
@@ -120,7 +120,7 @@ class Markdown extends AbstractRender
      * @param string|null $url
      * @return string
      */
-    protected function getLink(string $title, ?string $url): string
+    protected static function getLink(string $title, ?string $url = null): string
     {
         return $url ? "[$title]($url)" : '';
     }
@@ -129,12 +129,12 @@ class Markdown extends AbstractRender
      * @param int[] $widths
      * @return string
      */
-    protected function renderHeaders($widths)
+    protected function renderHeaders(array $widths): string
     {
         $result = '| ';
 
         foreach (array_keys($this->headers) as $colIndex) {
-            $result .= $this->renderCell(
+            $result .= self::renderCell(
                 $this->headers[$colIndex],
                 $this->getColumnAlign($colIndex),
                 $widths[$colIndex]
@@ -161,12 +161,7 @@ class Markdown extends AbstractRender
 
             /** @var string $colIndex */
             foreach (array_keys($row) as $colIndex) {
-                $result .= $this->renderCell(
-                    $row[$colIndex],
-                    $this->getColumnAlign($colIndex),
-                    $widths[$colIndex]
-                );
-
+                $result .= self::renderCell($row[$colIndex], $this->getColumnAlign($colIndex), $widths[$colIndex]);
                 $result .= ' | ';
             }
 
@@ -182,7 +177,7 @@ class Markdown extends AbstractRender
      * @param int    $width
      * @return string
      */
-    protected function renderCell($contents, $alignment, $width): string
+    protected static function renderCell(string $contents, string $alignment, int $width): string
     {
         $map = [
             self::A_LEFT   => STR_PAD_RIGHT,

@@ -34,7 +34,7 @@ class Comparator
      * @param string $targetFile
      * @return array
      */
-    public static function compare($sourceFile, $targetFile): array
+    public static function compare(string $sourceFile, string $targetFile): array
     {
         $sourceData = self::load($sourceFile);
         $targetData = self::load($targetFile);
@@ -46,12 +46,12 @@ class Comparator
     }
 
     /**
-     * @param string         $type
-     * @param CommploserLock $sourceData
-     * @param CommploserLock $targetData
+     * @param string       $type
+     * @param ComposerLock $sourceData
+     * @param ComposerLock $targetData
      * @return Diff[]
      */
-    private static function diff(string $type, CommploserLock $sourceData, CommploserLock $targetData): array
+    private static function diff(string $type, ComposerLock $sourceData, ComposerLock $targetData): array
     {
         if ($type === self::ENV_PROD) {
             $sourcePackages = $sourceData->getRequired();
@@ -75,7 +75,7 @@ class Comparator
             $resultDiff[$targetName]->compareWithPackage($targetPackage);
         }
 
-        $resultDiff = array_filter($resultDiff, function (Diff $diff) {
+        $resultDiff = array_filter($resultDiff, static function (Diff $diff) {
             return $diff->getMode() !== Diff::MODE_SAME;
         }, ARRAY_FILTER_USE_BOTH);
 
@@ -86,9 +86,9 @@ class Comparator
 
     /**
      * @param string $composerFile
-     * @return CommploserLock
+     * @return ComposerLock
      */
-    private static function load(string $composerFile): CommploserLock
+    private static function load(string $composerFile): ComposerLock
     {
         if (
             Url::isUrl($composerFile) &&
@@ -98,12 +98,12 @@ class Comparator
         }
         if (file_exists($composerFile)) {
             $json = json(file_get_contents($composerFile));
-            return new CommploserLock($json->getArrayCopy());
+            return new ComposerLock($json->getArrayCopy());
         }
 
         if (strpos($composerFile, ':') !== false) {
             $json = json(Cli::exec('git show ' . escapeshellarg($composerFile)));
-            return new CommploserLock($json->getArrayCopy());
+            return new ComposerLock($json->getArrayCopy());
         }
 
         throw new Exception("Composer lock file \"{$composerFile}\" not found");
