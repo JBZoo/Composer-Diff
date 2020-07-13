@@ -44,7 +44,7 @@
         "classmap" : ["tests"]
     },
 
-    "bin"               : ["jbzoo-composer-diff"],
+    "bin"               : ["composer-diff"],
     "minimum-stability" : "dev",
     "prefer-stable"     : true,
     "config"            : {

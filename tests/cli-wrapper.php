@@ -20,7 +20,7 @@ define('PROJECT_ROOT', dirname(__DIR__));
 
 require_once PROJECT_ROOT . '/vendor/autoload.php';
 
-$cliIndexFile = PROJECT_ROOT . '/jbzoo-composer-diff.php';
+$cliIndexFile = PROJECT_ROOT . '/composer-diff.php';
 
 if (class_exists(CovCatcher::class) && Sys::hasXdebug()) {
     $covCatcher = new CovCatcher(uniqid('prefix-', true), [

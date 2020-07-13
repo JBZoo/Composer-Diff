@@ -18,11 +18,11 @@ composer require global jbzoo/composer-diff # As global tool
 ```bash
 composer update
 # don't commit yet!
-jbzoo-composer-diff
+php ./vendor/bin/composer-diff # or just `composer-diff` if installed globally 
 ```
 
 ```
-./vendor/bin/jbzoo-composer-diff --help
+./vendor/bin/composer-diff --help
 
 Description:
   Show difference between two versions of composer.lock files

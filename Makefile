@@ -36,7 +36,7 @@ test-drupal:
 	@echo ""
 	@echo "  Example. Comparing Drupal v8.9.1 vs v9.0.1 (required only)"
 	@echo ""
-	@php ./jbzoo-composer-diff                                            \
+	@php ./composer-diff                                                  \
         --source="`pwd`/tests/fixtures/testDrupal/composer-8.9.1.lock"    \
         --target="`pwd`/tests/fixtures/testDrupal/composer-9.0.1.lock"    \
         --env=require                                                     \
@@ -48,18 +48,18 @@ test-manual:
 	@echo ""
 	@echo "  Example. Just dummy example"
 	@echo ""
-	@php ./jbzoo-composer-diff                                                                \
+	@php ./composer-diff                                                                      \
         --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
         --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
         --env=require                                                                         \
         -vvv
-	@php ./jbzoo-composer-diff                                                                \
+	@php ./composer-diff                                                                      \
         --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
         --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
         --env=require                                                                         \
         --output=markdown                                                                     \
         -vvv
-	@php ./jbzoo-composer-diff                                                                \
+	@php ./composer-diff                                                                      \
         --source="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-from.json"    \
         --target="`pwd`/tests/fixtures/testComparingComplexSimple/composer-lock-to.json"      \
         --env=require                                                                         \

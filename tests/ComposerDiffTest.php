@@ -519,7 +519,7 @@ class ComposerDiffTest extends PHPUnit
         $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
         $helpOutput = trim($this->task(['help' => null]));
 
-        isContain("```\n./vendor/bin/jbzoo-composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
+        isContain("```\n./vendor/bin/composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
     }
 
     #### Testing Tools /////////////////////////////////////////////////////////////////////////////////////////////////
