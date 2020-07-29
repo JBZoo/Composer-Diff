@@ -15,11 +15,17 @@
 
 namespace JBZoo\PHPUnit;
 
+use JBZoo\ComposerDiff\Commands\DiffAction;
 use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Diff;
 use JBZoo\ComposerDiff\Url;
+use JBZoo\ToolboxCI\Commands\Convert;
+use JBZoo\ToolboxCI\Commands\ConvertMap;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\StringInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 use function JBZoo\Data\json;
 use function JBZoo\Data\phpArray;
@@ -517,7 +523,7 @@ class ComposerDiffTest extends PHPUnit
     public function testHelpInReadme()
     {
         $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
-        $helpOutput = trim($this->task(['help' => null]));
+        $helpOutput = trim($this->taskReal(['help' => null]));
 
         isContain("```\n./vendor/bin/composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
     }
@@ -544,11 +550,34 @@ class ComposerDiffTest extends PHPUnit
     }
 
     /**
+     * @param array  $params
+     * @return string
+     * @throws \Exception
+     */
+    public function task(array $params = []): string
+    {
+        $application = new Application();
+        $application->add(new DiffAction());
+        $application->setDefaultCommand('diff');
+        $command = $application->find('diff');
+
+        $buffer = new BufferedOutput();
+        $args = new StringInput(Cli::build('', $params));
+        $code = $command->run($args, $buffer);
+
+        if ($code > 0) {
+            throw new \RuntimeException($buffer->fetch());
+        }
+
+        return $buffer->fetch();
+    }
+
+    /**
      * @param string $taskName
      * @param array  $params
      * @return string
      */
-    private function task(array $params = [])
+    private function taskReal(array $params = [])
     {
         $rootDir = PROJECT_ROOT;
 
@@ -556,7 +585,7 @@ class ComposerDiffTest extends PHPUnit
             implode(' ', [
                 'COLUMNS=120',
                 Sys::getBinary(),
-                "{$rootDir}/tests/cli-wrapper.php",
+                "{$rootDir}/composer-diff.php",
                 '--no-interaction',
                 '--no-ansi'
             ]),
