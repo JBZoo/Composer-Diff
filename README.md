@@ -12,7 +12,7 @@ See what packages have changed after you run `composer update` by comparing `com
 
 ```
 composer require        jbzoo/composer-diff # For specific project
-composer require global jbzoo/composer-diff # As global tool
+composer global require jbzoo/composer-diff # As global tool
 ```
 
 ## Usage
