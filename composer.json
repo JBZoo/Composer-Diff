@@ -19,19 +19,19 @@
     ],
 
     "require"           : {
-        "php"             : "^7.2",
+        "php"             : ">=7.2",
         "ext-json"        : "*",
         "ext-filter"      : "*",
 
-        "jbzoo/data"      : "^4.0.0",
-        "jbzoo/utils"     : "^4.0.0",
+        "jbzoo/data"      : "^4.0.2",
+        "jbzoo/utils"     : "^4.2.1",
         "symfony/console" : "^4.4||^5.0",
         "symfony/process" : "^4.4||^5.0",
         "composer/semver" : "^1.0||^2.0||^3.0"
     },
 
     "require-dev"       : {
-        "jbzoo/toolbox-dev" : "^2.1.0"
+        "jbzoo/toolbox-dev" : "^2.4.0"
     },
 
     "autoload"          : {
