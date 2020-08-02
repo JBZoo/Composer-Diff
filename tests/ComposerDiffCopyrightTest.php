@@ -16,7 +16,7 @@
 namespace JBZoo\PHPUnit;
 
 /**
- * Class Composer-DiffCopyrightTest
+ * Class ComposerDiffCopyrightTest
  *
  * @package JBZoo\PHPUnit
  */

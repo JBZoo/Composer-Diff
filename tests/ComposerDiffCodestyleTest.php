@@ -16,7 +16,7 @@
 namespace JBZoo\PHPUnit;
 
 /**
- * Class Composer-DiffCodestyleTest
+ * Class ComposerDiffCodestyleTest
  *
  * @package JBZoo\PHPUnit
  */

@@ -22,7 +22,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class Console
- * @package JBZoo\ComposerDiff
+ * @package JBZoo\ComposerDiff\Renders
  */
 class Console extends AbstractRender
 {

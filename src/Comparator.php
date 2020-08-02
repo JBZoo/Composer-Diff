@@ -20,7 +20,7 @@ use JBZoo\Utils\Cli;
 use function JBZoo\Data\json;
 
 /**
- * Class Comporator
+ * Class Comparator
  * @package JBZoo\ComposerDiff
  */
 class Comparator
