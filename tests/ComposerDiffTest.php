@@ -522,6 +522,10 @@ class ComposerDiffTest extends PHPUnit
 
     public function testHelpInReadme()
     {
+        if (!Sys::isPHP('7.2')) {
+            skip('Old help text is different for different libs/php versions');
+        }
+
         $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
         $helpOutput = trim($this->taskReal(['help' => null]));
 
