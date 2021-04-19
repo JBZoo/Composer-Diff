@@ -19,18 +19,32 @@ php:
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
+  - nightly
 
-env:
-  matrix:
-    - JBZOO_COMPOSER_UPDATE_FLAGS="--prefer-lowest --prefer-stable"
-    - JBZOO_COMPOSER_UPDATE_FLAGS=""
+jobs:
+  fast_finish: true
+  allow_failures:
+    - php: 8.0
+    - php: nightly
 
 before_script:
   - composer self-update
 
 script:
-  - make update   --no-print-directory
+  - make build    --no-print-directory
   - make test-all --no-print-directory
 
 after_script:
   - make report-coveralls
+
+deploy:
+  provider: releases
+  token:
+    secure: QzCyIZJGe2dFyVRfKjS6rC2Y1i1mC44zt6rcBlmGojEfuM8J/VSe5v2PrS+yra6f98hDc+JDfuPL2x/FFYoNkiRXOyDLlcvXElfoByeC87KMxrzhjeBzFiknbW/AfvnpngxE4qGX+jN488IV4lVNseNHGPEYQadMHHen0Wu4aPuCyv7Y5oXUlG0rlZhUFoGsY3ZTnbtqcrXrHJMl9lsx23IcPbUtCzm1m51PgIFsISLEximnSrKXeQSdOAWDUH/YC4zA9GfuaIPbLrIyKdA0hsZm+H4VnfpeoqksyyHBdn8Pt+mC/HIB5QcqjxWO7dzQ0sVV8nS6zkztR17JfgAuUUsxIq5wGM2hWEdA6bQqb+7AAknRX/d+us++f2gJzgL06tm+xRF+XMVY2Up3KCk6HHXgOSEybNZE5nufOlBcZfTSRs7HY1Mju3dTCSY0mKgQvJaD6IWM29qBGU/9d+GXn2nSQIP23ste+a0mmQQx3JEhvrGeIApWaVX4Cfzxbj219T2C2ErMimOE/UpRlp1iN4kMggjCk2rJvL4rCs8gbNZGj97cHXE3qWel2p7DsvIrZhcZOr6DS5B1xRe1a8Wai+kKlZb7A00ArtON8ZDHNP9Xa9Wpsu0kNg78rkFhYEoZFKr6RNTL4rAdaIKGOYVN2ygjlXHSBv4RD9mBOtBLJk4=
+  file: "./build/composer-diff.phar"
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
+    php: 7.2

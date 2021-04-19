@@ -11,16 +11,24 @@
 # @link       https://github.com/JBZoo/Composer-Diff
 #
 
+.PHONY: build
 
 ifneq (, $(wildcard ./vendor/jbzoo/codestyle/src/init.Makefile))
     include ./vendor/jbzoo/codestyle/src/init.Makefile
 endif
 
 
+build: ##@Project Install all 3rd party dependencies
+	$(call title,"Install/Update all 3rd party dependencies")
+	@composer install --optimize-autoloader --no-progress
+	@make build-phar
+
+
 update: ##@Project Install/Update all 3rd party dependencies
 	$(call title,"Install/Update all 3rd party dependencies")
-	@echo "Composer flags: $(JBZOO_COMPOSER_UPDATE_FLAGS)"
-	@composer update $(JBZOO_COMPOSER_UPDATE_FLAGS)
+	@composer update --optimize-autoloader --no-progress
+	$(call title,"Show difference in composer.lock")
+	@$(PHP_BIN) composer-diff
 
 
 test-all: ##@Project Run all project tests at once
