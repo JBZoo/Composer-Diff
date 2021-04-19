@@ -24,9 +24,19 @@ wget https://github.com/JBZoo/Composer-Diff/releases/download/<VERSION>/composer
 ```bash
 composer update
 # don't commit yet!
-php ./vendor/bin/composer-diff # or just `composer-diff` if installed globally 
+
+# if it's installed via composer
+php ./vendor/bin/composer-diff
+
+# OR (if installed globally) 
+composer-diff
+
+# OR (if you downloaded phar file)
+php composer-diff.phar
 ```
 
+
+## Help Description
 ```
 ./vendor/bin/composer-diff --help
 
@@ -173,14 +183,14 @@ Rendered in your readme or PR/MR description:
  * [ ] Supporting Drupal repos. [For example](https://git.drupalcode.org/project/fast_404).
  * [ ] Add action in the composer via API like `composer lock-diff`.
  * [ ] Fixes [the same issue](https://github.com/davidrjonas/composer-lock-diff/issues/26) with complex/custom name of tag.
- * [ ] Auto detecting alias name of branch.
- * [ ] No warp links for markdown format.
+ * [ ] Auto-detecting alias name of branch.
+ * [ ] No warp links for Markdown format.
  * [ ] (?) Support MS Windows... 
 
 
 ## Unit tests and check code style
 ```sh
-make update
+make build
 make test-all
 ```
 
