@@ -48,7 +48,7 @@ class ComposerDiffTest extends PHPUnit
 
     private const URL_INVALID = 'https://google.com';
 
-    public function testPackageUrl()
+    public function testPackageUrl(): void
     {
         isSame('https://github.com/JBZoo/Utils', Url::getPackageUrl(self::URL_GITHUB_1));
         isSame('https://github.com/JBZoo/Utils', Url::getPackageUrl(self::URL_GITHUB_2));
@@ -63,7 +63,7 @@ class ComposerDiffTest extends PHPUnit
         isSame(null, Url::getPackageUrl(self::URL_INVALID));
     }
 
-    public function testCompareGitHub()
+    public function testCompareGitHub(): void
     {
         isSame(
             'https://github.com/JBZoo/Utils/compare/2.0.0...3.0.0',
@@ -99,7 +99,7 @@ class ComposerDiffTest extends PHPUnit
         isSame(null, Url::getCompareUrl(self::URL_INVALID, '1.0', '2.0'));
     }
 
-    public function testComparingSamePackage()
+    public function testComparingSamePackage(): void
     {
         isSame(["require" => [], "require-dev" => []],
             $this->toArray(Comparator::compare(
@@ -109,7 +109,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingNewPackage()
+    public function testComparingNewPackage(): void
     {
         isSame([
             "require"     => [
@@ -131,7 +131,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingRemovedPackage()
+    public function testComparingRemovedPackage(): void
     {
         isSame([
             "require"     => [
@@ -153,7 +153,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingUpgradingPackage()
+    public function testComparingUpgradingPackage(): void
     {
         isSame([
             "require"     => [
@@ -175,7 +175,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingDowngradedPackage()
+    public function testComparingDowngradedPackage(): void
     {
         isSame([
             "require"     => [
@@ -197,7 +197,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingChangedPackage()
+    public function testComparingChangedPackage(): void
     {
         isSame([
             "require"     => [
@@ -219,7 +219,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingComplex()
+    public function testComparingComplex(): void
     {
         isSame(
             phpArray(__DIR__ . '/fixtures/testComparingComplex/expected-diff.php')->getArrayCopy(),
@@ -230,7 +230,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testComparingComplexSimple()
+    public function testComparingComplexSimple(): void
     {
         isSame(
             phpArray(__DIR__ . '/fixtures/testComparingComplexSimple/expected-diff.php')->getArrayCopy(),
@@ -241,7 +241,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testConsoleFormatOutput()
+    public function testConsoleFormatOutput(): void
     {
         $expectedProd = implode("\n", [
             '  PHP Production Dependencies (require)',
@@ -296,7 +296,7 @@ class ComposerDiffTest extends PHPUnit
         isContain($expectedDev, $cliOutput);
     }
 
-    public function testConsoleFormatOutputNoLinks()
+    public function testConsoleFormatOutputNoLinks(): void
     {
         $expectedProd = implode("\n", [
             '  PHP Production Dependencies (require)',
@@ -334,7 +334,7 @@ class ComposerDiffTest extends PHPUnit
         isContain($expectedDev, $cliOutput);
     }
 
-    public function testJsonFormatOutput()
+    public function testJsonFormatOutput(): void
     {
         $cliOutput = $this->task([
             'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
@@ -349,7 +349,7 @@ class ComposerDiffTest extends PHPUnit
         );
     }
 
-    public function testMarkdownFormatOutput()
+    public function testMarkdownFormatOutput(): void
     {
         $expectedProd = implode("\n", [
             '## PHP Production Dependencies (require)',
@@ -405,7 +405,7 @@ class ComposerDiffTest extends PHPUnit
         isContain($expectedDev, $cliOutput);
     }
 
-    public function testMarkdownFormatOutputNoLinks()
+    public function testMarkdownFormatOutputNoLinks(): void
     {
         $expectedProd = implode("\n", [
             '## PHP Production Dependencies (require)',
@@ -442,7 +442,7 @@ class ComposerDiffTest extends PHPUnit
         isContain($expectedDev, $cliOutput);
     }
 
-    public function testStrictMode()
+    public function testStrictMode(): void
     {
         $this->expectException(\Exception::class);
 
@@ -453,7 +453,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
     }
 
-    public function testStrictModeRequireOnly()
+    public function testStrictModeRequireOnly(): void
     {
         $this->expectException(\Exception::class);
 
@@ -465,7 +465,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
     }
 
-    public function testStrictModeRequireDevOnly()
+    public function testStrictModeRequireDevOnly(): void
     {
         $this->expectException(\Exception::class);
 
@@ -477,7 +477,7 @@ class ComposerDiffTest extends PHPUnit
         ]);
     }
 
-    public function testStrictModeNoErrors()
+    public function testStrictModeNoErrors(): void
     {
         $cliOutput = $this->task([
             'source' => __DIR__ . '/fixtures/testComparingComplexSimple/composer-lock-from.json',
@@ -489,7 +489,7 @@ class ComposerDiffTest extends PHPUnit
         isContain('There is no difference (require-dev)', $cliOutput);
     }
 
-    public function testExamplesInReadme()
+    public function testExamplesInReadme(): void
     {
         $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
         $consoleFormat = trim($this->task([
@@ -519,7 +519,7 @@ class ComposerDiffTest extends PHPUnit
         isContain("```json\n{$jsonFormat}\n```", $readmeContent);
     }
 
-    public function testHelpInReadme()
+    public function testHelpInReadme(): void
     {
         if (!Sys::isPHP('7.2')) {
             skip('Old help text is different for different libs/php versions');
@@ -531,7 +531,7 @@ class ComposerDiffTest extends PHPUnit
         isContain("```\n./vendor/bin/composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
     }
 
-    public function testComparingWithGitVersionPositive()
+    public function testComparingWithGitVersionPositive(): void
     {
         $output = $this->task([
             'source' => 'HEAD:tests/fixtures/testComparingWithGitVersionPositive/composer-from-lock.json',
@@ -544,7 +544,7 @@ class ComposerDiffTest extends PHPUnit
         ]), trim($output));
     }
 
-    public function testComparingWithGitVersionNegative()
+    public function testComparingWithGitVersionNegative(): void
     {
         $this->expectException(ProcessFailedException::class);
 
@@ -558,7 +558,7 @@ class ComposerDiffTest extends PHPUnit
      * @param array $fullDiff
      * @return array
      */
-    private function toArray(array $fullDiff)
+    protected function toArray(array $fullDiff): array
     {
         $result = [];
 
@@ -578,7 +578,7 @@ class ComposerDiffTest extends PHPUnit
      * @return string
      * @throws \Exception
      */
-    public function task(array $params = []): string
+    protected function task(array $params = []): string
     {
         $application = new Application();
         $application->add(new DiffAction());
@@ -597,11 +597,10 @@ class ComposerDiffTest extends PHPUnit
     }
 
     /**
-     * @param string $taskName
-     * @param array  $params
+     * @param array $params
      * @return string
      */
-    private function taskReal(array $params = [])
+    protected function taskReal(array $params = []): string
     {
         $rootDir = PROJECT_ROOT;
 
