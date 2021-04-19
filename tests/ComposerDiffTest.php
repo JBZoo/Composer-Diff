@@ -19,13 +19,12 @@ use JBZoo\ComposerDiff\Commands\DiffAction;
 use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Diff;
 use JBZoo\ComposerDiff\Url;
-use JBZoo\ToolboxCI\Commands\Convert;
-use JBZoo\ToolboxCI\Commands\ConvertMap;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 use function JBZoo\Data\json;
 use function JBZoo\Data\phpArray;
@@ -532,6 +531,27 @@ class ComposerDiffTest extends PHPUnit
         isContain("```\n./vendor/bin/composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
     }
 
+    public function testComparingWithGitVersionPositive()
+    {
+        $output = $this->task([
+            'source' => 'HEAD:tests/fixtures/testComparingWithGitVersionPositive/composer-from-lock.json',
+            'target' => __DIR__ . '/fixtures/testComparingWithGitVersionPositive/composer-to-lock.json'
+        ]);
+
+        isSame(implode("\n", [
+            'There is no difference (require)',
+            'There is no difference (require-dev)'
+        ]), trim($output));
+    }
+
+    public function testComparingWithGitVersionNegative()
+    {
+        $this->expectException(ProcessFailedException::class);
+
+        // File not found in git!
+        $this->taskReal(['source' => 'HEAD:invalid_path/composer.lock']);
+    }
+
     #### Testing Tools /////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
@@ -554,7 +574,7 @@ class ComposerDiffTest extends PHPUnit
     }
 
     /**
-     * @param array  $params
+     * @param array $params
      * @return string
      * @throws \Exception
      */

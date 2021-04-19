@@ -20,8 +20,8 @@ return array_merge($default, [
         'src',
 
         'vendor/jbzoo/data/src',
-        'vendor/jbzoo/utils/src',
         'vendor/symfony/console',
+        'vendor/symfony/process',
         'vendor/composer/semver/src',
     ]
 ]);
