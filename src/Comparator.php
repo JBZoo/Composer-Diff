@@ -15,7 +15,8 @@
 
 namespace JBZoo\ComposerDiff;
 
-use JBZoo\Utils\Cli;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 use function JBZoo\Data\json;
 
@@ -96,16 +97,33 @@ class Comparator
         ) {
             throw new Exception("There is no stream wrapper to open \"{$composerFile}\"");
         }
+
         if (file_exists($composerFile)) {
             $json = json(file_get_contents($composerFile));
             return new ComposerLock($json->getArrayCopy());
         }
 
         if (strpos($composerFile, ':') !== false) {
-            $json = json(Cli::exec('git show ' . escapeshellarg($composerFile)));
+            $json = json(self::exec('git show ' . escapeshellarg($composerFile)));
             return new ComposerLock($json->getArrayCopy());
         }
 
         throw new Exception("Composer lock file \"{$composerFile}\" not found");
+    }
+
+    /**
+     * @param string $command
+     * @return string
+     */
+    private static function exec(string $command): string
+    {
+        $process = Process::fromShellCommandline($command);
+        $process->run();
+
+        if ($process->isSuccessful()) {
+            return $process->getOutput();
+        }
+
+        throw new ProcessFailedException($process);
     }
 }
