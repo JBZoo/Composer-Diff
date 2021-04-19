@@ -23,12 +23,11 @@ wget https://github.com/JBZoo/Composer-Diff/releases/download/<VERSION>/composer
 
 ```bash
 composer update
-# don't commit yet!
 
 # if it's installed via composer
 php ./vendor/bin/composer-diff
 
-# OR (if installed globally) 
+# OR (if installed globally)
 composer-diff
 
 # OR (if you downloaded phar file)
