@@ -19,17 +19,20 @@ php:
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
+  - nightly
 
-env:
-  matrix:
-    - JBZOO_COMPOSER_UPDATE_FLAGS="--prefer-lowest --prefer-stable"
-    - JBZOO_COMPOSER_UPDATE_FLAGS=""
+jobs:
+  fast_finish: true
+  allow_failures:
+    - php: 8.0
+    - php: nightly
 
 before_script:
   - composer self-update
 
 script:
-  - make update   --no-print-directory
+  - make build    --no-print-directory
   - make test-all --no-print-directory
 
 after_script:
