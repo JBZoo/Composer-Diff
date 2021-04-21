@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1718b5b964204455bbc1fd5221d1b962",
+    "content-hash": "33cd52457e41dc8c7d4ca780ccaaadd9",
     "packages": [
         {
             "name": "composer/semver",
@@ -89,16 +89,16 @@
         },
         {
             "name": "jbzoo/data",
-            "version": "4.1.3",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Data.git",
-                "reference": "db9c1a767bd954c8eddcde3280bea42604c8cee9"
+                "reference": "7c1ae24424d74c4137590f3c80688eb5a657e471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Data/zipball/db9c1a767bd954c8eddcde3280bea42604c8cee9",
-                "reference": "db9c1a767bd954c8eddcde3280bea42604c8cee9",
+                "url": "https://api.github.com/repos/JBZoo/Data/zipball/7c1ae24424d74c4137590f3c80688eb5a657e471",
+                "reference": "7c1ae24424d74c4137590f3c80688eb5a657e471",
                 "shasum": ""
             },
             "require": {
@@ -106,9 +106,9 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "jbzoo/toolbox-dev": "^2.6.0",
-                "jbzoo/utils": "^4.2.2",
-                "symfony/yaml": "^5.2.1"
+                "jbzoo/toolbox-dev": "^2.9.2",
+                "jbzoo/utils": "^4.2.3",
+                "symfony/yaml": "^5.2.2"
             },
             "suggest": {
                 "jbzoo/utils": ">=4.2.2",
@@ -152,9 +152,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Data/issues",
-                "source": "https://github.com/JBZoo/Data/tree/4.1.3"
+                "source": "https://github.com/JBZoo/Data/tree/4.2.0"
             },
-            "time": "2021-01-14T23:13:10+00:00"
+            "time": "2021-04-21T00:01:54+00:00"
         },
         {
             "name": "psr/container",
@@ -1334,16 +1334,16 @@
         },
         {
             "name": "jbzoo/phpunit",
-            "version": "4.6.2",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/PHPUnit.git",
-                "reference": "ed7a76a9da6fbc31b1ef9e75c84c0d239e964ece"
+                "reference": "bce75b537129d814591aed5a0cef08e88aacf87b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/PHPUnit/zipball/ed7a76a9da6fbc31b1ef9e75c84c0d239e964ece",
-                "reference": "ed7a76a9da6fbc31b1ef9e75c84c0d239e964ece",
+                "url": "https://api.github.com/repos/JBZoo/PHPUnit/zipball/bce75b537129d814591aed5a0cef08e88aacf87b",
+                "reference": "bce75b537129d814591aed5a0cef08e88aacf87b",
                 "shasum": ""
             },
             "require": {
@@ -1351,7 +1351,6 @@
                 "ext-filter": "*",
                 "ext-mbstring": "*",
                 "hanneskod/classtools": "^1.2.1",
-                "jbzoo/utils": "^4.2.3",
                 "php": ">=7.2",
                 "phpunit/phpcov": ">=6.0.1",
                 "phpunit/phpunit": ">=8.5.15",
@@ -1366,7 +1365,11 @@
                 "jbzoo/jbdump": "^1.5.6",
                 "jbzoo/toolbox-ci": "^1.3.5",
                 "jbzoo/toolbox-dev": "^2.9.1",
+                "jbzoo/utils": "^4.2.3",
                 "symfony/process": ">=5.2.4"
+            },
+            "suggest": {
+                "jbzoo/utils": "^4.2.3 to use all functionality"
             },
             "type": "library",
             "extra": {
@@ -1408,9 +1411,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/PHPUnit/issues",
-                "source": "https://github.com/JBZoo/PHPUnit/tree/4.6.2"
+                "source": "https://github.com/JBZoo/PHPUnit/tree/4.7.0"
             },
-            "time": "2021-04-14T15:47:24+00:00"
+            "time": "2021-04-20T22:56:30+00:00"
         },
         {
             "name": "jbzoo/toolbox-ci",
@@ -1471,33 +1474,34 @@
         },
         {
             "name": "jbzoo/utils",
-            "version": "4.2.3",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Utils.git",
-                "reference": "e861379582bca103f089656ab9f116c0b708eb46"
+                "reference": "4b3452902e0d617012cee087e31ffb74b96f2c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Utils/zipball/e861379582bca103f089656ab9f116c0b708eb46",
-                "reference": "e861379582bca103f089656ab9f116c0b708eb46",
+                "url": "https://api.github.com/repos/JBZoo/Utils/zipball/4b3452902e0d617012cee087e31ffb74b96f2c69",
+                "reference": "4b3452902e0d617012cee087e31ffb74b96f2c69",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-filter": "*",
-                "ext-gd": "*",
-                "ext-mbstring": "*",
                 "ext-posix": "*",
+                "jbzoo/toolbox-ci": "^1.3.5",
                 "php": ">=7.2"
             },
             "require-dev": {
-                "jbzoo/data": "^4.1.2",
-                "jbzoo/toolbox-dev": "^2.6.1",
-                "symfony/polyfill-mbstring": "^1.20.0",
-                "symfony/process": "^5.2.1"
+                "jbzoo/codestyle": "^2.10.0",
+                "jbzoo/data": "^4.1.3",
+                "jbzoo/phpunit": "^4.7.0",
+                "symfony/polyfill-mbstring": "^1.22.1",
+                "symfony/process": "^5.2.4"
             },
             "suggest": {
+                "ext-gd": "To use Image helper",
                 "ext-intl": "*",
                 "ext-mbstring": "Provides multibyte specific string functions",
                 "jbzoo/data": ">=4.0",
@@ -1566,9 +1570,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Utils/issues",
-                "source": "https://github.com/JBZoo/Utils/tree/4.2.3"
+                "source": "https://github.com/JBZoo/Utils/tree/4.3.0"
             },
-            "time": "2021-01-15T11:15:25+00:00"
+            "time": "2021-04-20T23:38:15+00:00"
         },
         {
             "name": "maglnet/composer-require-checker",

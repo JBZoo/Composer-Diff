@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\PHPUnit;
 
 /**
@@ -20,7 +22,7 @@ namespace JBZoo\PHPUnit;
  *
  * @package JBZoo\PHPUnit
  */
-class ComposerDiffCodestyleTest extends AbstractCodestyleTest
+final class ComposerDiffCodestyleTest extends AbstractCodestyleTest
 {
 
 }

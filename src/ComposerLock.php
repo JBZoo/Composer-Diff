@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff;
 
 use function JBZoo\Data\data;
@@ -21,7 +23,7 @@ use function JBZoo\Data\data;
  * Class ComposerLock
  * @package JBZoo\ComposerDiff
  */
-class ComposerLock
+final class ComposerLock
 {
     /**
      * @var Package[]

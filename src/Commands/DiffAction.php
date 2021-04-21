@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff\Commands;
 
 use JBZoo\ComposerDiff\Comparator;
@@ -25,7 +27,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Class DiffAction
  * @package JBZoo\ComposerDiff\Commands
  */
-class DiffAction extends AbstractCommand
+final class DiffAction extends AbstractCommand
 {
     /**
      * @inheritDoc
@@ -54,7 +56,7 @@ class DiffAction extends AbstractCommand
 
     /**
      * @inheritDoc
-     * @phan-suppress PhanUnusedProtectedMethodParameter
+     * @phan-suppress PhanUnusedProtectedFinalMethodParameter
      */
     protected function runCommand(InputInterface $input, OutputInterface $output): int
     {
@@ -97,11 +99,10 @@ class DiffAction extends AbstractCommand
      * @param array  $fullChangeLog
      * @param string $env
      * @param array  $params
-     * @return bool
      */
-    private function renderOutput(string $outputFormat, array $fullChangeLog, string $env, array $params): bool
+    private function renderOutput(string $outputFormat, array $fullChangeLog, string $env, array $params): void
     {
-        return AbstractRender::factory($outputFormat, $params)
+        AbstractRender::factory($outputFormat, $params)
             ->setFullChangeLog($fullChangeLog)
             ->setEnv($env)
             ->render($this->output);

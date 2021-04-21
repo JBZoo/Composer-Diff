@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\PHPUnit;
 
 use JBZoo\Utils\Cli;
@@ -23,7 +25,7 @@ use JBZoo\Utils\Sys;
  *
  * @package JBZoo\PHPUnit
  */
-class ComposerDiffPharTest extends ComposerDiffTest
+final class ComposerDiffPharTest extends AbstractComposerDiffTest
 {
     /**
      * @param array $params
@@ -53,7 +55,7 @@ class ComposerDiffPharTest extends ComposerDiffTest
             ]),
             $params,
             $rootDir,
-            0
+            false
         );
     }
 }

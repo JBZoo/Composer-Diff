@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 // @codingStandardsIgnoreFile
 
 use JBZoo\ComposerDiff\Commands\DiffAction;

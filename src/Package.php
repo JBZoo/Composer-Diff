@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff;
 
 use JBZoo\Data\Data;
@@ -23,7 +25,7 @@ use function JBZoo\Data\data;
  * Class Package
  * @package JBZoo\ComposerDiff
  */
-class Package
+final class Package
 {
     public const HASH_LENGTH = 7;
 

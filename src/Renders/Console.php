@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff\Renders;
 
 use JBZoo\ComposerDiff\Diff;
@@ -24,7 +26,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Class Console
  * @package JBZoo\ComposerDiff\Renders
  */
-class Console extends AbstractRender
+final class Console extends AbstractRender
 {
     /**
      * @inheritDoc

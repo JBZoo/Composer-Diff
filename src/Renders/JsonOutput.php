@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff\Renders;
 
 use Symfony\Component\Console\Output\OutputInterface;
@@ -23,7 +25,7 @@ use function JBZoo\Data\json;
  * Class JsonOutput
  * @package JBZoo\ComposerDiff\Renders
  */
-class JsonOutput extends AbstractRender
+final class JsonOutput extends AbstractRender
 {
     /**
      * @inheritDoc
