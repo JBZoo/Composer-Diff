@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\PHPUnit;
 
 /**
@@ -25,5 +27,6 @@ class ComposerDiffCopyrightTest extends AbstractCopyrightTest
     /**
      * @var string
      */
-    protected $packageName = 'Composer-Diff';
+    protected $packageName     = 'Composer-Diff';
+    protected $isPhpStrictType = true;
 }

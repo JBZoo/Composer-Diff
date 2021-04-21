@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -24,7 +26,7 @@ use function JBZoo\Data\json;
  * Class Comparator
  * @package JBZoo\ComposerDiff
  */
-class Comparator
+final class Comparator
 {
     public const ENV_BOTH = 'both';
     public const ENV_PROD = 'require';

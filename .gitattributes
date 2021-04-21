@@ -21,6 +21,7 @@
 /.gitignore          export-ignore
 /.travis.yml         export-ignore
 /phpunit.xml.dist    export-ignore
+/Makefile            export-ignore
 
 * text eol=lf
 *.png binary

@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff\Renders;
 
 use JBZoo\ComposerDiff\Exception;
@@ -22,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Class Markdown
  * @package JBZoo\ComposerDiff\Renders
  */
-class Markdown extends AbstractRender
+final class Markdown extends AbstractRender
 {
     public const A_LEFT   = 'Left';
     public const A_CENTER = 'Center';

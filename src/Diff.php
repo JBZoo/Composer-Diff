@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff;
 
 use Composer\Semver\Comparator;
@@ -21,7 +23,7 @@ use Composer\Semver\Comparator;
  * Class Diff
  * @package JBZoo\ComposerDiff
  */
-class Diff
+final class Diff
 {
     public const MODE_NEW        = 'New';
     public const MODE_REMOVED    = 'Removed';
@@ -63,7 +65,7 @@ class Diff
      * @param string $newMode
      * @return $this
      */
-    public function setMode(string $newMode)
+    public function setMode(string $newMode): Diff
     {
         $this->mode = $newMode;
         return $this;
@@ -111,7 +113,7 @@ class Diff
      * @param Package $targetPackage
      * @return $this
      */
-    public function compareWithPackage(Package $targetPackage)
+    public function compareWithPackage(Package $targetPackage): Diff
     {
         $this->target = $targetPackage;
 

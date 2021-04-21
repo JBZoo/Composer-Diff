@@ -13,13 +13,15 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff;
 
 /**
  * Class Url
  * @package JBZoo\ComposerDiff
  */
-class Url
+final class Url
 {
     public const BITBUCKET = 'bitbucket';
     public const GITHUB    = 'github';

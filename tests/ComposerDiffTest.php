@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\PHPUnit;
 
 use JBZoo\ComposerDiff\Commands\DiffAction;
@@ -614,7 +616,7 @@ class ComposerDiffTest extends PHPUnit
             ]),
             $params,
             $rootDir,
-            0
+            false
         );
     }
 }

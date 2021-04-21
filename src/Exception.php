@@ -13,13 +13,15 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff;
 
 /**
  * Class Exception
  * @package JBZoo\ComposerDiff
  */
-class Exception extends \RuntimeException
+final class Exception extends \RuntimeException
 {
 
 }

@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\ComposerDiff\Commands;
 
 use Symfony\Component\Console\Command\Command;
@@ -64,8 +66,12 @@ abstract class AbstractCommand extends Command
      */
     protected function opt(string $optionName): ?string
     {
-        /** @var string|null $result */
+        /** @var string|bool|null $result */
         $result = $this->input->getOption($optionName);
+
+        if (is_bool($result)) {
+            return $result ? '1' : null;
+        }
 
         return $result ?? null;
     }

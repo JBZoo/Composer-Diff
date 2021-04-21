@@ -13,6 +13,8 @@
  * @link       https://github.com/JBZoo/Composer-Diff
  */
 
+declare(strict_types=1);
+
 namespace JBZoo\PHPUnit;
 
 /**
@@ -26,4 +28,11 @@ class ComposerDiffReadmeTest extends AbstractReadmeTest
      * @var string
      */
     protected $packageName = 'Composer-Diff';
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->params['strict_types'] = true;
+    }
 }
