@@ -25,7 +25,7 @@ use JBZoo\Utils\Sys;
  *
  * @package JBZoo\PHPUnit
  */
-class ComposerDiffPharTest extends ComposerDiffTest
+final class ComposerDiffPharTest extends AbstractComposerDiffTest
 {
     /**
      * @param array $params

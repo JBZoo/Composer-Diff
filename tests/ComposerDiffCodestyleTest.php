@@ -22,7 +22,7 @@ namespace JBZoo\PHPUnit;
  *
  * @package JBZoo\PHPUnit
  */
-class ComposerDiffCodestyleTest extends AbstractCodestyleTest
+final class ComposerDiffCodestyleTest extends AbstractCodestyleTest
 {
 
 }

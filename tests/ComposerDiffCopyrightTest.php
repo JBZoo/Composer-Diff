@@ -22,7 +22,7 @@ namespace JBZoo\PHPUnit;
  *
  * @package JBZoo\PHPUnit
  */
-class ComposerDiffCopyrightTest extends AbstractCopyrightTest
+final class ComposerDiffCopyrightTest extends AbstractCopyrightTest
 {
     /**
      * @var string

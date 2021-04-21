@@ -22,7 +22,7 @@ namespace JBZoo\PHPUnit;
  *
  * @package JBZoo\PHPUnit
  */
-class ComposerDiffReadmeTest extends AbstractReadmeTest
+final class ComposerDiffReadmeTest extends AbstractReadmeTest
 {
     /**
      * @var string
