@@ -15,8 +15,7 @@ composer require        jbzoo/composer-diff # For specific project
 composer global require jbzoo/composer-diff # As global tool
 
 # OR use phar file.
-# Replace <VERSION> to the latest version. See releases page or badge above
-wget https://github.com/JBZoo/Composer-Diff/releases/download/<VERSION>/composer-diff.phar
+wget https://github.com/JBZoo/Composer-Diff/releases/latest/download/composer-diff.phar
 ```
 
 ## Usage
