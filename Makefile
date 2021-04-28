@@ -22,13 +22,20 @@ build: ##@Project Install all 3rd party dependencies
 	$(call title,"Install/Update all 3rd party dependencies")
 	@composer install --optimize-autoloader --no-progress
 	@make build-phar
+	@make create-symlink
 
 
 update: ##@Project Install/Update all 3rd party dependencies
 	$(call title,"Install/Update all 3rd party dependencies")
 	@composer update --optimize-autoloader --no-progress
+	@make build-phar
+	@make create-symlink
 	$(call title,"Show difference in composer.lock")
-	@$(PHP_BIN) composer-diff --output=markdown
+	@$(PHP_BIN) `pwd`/vendor/bin/composer-diff --output=markdown
+
+
+create-symlink: ##@Project Create Symlink (alias for testing)
+	@ln -sfv `pwd`/build/composer-diff.phar `pwd`/vendor/bin/composer-diff
 
 
 test-all: ##@Project Run all project tests at once
