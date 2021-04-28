@@ -34,7 +34,7 @@ update: ##@Project Install/Update all 3rd party dependencies
 
 
 create-symlink: ##@Project Create Symlink (alias for testing)
-	@ln -sfv `pwd`/composer-diff `pwd`/vendor/bin/composer-diff
+	@ln -sfv `pwd`/build/composer-diff.phar `pwd`/vendor/bin/composer-diff
 
 
 test-all: ##@Project Run all project tests at once
