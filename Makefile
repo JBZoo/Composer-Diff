@@ -28,6 +28,7 @@ build: ##@Project Install all 3rd party dependencies
 update: ##@Project Install/Update all 3rd party dependencies
 	$(call title,"Install/Update all 3rd party dependencies")
 	@composer update --optimize-autoloader --no-progress
+	@make build-phar
 	@make create-symlink
 	$(call title,"Show difference in composer.lock")
 	@$(PHP_BIN) `pwd`/vendor/bin/composer-diff --output=markdown
