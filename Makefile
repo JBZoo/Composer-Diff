@@ -30,7 +30,7 @@ update: ##@Project Install/Update all 3rd party dependencies
 	@composer update --optimize-autoloader --no-progress
 	@make create-symlink
 	$(call title,"Show difference in composer.lock")
-	@$(PHP_BIN) composer-diff --output=markdown
+	@$(PHP_BIN) `pwd`/vendor/bin/composer-diff --output=markdown
 
 
 create-symlink: ##@Project Create Symlink (alias for testing)
