@@ -70,7 +70,7 @@ final class Package
         $reference = (string)$this->data->find('source.reference');
 
         if (strlen($reference) >= self::HASH_LENGTH && 0 === strpos($version, 'dev-')) {
-            $version = substr($reference, 0, self::HASH_LENGTH) ?: '';
+            $version = substr($reference, 0, self::HASH_LENGTH);
             if ($prettyPrint) {
                 $version = "{$this->data->get('version')}@{$version}";
             }
