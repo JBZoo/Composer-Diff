@@ -61,7 +61,6 @@ abstract class AbstractCommand extends Command
     /**
      * @param string $optionName
      * @return string|null
-     * @phan-suppress PhanPartialTypeMismatchReturn
      * @phan-suppress PhanCoalescingNeverUndefined
      */
     protected function opt(string $optionName): ?string
