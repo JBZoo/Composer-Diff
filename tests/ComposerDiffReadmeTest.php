@@ -34,5 +34,6 @@ final class ComposerDiffReadmeTest extends AbstractReadmeTest
         parent::setUp();
 
         $this->params['strict_types'] = true;
+        $this->params['travis'] = false;
     }
 }
