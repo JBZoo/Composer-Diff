@@ -23,5 +23,4 @@ namespace JBZoo\ComposerDiff;
  */
 final class Exception extends \RuntimeException
 {
-
 }
