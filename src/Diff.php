@@ -156,11 +156,11 @@ final class Diff
      */
     public function getComparingUrl(?string $fromVersion, ?string $toVersion): ?string
     {
-        if (in_array($fromVersion, [self::MODE_REMOVED, self::MODE_NEW], true)) {
+        if (\in_array($fromVersion, [self::MODE_REMOVED, self::MODE_NEW], true)) {
             return '';
         }
 
-        if (in_array($toVersion, [self::MODE_REMOVED, self::MODE_NEW], true)) {
+        if (\in_array($toVersion, [self::MODE_REMOVED, self::MODE_NEW], true)) {
             return '';
         }
 
@@ -181,6 +181,6 @@ final class Diff
      */
     private static function isHashVersion(string $version): bool
     {
-        return strlen($version) === Package::HASH_LENGTH && strpos($version, '.') === false;
+        return \strlen($version) === Package::HASH_LENGTH && \strpos($version, '.') === false;
     }
 }

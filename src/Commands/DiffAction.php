@@ -34,8 +34,8 @@ final class DiffAction extends AbstractCommand
      */
     protected function configure(): void
     {
-        $envs = implode(', ', [Comparator::ENV_BOTH, Comparator::ENV_PROD, Comparator::ENV_DEV]);
-        $outputFormats = implode(', ', [AbstractRender::CONSOLE, AbstractRender::MARKDOWN, AbstractRender::JSON]);
+        $envs = \implode(', ', [Comparator::ENV_BOTH, Comparator::ENV_PROD, Comparator::ENV_DEV]);
+        $outputFormats = \implode(', ', [AbstractRender::CONSOLE, AbstractRender::MARKDOWN, AbstractRender::JSON]);
 
         $this
             ->setName('diff')
@@ -62,8 +62,8 @@ final class DiffAction extends AbstractCommand
     {
         $sourcePath = (string)$this->opt('source');
         $targetPath = (string)$this->opt('target');
-        $outputFormat = strtolower((string)$this->opt('output'));
-        $env = strtolower((string)$this->opt('env'));
+        $outputFormat = \strtolower((string)$this->opt('output'));
+        $env = \strtolower((string)$this->opt('env'));
         $isStrictMode = (bool)$this->opt('strict');
 
         $params = [
@@ -75,18 +75,18 @@ final class DiffAction extends AbstractCommand
 
         $errorCode = 0;
 
-        if (in_array($env, [Comparator::ENV_BOTH, Comparator::ENV_PROD], true)) {
+        if (\in_array($env, [Comparator::ENV_BOTH, Comparator::ENV_PROD], true)) {
             $changeLog = $fullChangeLog[Comparator::ENV_PROD];
             $this->renderOutput($outputFormat, $changeLog, Comparator::ENV_PROD, $params);
-            if ($isStrictMode && count($changeLog) > 0) {
+            if ($isStrictMode && \count($changeLog) > 0) {
                 $errorCode++;
             }
         }
 
-        if (in_array($env, [Comparator::ENV_BOTH, Comparator::ENV_DEV], true)) {
+        if (\in_array($env, [Comparator::ENV_BOTH, Comparator::ENV_DEV], true)) {
             $changeLog = $fullChangeLog[Comparator::ENV_DEV];
             $this->renderOutput($outputFormat, $changeLog, Comparator::ENV_DEV, $params);
-            if ($isStrictMode && count($changeLog) > 0) {
+            if ($isStrictMode && \count($changeLog) > 0) {
                 $errorCode++;
             }
         }
