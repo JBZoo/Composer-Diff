@@ -43,10 +43,10 @@ final class Url
         $service = self::detectService($sourceUrl);
         $url = self::getPackageUrl($sourceUrl);
 
-        $fromVersion = urlencode($fromVersion);
-        $toVersion = urlencode($toVersion);
+        $fromVersion = \urlencode($fromVersion);
+        $toVersion = \urlencode($toVersion);
 
-        if (in_array($service, [self::GITHUB, self::GITLAB], true)) {
+        if (\in_array($service, [self::GITHUB, self::GITLAB], true)) {
             return "{$url}/compare/{$fromVersion}...{$toVersion}";
         }
 
@@ -66,27 +66,27 @@ final class Url
         $service = self::detectService($sourceUrl);
 
         if (self::GITHUB === $service) {
-            if (strpos($sourceUrl, 'http') === false) {
-                $sourceUrl = (string)preg_replace('/^git@(github\.[^:]+):/', 'https://$1/', $sourceUrl);
+            if (\strpos($sourceUrl, 'http') === false) {
+                $sourceUrl = (string)\preg_replace('/^git@(github\.[^:]+):/', 'https://$1/', $sourceUrl);
             }
 
-            return (string)preg_replace('/\.git$/', '', $sourceUrl);
+            return (string)\preg_replace('/\.git$/', '', $sourceUrl);
         }
 
         if (self::GITLAB === $service) {
-            if (strpos($sourceUrl, 'http') === false) {
-                $sourceUrl = (string)preg_replace('/^git@(gitlab\.[^:]+):/', 'https://$1/', $sourceUrl);
+            if (\strpos($sourceUrl, 'http') === false) {
+                $sourceUrl = (string)\preg_replace('/^git@(gitlab\.[^:]+):/', 'https://$1/', $sourceUrl);
             }
 
-            return (string)preg_replace('/\.git$/', '', $sourceUrl);
+            return (string)\preg_replace('/\.git$/', '', $sourceUrl);
         }
 
         if (self::BITBUCKET === $service) {
-            if (strpos($sourceUrl, 'http') === false) {
-                $sourceUrl = (string)preg_replace('/^git@(bitbucket\.[^:]+):/', 'https://$1/', $sourceUrl);
+            if (\strpos($sourceUrl, 'http') === false) {
+                $sourceUrl = (string)\preg_replace('/^git@(bitbucket\.[^:]+):/', 'https://$1/', $sourceUrl);
             }
 
-            return (string)preg_replace('/\.git$/', '', $sourceUrl);
+            return (string)\preg_replace('/\.git$/', '', $sourceUrl);
         }
 
         return null;
@@ -98,33 +98,33 @@ final class Url
      */
     private static function detectService(string $url): string
     {
-        if (preg_match('/^git@github\..+:.+\.git$/', $url)) {
+        if (\preg_match('/^git@github\..+:.+\.git$/', $url)) {
             return self::GITHUB;
         }
 
-        if (preg_match('/^git@gitlab\..+:.+\.git$/', $url)) {
+        if (\preg_match('/^git@gitlab\..+:.+\.git$/', $url)) {
             return self::GITLAB;
         }
 
-        if (preg_match('/^git@bitbucket\..+:.+\.git$/', $url)) {
+        if (\preg_match('/^git@bitbucket\..+:.+\.git$/', $url)) {
             return self::BITBUCKET;
         }
 
-        if (0 !== stripos($url, "http")) {
+        if (0 !== \stripos($url, "http")) {
             return self::UNKNOWN;
         }
 
-        $host = strtolower((string)parse_url($url, PHP_URL_HOST));
+        $host = \strtolower((string)\parse_url($url, \PHP_URL_HOST));
 
-        if (strpos($host, 'github') !== false) {
+        if (\strpos($host, 'github') !== false) {
             return self::GITHUB;
         }
 
-        if (strpos($host, 'bitbucket') !== false) {
+        if (\strpos($host, 'bitbucket') !== false) {
             return self::BITBUCKET;
         }
 
-        if (strpos($host, 'gitlab') !== false) {
+        if (\strpos($host, 'gitlab') !== false) {
             return self::GITLAB;
         }
 
@@ -137,6 +137,6 @@ final class Url
      */
     public static function isUrl(string $string): bool
     {
-        return (bool)filter_var($string, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
+        return (bool)\filter_var($string, \FILTER_VALIDATE_URL, \FILTER_FLAG_PATH_REQUIRED);
     }
 }

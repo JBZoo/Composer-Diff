@@ -63,14 +63,14 @@ final class Package
     {
         $version = (string)$this->data->get('version');
         if ($prettyPrint) {
-            $version = (string)preg_replace('#^v\.#i', '', $version);
-            $version = (string)preg_replace('#^v#i', '', $version);
+            $version = (string)\preg_replace('#^v\.#i', '', $version);
+            $version = (string)\preg_replace('#^v#i', '', $version);
         }
 
         $reference = (string)$this->data->find('source.reference');
 
-        if (strlen($reference) >= self::HASH_LENGTH && 0 === strpos($version, 'dev-')) {
-            $version = substr($reference, 0, self::HASH_LENGTH);
+        if (\strlen($reference) >= self::HASH_LENGTH && 0 === \strpos($version, 'dev-')) {
+            $version = \substr($reference, 0, self::HASH_LENGTH);
             if ($prettyPrint) {
                 $version = "{$this->data->get('version')}@{$version}";
             }

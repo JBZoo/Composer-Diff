@@ -71,18 +71,18 @@ final class Comparator
         }
 
         foreach ($targetPackages as $targetName => $targetPackage) {
-            if (!array_key_exists($targetName, $resultDiff)) {
+            if (!\array_key_exists($targetName, $resultDiff)) {
                 $resultDiff[$targetName] = (new Diff())->setMode(Diff::MODE_NEW);
             }
 
             $resultDiff[$targetName]->compareWithPackage($targetPackage);
         }
 
-        $resultDiff = array_filter($resultDiff, static function (Diff $diff) {
+        $resultDiff = \array_filter($resultDiff, static function (Diff $diff) {
             return $diff->getMode() !== Diff::MODE_SAME;
-        }, ARRAY_FILTER_USE_BOTH);
+        }, \ARRAY_FILTER_USE_BOTH);
 
-        ksort($resultDiff, SORT_NATURAL);
+        \ksort($resultDiff, \SORT_NATURAL);
 
         return $resultDiff;
     }
@@ -95,18 +95,18 @@ final class Comparator
     {
         if (
             Url::isUrl($composerFile) &&
-            !in_array(parse_url($composerFile, PHP_URL_SCHEME), stream_get_wrappers(), true)
+            !\in_array(\parse_url($composerFile, \PHP_URL_SCHEME), \stream_get_wrappers(), true)
         ) {
             throw new Exception("There is no stream wrapper to open \"{$composerFile}\"");
         }
 
-        if (file_exists($composerFile)) {
-            $json = json(file_get_contents($composerFile));
+        if (\file_exists($composerFile)) {
+            $json = json(\file_get_contents($composerFile));
             return new ComposerLock($json->getArrayCopy());
         }
 
-        if (strpos($composerFile, ':') !== false) {
-            $json = json(self::exec('git show ' . escapeshellarg($composerFile)));
+        if (\strpos($composerFile, ':') !== false) {
+            $json = json(self::exec('git show ' . \escapeshellarg($composerFile)));
             return new ComposerLock($json->getArrayCopy());
         }
 

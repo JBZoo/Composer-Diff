@@ -68,7 +68,7 @@ abstract class AbstractCommand extends Command
         /** @var string|bool|null $result */
         $result = $this->input->getOption($optionName);
 
-        if (is_bool($result)) {
+        if (\is_bool($result)) {
             return $result ? '1' : null;
         }
 

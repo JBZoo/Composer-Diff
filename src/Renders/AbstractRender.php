@@ -54,7 +54,7 @@ abstract class AbstractRender
      */
     public function __construct(array $params)
     {
-        $this->params = new Data(array_merge([
+        $this->params = new Data(\array_merge([
             'show-links'  => true,
             'strict-mode' => false,
         ], $params));
@@ -67,7 +67,7 @@ abstract class AbstractRender
      */
     public static function factory(string $outputFormat, array $params): self
     {
-        $outputFormat = strtolower(trim($outputFormat));
+        $outputFormat = \strtolower(\trim($outputFormat));
 
         if (self::CONSOLE === $outputFormat) {
             return new Console($params);
@@ -130,16 +130,16 @@ abstract class AbstractRender
      */
     public function render(OutputInterface $output): bool
     {
-        if (count($this->fullChangeLog) === 0) {
+        if (\count($this->fullChangeLog) === 0) {
             $output->writeln("There is no difference ({$this->env})");
             return false;
         }
 
-        if (in_array($this->env, [Comparator::ENV_BOTH, Comparator::ENV_PROD], true)) {
+        if (\in_array($this->env, [Comparator::ENV_BOTH, Comparator::ENV_PROD], true)) {
             $this->renderOneEnv($output, $this->fullChangeLog, Comparator::ENV_PROD);
         }
 
-        if (in_array($this->env, [Comparator::ENV_BOTH, Comparator::ENV_DEV], true)) {
+        if (\in_array($this->env, [Comparator::ENV_BOTH, Comparator::ENV_DEV], true)) {
             $this->renderOneEnv($output, $this->fullChangeLog, Comparator::ENV_DEV);
         }
 

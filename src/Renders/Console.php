@@ -39,8 +39,8 @@ final class Console extends AbstractRender
         $output->writeln("  <blue>{$this->getTitle($env)}</blue> ({$env})");
 
         $table = (new Table($output))
-            ->setColumnStyle(2, (new TableStyle())->setPadType(STR_PAD_LEFT))
-            ->setColumnStyle(3, (new TableStyle())->setPadType(STR_PAD_LEFT));
+            ->setColumnStyle(2, (new TableStyle())->setPadType(\STR_PAD_LEFT))
+            ->setColumnStyle(3, (new TableStyle())->setPadType(\STR_PAD_LEFT));
 
         if ($showLinks) {
             $table->setHeaders(['Package', 'Action', 'Old Version', 'New Version', 'Details']);
