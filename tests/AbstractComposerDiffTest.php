@@ -20,7 +20,6 @@ namespace JBZoo\PHPUnit;
 use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Diff;
 use JBZoo\ComposerDiff\Url;
-use JBZoo\Utils\Sys;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 use function JBZoo\Data\json;
@@ -529,10 +528,6 @@ abstract class AbstractComposerDiffTest extends PHPUnit
 
     public function testHelpInReadme(): void
     {
-        if (!Sys::isPHP('7.2')) {
-            skip('Old help text is different for different libs/php versions');
-        }
-
         $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
         $helpOutput = trim($this->taskReal(['help' => null]));
 
