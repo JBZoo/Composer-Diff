@@ -528,10 +528,9 @@ abstract class AbstractComposerDiffTest extends PHPUnit
 
     public function testHelpInReadme(): void
     {
-        $readmeContent = file_get_contents(PROJECT_ROOT . '/README.md');
         $helpOutput = trim($this->taskReal(['help' => null]));
 
-        isContain("```\n./vendor/bin/composer-diff --help\n\n{$helpOutput}\n```", $readmeContent);
+        isFileContains("```\n./vendor/bin/composer-diff --help\n\n{$helpOutput}\n```", PROJECT_ROOT . '/README.md');
     }
 
     public function testComparingWithGitVersionPositive(): void

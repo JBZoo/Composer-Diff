@@ -15,12 +15,11 @@
 
 declare(strict_types=1);
 
-// @codingStandardsIgnoreFile
+namespace JBZoo\ComposerDiff;
 
-use JBZoo\ComposerDiff\Commands\DiffAction;
-use Symfony\Component\Console\Application;
+use JBZoo\Cli\CliApplication;
 
-define('PATH_ROOT', __DIR__);
+const PATH_ROOT = __DIR__;
 
 $vendorPaths = [
     __DIR__ . '/../../autoload.php',
@@ -29,16 +28,15 @@ $vendorPaths = [
 ];
 
 foreach ($vendorPaths as $file) {
-    if (file_exists($file)) {
-        define('JBZOO_COMPOSER_DIFF_INSTALL', $file);
+    if (\file_exists($file)) {
+        \define('JBZOO_AUTOLOAD_FILE', $file);
         break;
     }
 }
 
-/** @psalm-suppress UnresolvableInclude */
-require JBZOO_COMPOSER_DIFF_INSTALL;
+require_once JBZOO_AUTOLOAD_FILE;
 
-$application = new Application();
-$application->add(new DiffAction());
+$application = new CliApplication('JBZoo/CI-Report-Converter', '@git-version@');
+$application->registerCommandsByPath(__DIR__ . '/src/Commands', __NAMESPACE__);
 $application->setDefaultCommand('diff');
 $application->run();
