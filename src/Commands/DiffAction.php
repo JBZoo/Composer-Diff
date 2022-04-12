@@ -17,17 +17,16 @@ declare(strict_types=1);
 
 namespace JBZoo\ComposerDiff\Commands;
 
+use JBZoo\Cli\CliCommand;
 use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Renders\AbstractRender;
-use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DiffAction
  * @package JBZoo\ComposerDiff\Commands
  */
-final class DiffAction extends AbstractCommand
+final class DiffAction extends CliCommand
 {
     /**
      * @inheritDoc
@@ -52,22 +51,23 @@ final class DiffAction extends AbstractCommand
                 "Available options: <info>{$outputFormats}</info>", AbstractRender::CONSOLE)
             ->addOption('no-links', null, InputOption::VALUE_NONE, 'Hide all links in tables')
             ->addOption('strict', null, InputOption::VALUE_NONE, 'Return exit code if you have any difference');
+
+        parent::configure();
     }
 
     /**
      * @inheritDoc
-     * @phan-suppress PhanUnusedProtectedFinalMethodParameter
      */
-    protected function runCommand(InputInterface $input, OutputInterface $output): int
+    protected function executeAction(): int
     {
-        $sourcePath = (string)$this->opt('source');
-        $targetPath = (string)$this->opt('target');
-        $outputFormat = \strtolower((string)$this->opt('output'));
-        $env = \strtolower((string)$this->opt('env'));
-        $isStrictMode = (bool)$this->opt('strict');
+        $sourcePath = $this->getOptString('source');
+        $targetPath = $this->getOptString('target');
+        $outputFormat = \strtolower($this->getOptString('output'));
+        $env = \strtolower($this->getOptString('env'));
+        $isStrictMode = $this->getOptBool('strict');
 
         $params = [
-            'show-links'  => !(bool)$this->opt('no-links'),
+            'show-links'  => !$this->getOptBool('no-links'),
             'strict-mode' => $isStrictMode,
         ];
 
@@ -105,6 +105,6 @@ final class DiffAction extends AbstractCommand
         AbstractRender::factory($outputFormat, $params)
             ->setFullChangeLog($fullChangeLog)
             ->setEnv($env)
-            ->render($this->output);
+            ->render($this->helper->getOutput());
     }
 }

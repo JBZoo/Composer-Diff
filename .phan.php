@@ -21,8 +21,10 @@ return array_merge($default, [
     'directory_list' => [
         'src',
 
+        'vendor/jbzoo/cli/src',
         'vendor/jbzoo/data/src',
         'vendor/jbzoo/markdown/src',
+
         'vendor/symfony/console',
         'vendor/symfony/process',
         'vendor/composer/semver/src',
