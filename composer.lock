@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71476dc88c6638ff4e0608ac71183660",
+    "content-hash": "3855a462684931aae13d450fda5aca7a",
     "packages": [
         {
             "name": "bluepsyduck/symfony-process-manager",
@@ -146,16 +146,16 @@
         },
         {
             "name": "jbzoo/cli",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Cli.git",
-                "reference": "cdc37cf69e94fcbfb92267983810754e796b1e08"
+                "reference": "127e077f89e0a6bf165345a9b31adf28e7984aab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/cdc37cf69e94fcbfb92267983810754e796b1e08",
-                "reference": "cdc37cf69e94fcbfb92267983810754e796b1e08",
+                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/127e077f89e0a6bf165345a9b31adf28e7984aab",
+                "reference": "127e077f89e0a6bf165345a9b31adf28e7984aab",
                 "shasum": ""
             },
             "require": {
@@ -170,7 +170,6 @@
             "require-dev": {
                 "jbzoo/toolbox-dev": "^3.3.1"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -211,9 +210,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Cli/issues",
-                "source": "https://github.com/JBZoo/Cli/tree/master"
+                "source": "https://github.com/JBZoo/Cli/tree/1.0.0"
             },
-            "time": "2022-04-12T17:06:15+00:00"
+            "time": "2022-04-12T18:00:08+00:00"
         },
         {
             "name": "jbzoo/data",
@@ -7918,7 +7917,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "jbzoo/cli": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
