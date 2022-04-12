@@ -51,10 +51,10 @@ Options:
       --output=OUTPUT      Output format. Available options: console, markdown, json [default: "console"]
       --no-links           Hide all links in tables
       --strict             Return exit code if you have any difference
-      --no-progress        Disable progress bar rendering
+      --no-progress        Disable progress bar animation for logs
       --mute-errors        Mute any sort of errors. So exit code will be always "0" (if it's possible).
-                           It has major priority then --strict. It's on your own risk!
-      --stdout-only        For any errors messages application will use StdOut instead of ErrOut. It's on your own risk!
+                           It has major priority then --non-zero-on-error. It's on your own risk!
+      --stdout-only        For any errors messages application will use StdOut instead of StdErr. It's on your own risk!
       --non-zero-on-error  None-zero exit code on any StdErr message
       --timestamp          Show timestamp at the beginning of each message
       --profile            Display timing and memory usage information

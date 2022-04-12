@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb22bb8e27ea8cfe29cbb0467320bc81",
+    "content-hash": "71476dc88c6638ff4e0608ac71183660",
     "packages": [
         {
             "name": "bluepsyduck/symfony-process-manager",
@@ -150,12 +150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Cli.git",
-                "reference": "a1f5056adbb02353d3c8cbb70d5838ec9721c0db"
+                "reference": "cdc37cf69e94fcbfb92267983810754e796b1e08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/a1f5056adbb02353d3c8cbb70d5838ec9721c0db",
-                "reference": "a1f5056adbb02353d3c8cbb70d5838ec9721c0db",
+                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/cdc37cf69e94fcbfb92267983810754e796b1e08",
+                "reference": "cdc37cf69e94fcbfb92267983810754e796b1e08",
                 "shasum": ""
             },
             "require": {
@@ -178,6 +178,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
                 "psr-4": {
                     "JBZoo\\Cli\\": "src"
                 }
@@ -210,7 +213,7 @@
                 "issues": "https://github.com/JBZoo/Cli/issues",
                 "source": "https://github.com/JBZoo/Cli/tree/master"
             },
-            "time": "2022-04-11T22:30:07+00:00"
+            "time": "2022-04-12T17:06:15+00:00"
         },
         {
             "name": "jbzoo/data",
