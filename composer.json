@@ -28,7 +28,7 @@
         "jbzoo/cli"       : "^1.0|^2.0",
 
         "symfony/console" : ">=4.4",
-        "symfony/process" : ">=4.4",
+        "symfony/process" : "^4.4|^5.0",
         "composer/semver" : ">=1.0"
     },
 
@@ -51,8 +51,7 @@
     "bin"          : ["composer-diff"],
     "config"       : {
         "optimize-autoloader" : true,
-        "allow-plugins"       : {"composer/package-versions-deprecated" : true},
-        "autoloader-suffix": "jbzoocomposerdiff"
+        "allow-plugins"       : {"composer/package-versions-deprecated" : true}
     },
 
     "extra"        : {
