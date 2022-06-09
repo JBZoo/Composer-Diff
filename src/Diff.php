@@ -35,22 +35,22 @@ final class Diff
     /**
      * @var string
      */
-    private $mode = self::MODE_SAME;
+    private string $mode = self::MODE_SAME;
 
     /**
      * @var string|null
      */
-    private $comparingUrl;
+    private ?string $comparingUrl = null;
 
     /**
      * @var Package|null
      */
-    private $source;
+    private ?Package $source;
 
     /**
      * @var Package|null
      */
-    private $target;
+    private ?Package $target = null;
 
     /**
      * Diff constructor.

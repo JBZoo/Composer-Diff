@@ -24,5 +24,4 @@ namespace JBZoo\PHPUnit;
  */
 final class ComposerDiffComposerTest extends AbstractComposerTest
 {
-
 }

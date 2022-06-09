@@ -28,12 +28,12 @@ final class ComposerLock
     /**
      * @var Package[]
      */
-    private $listRequired = [];
+    private array $listRequired = [];
 
     /**
      * @var Package[]
      */
-    private $listRequiredDev = [];
+    private array $listRequiredDev = [];
 
     /**
      * PackageCollection constructor.

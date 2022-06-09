@@ -24,16 +24,5 @@ namespace JBZoo\PHPUnit;
  */
 final class ComposerDiffReadmeTest extends AbstractReadmeTest
 {
-    /**
-     * @var string
-     */
-    protected $packageName = 'Composer-Diff';
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->params['strict_types'] = true;
-        $this->params['travis'] = false;
-    }
+    protected string $packageName = 'Composer-Diff';
 }
