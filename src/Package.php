@@ -32,7 +32,7 @@ final class Package
     /**
      * @var Data
      */
-    protected $data;
+    protected Data $data;
 
     /**
      * Package constructor.

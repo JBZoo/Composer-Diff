@@ -19,13 +19,13 @@
     ],
 
     "require"      : {
-        "php"             : ">=7.2",
+        "php"             : ">=7.4",
         "ext-json"        : "*",
         "ext-filter"      : "*",
 
-        "jbzoo/data"      : "^4.3.0",
-        "jbzoo/markdown"  : "^1.1.0",
-        "jbzoo/cli"       : "^1.0.0",
+        "jbzoo/data"      : "^4.3|^5.0",
+        "jbzoo/markdown"  : "^1.1.0c",
+        "jbzoo/cli"       : "^1.0|^2.0",
 
         "symfony/console" : ">=4.4",
         "symfony/process" : ">=4.4",
@@ -33,7 +33,7 @@
     },
 
     "require-dev"  : {
-        "jbzoo/toolbox-dev"         : "^3.2.0",
+        "jbzoo/toolbox-dev"         : "^4.0.1",
         "roave/security-advisories" : "dev-master",
         "composer/composer"         : "^1.1 || ^2.0"
     },

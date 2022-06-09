@@ -38,7 +38,7 @@ final class ComposerDiffPharTest extends AbstractComposerDiffTest
     }
 
     /**
-     * @param array  $params
+     * @param array $params
      * @return string
      */
     protected function taskReal(array $params = []): string

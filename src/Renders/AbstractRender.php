@@ -36,17 +36,17 @@ abstract class AbstractRender
     /**
      * @var Diff[]
      */
-    protected $fullChangeLog = [];
+    protected array $fullChangeLog = [];
 
     /**
      * @var string
      */
-    protected $env = Comparator::ENV_BOTH;
+    protected string $env = Comparator::ENV_BOTH;
 
     /**
      * @var Data
      */
-    protected $params;
+    protected Data $params;
 
     /**
      * AbstractRender constructor.
