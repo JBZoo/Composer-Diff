@@ -33,9 +33,9 @@
     },
 
     "require-dev"  : {
-        "jbzoo/toolbox-dev"         : "^4.0.1",
+        "jbzoo/toolbox-dev"         : "^4.1.1",
         "roave/security-advisories" : "dev-master",
-        "composer/composer"         : "^1.1 || ^2.0"
+        "composer/composer"         : "^1.1|^2.0|^3.0"
     },
 
     "autoload"     : {
