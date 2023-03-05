@@ -23,7 +23,7 @@
         "ext-json"        : "*",
         "ext-filter"      : "*",
 
-        "jbzoo/data"      : "^4.3|^5.0",
+        "jbzoo/data"      : "^4.3|^5.0|dev-master|7.x-dev",
         "jbzoo/markdown"  : "^1.1.0",
         "jbzoo/cli"       : "^1.0|^2.0",
 
@@ -56,7 +56,7 @@
 
     "extra"        : {
         "branch-alias" : {
-            "dev-master" : "1.x-dev"
+            "dev-master" : "7.x-dev"
         }
     }
 }
