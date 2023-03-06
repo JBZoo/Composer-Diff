@@ -24,8 +24,8 @@
         "ext-filter"      : "*",
 
         "jbzoo/data"      : "^4.3|^5.0|dev-master|7.x-dev",
-        "jbzoo/markdown"  : "^1.1.0",
-        "jbzoo/cli"       : "^1.0|^2.0",
+        "jbzoo/markdown"  : "^1.1.0|dev-master|7.x-dev",
+        "jbzoo/cli"       : "^1.0|^2.0|dev-master|7.x-dev",
 
         "symfony/console" : ">=4.4",
         "symfony/process" : "^4.4|^5.0",
