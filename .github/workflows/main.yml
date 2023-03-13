@@ -37,7 +37,7 @@ jobs:
         php-version: [ 8.1, 8.2 ]
         coverage: [ xdebug, none ]
         composer_flags: [ "--prefer-lowest", "" ]
-        build-action: [ "update", "build" ]
+        build-action: [ "update" ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
