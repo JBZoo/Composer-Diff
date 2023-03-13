@@ -37,6 +37,7 @@ jobs:
         php-version: [ 8.1, 8.2 ]
         coverage: [ xdebug, none ]
         composer_flags: [ "--prefer-lowest", "" ]
+        build-action: [ "update", "build" ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -52,7 +53,7 @@ jobs:
           extensions: ast
 
       - name: Build the Project
-        run: make update --no-print-directory
+        run: make ${{ matrix.build-action }} --no-print-directory
 
       - name: 🧪 PHPUnit Tests
         run: make test --no-print-directory
@@ -68,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
-          name: PHPUnit - ${{ matrix.php-version }} - ${{ matrix.coverage }}
+          name: PHPUnit - ${{ matrix.php-version }} - ${{ matrix.coverage }} - ${{ matrix.build-action }}
           path: build/
 
 

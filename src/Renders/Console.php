@@ -24,7 +24,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class Console extends AbstractRender
 {
     /**
-     * {@inheritDoc}
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
@@ -60,8 +59,8 @@ final class Console extends AbstractRender
                 $mode = "<cyan>{$mode}</cyan>";
             }
 
-            $fromVersion = $row['version_from'] ?: '-';
-            $toVersion   = $row['version_to'] ?: '-';
+            $fromVersion = $row['version_from'] ?? '-';
+            $toVersion   = $row['version_to'] ?? '-';
 
             if ($showLinks) {
                 $table->addRow([$row['name'], $mode, $fromVersion, $toVersion, $row['compare']]);

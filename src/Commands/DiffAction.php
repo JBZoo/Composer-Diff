@@ -35,15 +35,35 @@ final class DiffAction extends CliCommand
             ->setName('diff')
             ->setDescription('Show difference between two versions of composer.lock files')
             // File paths
-            ->addOption('source', null, InputOption::VALUE_REQUIRED, 'The file, git ref, or git ref with filename ' .
-                'to compare FROM', 'HEAD:composer.lock')
-            ->addOption('target', null, InputOption::VALUE_REQUIRED, 'The file, git ref, or git ref with filename ' .
-                'to compare TO', './composer.lock')
+            ->addOption(
+                'source',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The file, git ref, or git ref with filename to compare FROM',
+                'HEAD:composer.lock',
+            )
+            ->addOption(
+                'target',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The file, git ref, or git ref with filename to compare TO',
+                './composer.lock',
+            )
             // Options
-            ->addOption('env', null, InputOption::VALUE_REQUIRED, 'Show only selected environment. ' .
-                "Available options: <info>{$envs}</info>", Comparator::ENV_BOTH)
-            ->addOption('output', null, InputOption::VALUE_REQUIRED, 'Output format. ' .
-                "Available options: <info>{$outputFormats}</info>", AbstractRender::CONSOLE)
+            ->addOption(
+                'env',
+                null,
+                InputOption::VALUE_REQUIRED,
+                "Show only selected environment. Available options: <info>{$envs}</info>",
+                Comparator::ENV_BOTH,
+            )
+            ->addOption(
+                'output',
+                null,
+                InputOption::VALUE_REQUIRED,
+                "Output format. Available options: <info>{$outputFormats}</info>",
+                AbstractRender::CONSOLE,
+            )
             ->addOption('no-links', null, InputOption::VALUE_NONE, 'Hide all links in tables')
             ->addOption('strict', null, InputOption::VALUE_NONE, 'Return exit code if you have any difference');
 

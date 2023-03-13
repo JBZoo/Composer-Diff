@@ -29,11 +29,9 @@ abstract class AbstractRender
     public const JSON     = 'json';
 
     /** @var Diff[] */
-    protected array $fullChangeLog = [];
-
-    protected string $env = Comparator::ENV_BOTH;
-
-    protected Data $params;
+    protected array  $fullChangeLog = [];
+    protected string $env           = Comparator::ENV_BOTH;
+    protected Data   $params;
 
     /**
      * @param Diff[] $changeLog
@@ -42,15 +40,16 @@ abstract class AbstractRender
 
     public function __construct(array $params)
     {
-        $this->params = new Data(\array_merge([
-            'show-links'  => true,
-            'strict-mode' => false,
-        ], $params));
+        $this->params = new Data(
+            \array_merge([
+                'show-links'  => true,
+                'strict-mode' => false,
+            ], $params),
+        );
     }
 
     /**
-     * @param  Diff[] $fullChangeLog
-     * @return $this
+     * @param Diff[] $fullChangeLog
      */
     public function setFullChangeLog(array $fullChangeLog): self
     {
@@ -59,9 +58,6 @@ abstract class AbstractRender
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function setEnv(string $env): self
     {
         $this->env = $env;

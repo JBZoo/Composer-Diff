@@ -21,9 +21,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class Markdown extends AbstractRender
 {
-    /**
-     * {@inheritDoc}
-     */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
         $table = new Table();
@@ -53,8 +50,8 @@ final class Markdown extends AbstractRender
         foreach ($changeLog as $diff) {
             $row = $diff->toArray();
 
-            $fromVersion = $row['version_from'] ?: '-';
-            $toVersion   = $row['version_to'] ?: '-';
+            $fromVersion = $row['version_from'] ?? '-';
+            $toVersion   = $row['version_to'] ?? '-';
 
             if ($this->showLinks()) {
                 $table->appendRow([
@@ -77,6 +74,6 @@ final class Markdown extends AbstractRender
 
     protected static function getLink(string $title, ?string $url = null): string
     {
-        return $url ? "[{$title}]({$url})" : '';
+        return ($url !== '' && $url !== null) ? "[{$title}]({$url})" : '';
     }
 }

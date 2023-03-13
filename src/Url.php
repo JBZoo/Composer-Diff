@@ -25,7 +25,14 @@ final class Url
 
     public static function getCompareUrl(?string $sourceUrl, ?string $fromVersion, ?string $toVersion): ?string
     {
-        if (!$sourceUrl || !$fromVersion || !$toVersion) {
+        if (
+            $sourceUrl === null
+            || $sourceUrl === ''
+            || $fromVersion === null
+            || $fromVersion === ''
+            || $toVersion === null
+            || $toVersion === ''
+        ) {
             return null;
         }
 
@@ -84,15 +91,15 @@ final class Url
 
     private static function detectService(string $url): string
     {
-        if (\preg_match('/^git@github\..+:.+\.git$/', $url)) {
+        if (\preg_match('/^git@github\..+:.+\.git$/', $url) > 0) {
             return self::GITHUB;
         }
 
-        if (\preg_match('/^git@gitlab\..+:.+\.git$/', $url)) {
+        if (\preg_match('/^git@gitlab\..+:.+\.git$/', $url) > 0) {
             return self::GITLAB;
         }
 
-        if (\preg_match('/^git@bitbucket\..+:.+\.git$/', $url)) {
+        if (\preg_match('/^git@bitbucket\..+:.+\.git$/', $url) > 0) {
             return self::BITBUCKET;
         }
 

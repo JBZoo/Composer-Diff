@@ -37,23 +37,23 @@ final class Package
 
     public function getName(): string
     {
-        return (string)$this->data->get('name');
+        return $this->data->getString('name');
     }
 
     public function getVersion(bool $prettyPrint = false): string
     {
-        $version = (string)$this->data->get('version');
+        $version = $this->data->getString('version');
         if ($prettyPrint) {
             $version = (string)\preg_replace('#^v\.#i', '', $version);
             $version = (string)\preg_replace('#^v#i', '', $version);
         }
 
-        $reference = (string)$this->data->find('source.reference');
+        $reference = $this->data->findString('source.reference');
 
         if (\strlen($reference) >= self::HASH_LENGTH && \str_starts_with($version, 'dev-')) {
             $version = \substr($reference, 0, self::HASH_LENGTH);
             if ($prettyPrint) {
-                $version = "{$this->data->get('version')}@{$version}";
+                $version = "{$this->data->getString('version')}@{$version}";
             }
         }
 
@@ -62,12 +62,13 @@ final class Package
 
     public function getSourceUrl(): string
     {
-        return (string)$this->data->find('source.url');
+        return $this->data->findString('source.url');
     }
 
     public function getPackageUrl(): ?string
     {
-        if ($url = $this->getSourceUrl()) {
+        $url = $this->getSourceUrl();
+        if ($url !== '') {
             return Url::getPackageUrl($url);
         }
 

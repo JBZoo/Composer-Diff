@@ -22,9 +22,6 @@ use function JBZoo\Data\json;
 
 final class JsonOutput extends AbstractRender
 {
-    /**
-     * {@inheritDoc}
-     */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
         $dataForJson = [$env => []];

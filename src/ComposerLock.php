@@ -30,13 +30,15 @@ final class ComposerLock
     {
         $data = data($composerLockData);
 
-        foreach ((array)$data->get('packages') as $packageData) {
-            $package                                 = new Package($packageData);
+        foreach ($data->getArray('packages') as $packageData) {
+            $package = new Package($packageData);
+
             $this->listRequired[$package->getName()] = $package;
         }
 
-        foreach ((array)$data->get('packages-dev') as $packageData) {
-            $package                                    = new Package($packageData);
+        foreach ($data->getArray('packages-dev') as $packageData) {
+            $package = new Package($packageData);
+
             $this->listRequiredDev[$package->getName()] = $package;
         }
     }

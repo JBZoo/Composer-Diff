@@ -27,22 +27,16 @@ final class Diff
     public const MODE_DOWNGRADED = 'Downgraded';
     public const MODE_SAME       = 'Same';
 
-    private string $mode = self::MODE_SAME;
-
-    private ?string $comparingUrl = null;
-
+    private string   $mode         = self::MODE_SAME;
+    private ?string  $comparingUrl = null;
+    private ?Package $target       = null;
     private ?Package $source;
-
-    private ?Package $target = null;
 
     public function __construct(?Package $sourcePackage = null)
     {
         $this->source = $sourcePackage;
     }
 
-    /**
-     * @return $this
-     */
     public function setMode(string $newMode): self
     {
         $this->mode = $newMode;
@@ -57,18 +51,18 @@ final class Diff
 
     public function toArray(): array
     {
-        if ($this->source) {
+        if ($this->source !== null) {
             return [
                 'name'         => $this->source->getName(),
                 'url'          => $this->source->getPackageUrl(),
                 'version_from' => $this->source->getVersion(true),
-                'version_to'   => $this->target ? $this->target->getVersion(true) : null,
+                'version_to'   => $this->target?->getVersion(true),
                 'mode'         => $this->mode,
                 'compare'      => $this->comparingUrl,
             ];
         }
 
-        if ($this->target) {
+        if ($this->target !== null) {
             return [
                 'name'         => $this->target->getName(),
                 'url'          => $this->target->getPackageUrl(),
@@ -82,20 +76,19 @@ final class Diff
         throw new Exception('Source and target packages are not defined');
     }
 
-    /**
-     * @return $this
-     */
     public function compareWithPackage(Package $targetPackage): self
     {
         $this->target = $targetPackage;
 
-        if (!$this->source) {
+        if ($this->source === null) {
             return $this->setMode(self::MODE_NEW);
         }
 
         if ($this->source->getName() !== $this->target->getName()) {
-            throw new Exception("Can't compare versions of different packages. " .
-                "Source:{$this->source->getName()}; Target:{$this->target->getName()};");
+            throw new Exception(
+                "Can't compare versions of different packages. " .
+                "Source:{$this->source->getName()}; Target:{$this->target->getName()};",
+            );
         }
 
         $sourceVersion      = $this->source->getVersion();
@@ -131,11 +124,11 @@ final class Diff
             return '';
         }
 
-        if ($this->source) {
+        if ($this->source !== null) {
             return Url::getCompareUrl($this->source->getSourceUrl(), $fromVersion, $toVersion);
         }
 
-        if ($this->target) {
+        if ($this->target !== null) {
             return Url::getCompareUrl($this->target->getSourceUrl(), $fromVersion, $toVersion);
         }
 
