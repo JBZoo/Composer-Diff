@@ -14,18 +14,9 @@
 
 declare(strict_types=1);
 
-$default = include __DIR__ . '/vendor/jbzoo/codestyle/src/phan.php';
+namespace JBZoo\PHPUnit;
 
-return \array_merge($default, [
-    'directory_list' => [
-        'src',
-
-        'vendor/jbzoo/cli/src',
-        'vendor/jbzoo/data/src',
-        'vendor/jbzoo/markdown/src',
-
-        'vendor/symfony/console',
-        'vendor/symfony/process',
-        'vendor/composer/semver/src',
-    ],
-]);
+final class GlobPackageTest extends \JBZoo\Codestyle\PHPUnit\AbstractPackageTest
+{
+    protected string $packageName = 'Composer-Diff';
+}
