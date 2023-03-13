@@ -18,37 +18,25 @@ namespace JBZoo\ComposerDiff;
 
 use function JBZoo\Data\data;
 
-/**
- * Class ComposerLock
- * @package JBZoo\ComposerDiff
- */
 final class ComposerLock
 {
-    /**
-     * @var Package[]
-     */
+    /** @var Package[] */
     private array $listRequired = [];
 
-    /**
-     * @var Package[]
-     */
+    /** @var Package[] */
     private array $listRequiredDev = [];
 
-    /**
-     * PackageCollection constructor.
-     * @param array $composerLockData
-     */
     public function __construct(array $composerLockData)
     {
         $data = data($composerLockData);
 
         foreach ((array)$data->get('packages') as $packageData) {
-            $package = new Package($packageData);
+            $package                                 = new Package($packageData);
             $this->listRequired[$package->getName()] = $package;
         }
 
         foreach ((array)$data->get('packages-dev') as $packageData) {
-            $package = new Package($packageData);
+            $package                                    = new Package($packageData);
             $this->listRequiredDev[$package->getName()] = $package;
         }
     }

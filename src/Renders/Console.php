@@ -21,14 +21,10 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class Console
- * @package JBZoo\ComposerDiff\Renders
- */
 final class Console extends AbstractRender
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
@@ -65,7 +61,7 @@ final class Console extends AbstractRender
             }
 
             $fromVersion = $row['version_from'] ?: '-';
-            $toVersion = $row['version_to'] ?: '-';
+            $toVersion   = $row['version_to'] ?: '-';
 
             if ($showLinks) {
                 $table->addRow([$row['name'], $mode, $fromVersion, $toVersion, $row['compare']]);

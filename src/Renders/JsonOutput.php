@@ -20,21 +20,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use function JBZoo\Data\json;
 
-/**
- * Class JsonOutput
- * @package JBZoo\ComposerDiff\Renders
- */
 final class JsonOutput extends AbstractRender
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
         $dataForJson = [$env => []];
 
         foreach ($changeLog as $diff) {
-            $row = $diff->toArray();
+            $row                             = $diff->toArray();
             $dataForJson[$env][$row['name']] = $row;
         }
 

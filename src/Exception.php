@@ -16,10 +16,6 @@ declare(strict_types=1);
 
 namespace JBZoo\ComposerDiff;
 
-/**
- * Class Exception
- * @package JBZoo\ComposerDiff
- */
 final class Exception extends \RuntimeException
 {
 }

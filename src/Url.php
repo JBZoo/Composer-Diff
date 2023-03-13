@@ -16,10 +16,6 @@ declare(strict_types=1);
 
 namespace JBZoo\ComposerDiff;
 
-/**
- * Class Url
- * @package JBZoo\ComposerDiff
- */
 final class Url
 {
     public const BITBUCKET = 'bitbucket';
@@ -27,12 +23,6 @@ final class Url
     public const GITLAB    = 'gitlab';
     public const UNKNOWN   = 'unknown';
 
-    /**
-     * @param string|null $sourceUrl
-     * @param string|null $fromVersion
-     * @param string|null $toVersion
-     * @return string|null
-     */
     public static function getCompareUrl(?string $sourceUrl, ?string $fromVersion, ?string $toVersion): ?string
     {
         if (!$sourceUrl || !$fromVersion || !$toVersion) {
@@ -40,48 +30,44 @@ final class Url
         }
 
         $service = self::detectService($sourceUrl);
-        $url = self::getPackageUrl($sourceUrl);
+        $url     = self::getPackageUrl($sourceUrl);
 
         $fromVersion = \urlencode($fromVersion);
-        $toVersion = \urlencode($toVersion);
+        $toVersion   = \urlencode($toVersion);
 
         if (\in_array($service, [self::GITHUB, self::GITLAB], true)) {
             return "{$url}/compare/{$fromVersion}...{$toVersion}";
         }
 
-        if (self::BITBUCKET === $service) {
+        if ($service === self::BITBUCKET) {
             return "{$url}/branches/compare/{$fromVersion}%0D{$toVersion}";
         }
 
         return null;
     }
 
-    /**
-     * @param string $sourceUrl
-     * @return string|null
-     */
     public static function getPackageUrl(string $sourceUrl): ?string
     {
         $service = self::detectService($sourceUrl);
 
-        if (self::GITHUB === $service) {
-            if (\strpos($sourceUrl, 'http') === false) {
+        if ($service === self::GITHUB) {
+            if (!\str_contains($sourceUrl, 'http')) {
                 $sourceUrl = (string)\preg_replace('/^git@(github\.[^:]+):/', 'https://$1/', $sourceUrl);
             }
 
             return (string)\preg_replace('/\.git$/', '', $sourceUrl);
         }
 
-        if (self::GITLAB === $service) {
-            if (\strpos($sourceUrl, 'http') === false) {
+        if ($service === self::GITLAB) {
+            if (!\str_contains($sourceUrl, 'http')) {
                 $sourceUrl = (string)\preg_replace('/^git@(gitlab\.[^:]+):/', 'https://$1/', $sourceUrl);
             }
 
             return (string)\preg_replace('/\.git$/', '', $sourceUrl);
         }
 
-        if (self::BITBUCKET === $service) {
-            if (\strpos($sourceUrl, 'http') === false) {
+        if ($service === self::BITBUCKET) {
+            if (!\str_contains($sourceUrl, 'http')) {
                 $sourceUrl = (string)\preg_replace('/^git@(bitbucket\.[^:]+):/', 'https://$1/', $sourceUrl);
             }
 
@@ -91,10 +77,11 @@ final class Url
         return null;
     }
 
-    /**
-     * @param string $url
-     * @return string
-     */
+    public static function isUrl(string $string): bool
+    {
+        return (bool)\filter_var($string, \FILTER_VALIDATE_URL, \FILTER_FLAG_PATH_REQUIRED);
+    }
+
     private static function detectService(string $url): string
     {
         if (\preg_match('/^git@github\..+:.+\.git$/', $url)) {
@@ -109,33 +96,24 @@ final class Url
             return self::BITBUCKET;
         }
 
-        if (0 !== \stripos($url, "http")) {
+        if (\stripos($url, 'http') !== 0) {
             return self::UNKNOWN;
         }
 
         $host = \strtolower((string)\parse_url($url, \PHP_URL_HOST));
 
-        if (\strpos($host, 'github') !== false) {
+        if (\str_contains($host, 'github')) {
             return self::GITHUB;
         }
 
-        if (\strpos($host, 'bitbucket') !== false) {
+        if (\str_contains($host, 'bitbucket')) {
             return self::BITBUCKET;
         }
 
-        if (\strpos($host, 'gitlab') !== false) {
+        if (\str_contains($host, 'gitlab')) {
             return self::GITLAB;
         }
 
         return self::UNKNOWN;
-    }
-
-    /**
-     * @param string $string
-     * @return bool
-     */
-    public static function isUrl(string $string): bool
-    {
-        return (bool)\filter_var($string, \FILTER_VALIDATE_URL, \FILTER_FLAG_PATH_REQUIRED);
     }
 }

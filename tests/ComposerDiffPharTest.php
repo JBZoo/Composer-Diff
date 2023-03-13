@@ -19,16 +19,9 @@ namespace JBZoo\PHPUnit;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
 
-/**
- * Class ComposerDiffPharTest
- *
- * @package JBZoo\PHPUnit
- */
 final class ComposerDiffPharTest extends AbstractComposerDiffTest
 {
     /**
-     * @param array $params
-     * @return string
      * @throws \Exception
      */
     protected function task(array $params = []): string
@@ -36,25 +29,21 @@ final class ComposerDiffPharTest extends AbstractComposerDiffTest
         return $this->taskReal($params);
     }
 
-    /**
-     * @param array $params
-     * @return string
-     */
     protected function taskReal(array $params = []): string
     {
         $rootDir = PROJECT_ROOT;
 
         return Cli::exec(
-            implode(' ', [
+            \implode(' ', [
                 'COLUMNS=120',
                 Sys::getBinary(),
                 "{$rootDir}/build/composer-diff.phar",
                 '--no-interaction',
-                '--no-ansi'
+                '--no-ansi',
             ]),
             $params,
             $rootDir,
-            false
+            false,
         );
     }
 }

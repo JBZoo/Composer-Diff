@@ -20,23 +20,12 @@ use JBZoo\Data\Data;
 
 use function JBZoo\Data\data;
 
-/**
- * Class Package
- * @package JBZoo\ComposerDiff
- */
 final class Package
 {
     public const HASH_LENGTH = 7;
 
-    /**
-     * @var Data
-     */
-    protected Data $data;
+    private Data $data;
 
-    /**
-     * Package constructor.
-     * @param array $packageDate
-     */
     public function __construct(array $packageDate)
     {
         $this->data = data($packageDate);
@@ -46,18 +35,11 @@ final class Package
         }
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return (string)$this->data->get('name');
     }
 
-    /**
-     * @param bool $prettyPrint
-     * @return string
-     */
     public function getVersion(bool $prettyPrint = false): string
     {
         $version = (string)$this->data->get('version');
@@ -68,7 +50,7 @@ final class Package
 
         $reference = (string)$this->data->find('source.reference');
 
-        if (\strlen($reference) >= self::HASH_LENGTH && 0 === \strpos($version, 'dev-')) {
+        if (\strlen($reference) >= self::HASH_LENGTH && \str_starts_with($version, 'dev-')) {
             $version = \substr($reference, 0, self::HASH_LENGTH);
             if ($prettyPrint) {
                 $version = "{$this->data->get('version')}@{$version}";
@@ -78,17 +60,11 @@ final class Package
         return $version;
     }
 
-    /**
-     * @return string
-     */
     public function getSourceUrl(): string
     {
         return (string)$this->data->find('source.url');
     }
 
-    /**
-     * @return string|null
-     */
     public function getPackageUrl(): ?string
     {
         if ($url = $this->getSourceUrl()) {

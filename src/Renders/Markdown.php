@@ -19,14 +19,10 @@ namespace JBZoo\ComposerDiff\Renders;
 use JBZoo\Markdown\Table;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class Markdown
- * @package JBZoo\ComposerDiff\Renders
- */
 final class Markdown extends AbstractRender
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
@@ -41,7 +37,7 @@ final class Markdown extends AbstractRender
                     Table::ALIGN_LEFT,
                     Table::ALIGN_RIGHT,
                     Table::ALIGN_RIGHT,
-                    Table::ALIGN_LEFT
+                    Table::ALIGN_LEFT,
                 ]);
         } else {
             $table
@@ -50,7 +46,7 @@ final class Markdown extends AbstractRender
                     Table::ALIGN_LEFT,
                     Table::ALIGN_LEFT,
                     Table::ALIGN_RIGHT,
-                    Table::ALIGN_RIGHT
+                    Table::ALIGN_RIGHT,
                 ]);
         }
 
@@ -58,7 +54,7 @@ final class Markdown extends AbstractRender
             $row = $diff->toArray();
 
             $fromVersion = $row['version_from'] ?: '-';
-            $toVersion = $row['version_to'] ?: '-';
+            $toVersion   = $row['version_to'] ?: '-';
 
             if ($this->showLinks()) {
                 $table->appendRow([
@@ -79,13 +75,8 @@ final class Markdown extends AbstractRender
         $output->writeln('');
     }
 
-    /**
-     * @param string      $title
-     * @param string|null $url
-     * @return string
-     */
     protected static function getLink(string $title, ?string $url = null): string
     {
-        return $url ? "[$title]($url)" : '';
+        return $url ? "[{$title}]({$url})" : '';
     }
 }

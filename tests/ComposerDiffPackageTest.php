@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace JBZoo\PHPUnit;
 
-final class GlobPackageTest extends \JBZoo\Codestyle\PHPUnit\AbstractPackageTest
+final class ComposerDiffPackageTest extends \JBZoo\Codestyle\PHPUnit\AbstractPackageTest
 {
     protected string $packageName = 'Composer-Diff';
 }

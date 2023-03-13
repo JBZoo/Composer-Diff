@@ -22,35 +22,24 @@ use JBZoo\ComposerDiff\Exception;
 use JBZoo\Data\Data;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class AbstractRender
- * @package JBZoo\ComposerDiff\Renders
- */
 abstract class AbstractRender
 {
     public const CONSOLE  = 'console';
     public const MARKDOWN = 'markdown';
     public const JSON     = 'json';
 
-    /**
-     * @var Diff[]
-     */
+    /** @var Diff[] */
     protected array $fullChangeLog = [];
 
-    /**
-     * @var string
-     */
     protected string $env = Comparator::ENV_BOTH;
 
-    /**
-     * @var Data
-     */
     protected Data $params;
 
     /**
-     * AbstractRender constructor.
-     * @param array $params
+     * @param Diff[] $changeLog
      */
+    abstract protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void;
+
     public function __construct(array $params)
     {
         $this->params = new Data(\array_merge([
@@ -60,77 +49,31 @@ abstract class AbstractRender
     }
 
     /**
-     * @param string $outputFormat
-     * @param array  $params
-     * @return AbstractRender
-     */
-    public static function factory(string $outputFormat, array $params): self
-    {
-        $outputFormat = \strtolower(\trim($outputFormat));
-
-        if (self::CONSOLE === $outputFormat) {
-            return new Console($params);
-        }
-
-        if (self::MARKDOWN === $outputFormat) {
-            return new Markdown($params);
-        }
-
-        if (self::JSON === $outputFormat) {
-            return new JsonOutput($params);
-        }
-
-        throw new Exception("Output format \"{$outputFormat}\" not found");
-    }
-
-    /**
-     * @param Diff[] $fullChangeLog
+     * @param  Diff[] $fullChangeLog
      * @return $this
      */
     public function setFullChangeLog(array $fullChangeLog): self
     {
         $this->fullChangeLog = $fullChangeLog;
+
         return $this;
     }
 
     /**
-     * @param string $env
      * @return $this
      */
     public function setEnv(string $env): self
     {
         $this->env = $env;
+
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    protected function showLinks(): bool
-    {
-        return (bool)$this->params->get('show-links');
-    }
-
-    /**
-     * @param string $env
-     * @return string
-     * @phan-suppress PhanPluginPossiblyStaticProtectedMethod
-     */
-    protected function getTitle(string $env): string
-    {
-        return $env === Comparator::ENV_PROD
-            ? 'PHP Production Dependencies'
-            : 'PHP Dev Dependencies';
-    }
-
-    /**
-     * @param OutputInterface $output
-     * @return bool
-     */
     public function render(OutputInterface $output): bool
     {
         if (\count($this->fullChangeLog) === 0) {
             $output->writeln("There is no difference ({$this->env})");
+
             return false;
         }
 
@@ -145,10 +88,37 @@ abstract class AbstractRender
         return true;
     }
 
+    public static function factory(string $outputFormat, array $params): self
+    {
+        $outputFormat = \strtolower(\trim($outputFormat));
+
+        if ($outputFormat === self::CONSOLE) {
+            return new Console($params);
+        }
+
+        if ($outputFormat === self::MARKDOWN) {
+            return new Markdown($params);
+        }
+
+        if ($outputFormat === self::JSON) {
+            return new JsonOutput($params);
+        }
+
+        throw new Exception("Output format \"{$outputFormat}\" not found");
+    }
+
+    protected function showLinks(): bool
+    {
+        return (bool)$this->params->get('show-links');
+    }
+
     /**
-     * @param OutputInterface $output
-     * @param Diff[]          $changeLog
-     * @param string          $env
+     * @phan-suppress PhanPluginPossiblyStaticProtectedMethod
      */
-    abstract protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void;
+    protected function getTitle(string $env): string
+    {
+        return $env === Comparator::ENV_PROD
+            ? 'PHP Production Dependencies'
+            : 'PHP Dev Dependencies';
+    }
 }
