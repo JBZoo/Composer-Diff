@@ -1,20 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see       https://github.com/JBZoo/Composer-Diff
  */
 
 return [
-    'require'     => [
+    'require' => [
         [
             'name'         => 'dealerdirect/phpcodesniffer-composer-installer',
             'url'          => 'https://github.com/Dealerdirect/phpcodesniffer-composer-installer',

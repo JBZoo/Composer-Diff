@@ -1,7 +1,7 @@
 # JBZoo / Composer-Diff
 
-[![Coverage Status](https://coveralls.io/repos/JBZoo/Composer-Diff/badge.svg)](https://coveralls.io/github/JBZoo/Composer-Diff)    [![Psalm Coverage](https://shepherd.dev/github/JBZoo/Composer-Diff/coverage.svg)](https://shepherd.dev/github/JBZoo/Composer-Diff)    [![PHP Strict Types](https://img.shields.io/badge/strict__types-%3D1-brightgreen)](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.strict)    
-[![Stable Version](https://poser.pugx.org/jbzoo/composer-diff/version)](https://packagist.org/packages/jbzoo/composer-diff)    [![Latest Unstable Version](https://poser.pugx.org/jbzoo/composer-diff/v/unstable)](https://packagist.org/packages/jbzoo/composer-diff)    [![Dependents](https://poser.pugx.org/jbzoo/composer-diff/dependents)](https://packagist.org/packages/jbzoo/composer-diff/dependents?order_by=downloads)    [![GitHub Issues](https://img.shields.io/github/issues/jbzoo/composer-diff)](https://github.com/JBZoo/Composer-Diff/issues)    [![Total Downloads](https://poser.pugx.org/jbzoo/composer-diff/downloads)](https://packagist.org/packages/jbzoo/composer-diff/stats)    [![GitHub License](https://img.shields.io/github/license/jbzoo/composer-diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
+[![CI](https://github.com/JBZoo/Composer-Diff/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/JBZoo/Composer-Diff/actions/workflows/main.yml?query=branch%3Amaster)    [![Coverage Status](https://coveralls.io/repos/github/JBZoo/Composer-Diff/badge.svg?branch=master)](https://coveralls.io/github/JBZoo/Composer-Diff?branch=master)    [![Psalm Coverage](https://shepherd.dev/github/JBZoo/Composer-Diff/coverage.svg)](https://shepherd.dev/github/JBZoo/Composer-Diff)    [![Psalm Level](https://shepherd.dev/github/JBZoo/Composer-Diff/level.svg)](https://shepherd.dev/github/JBZoo/Composer-Diff)    [![CodeFactor](https://www.codefactor.io/repository/github/jbzoo/composer-diff/badge)](https://www.codefactor.io/repository/github/jbzoo/composer-diff/issues)    
+[![Stable Version](https://poser.pugx.org/jbzoo/composer-diff/version)](https://packagist.org/packages/jbzoo/composer-diff/)    [![Total Downloads](https://poser.pugx.org/jbzoo/composer-diff/downloads)](https://packagist.org/packages/jbzoo/composer-diff/stats)    [![Dependents](https://poser.pugx.org/jbzoo/composer-diff/dependents)](https://packagist.org/packages/jbzoo/composer-diff/dependents?order_by=downloads)    [![Visitors](https://visitor-badge.glitch.me/badge?page_id=jbzoo.composer-diff)]()    [![GitHub License](https://img.shields.io/github/license/jbzoo/composer-diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
 
 
 
@@ -58,6 +58,7 @@ Options:
       --non-zero-on-error  None-zero exit code on any StdErr message
       --timestamp          Show timestamp at the beginning of each message
       --profile            Display timing and memory usage information
+      --cron               Shortcut for crontab. It's basically focused on logs output. It's combination of --timestamp --profile --stdout-only --no-progress -vv
   -h, --help               Display help for the given command. When no command is given display help for the diff command
   -q, --quiet              Do not output any message
   -V, --version            Display this application version

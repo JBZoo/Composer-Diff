@@ -1,16 +1,15 @@
 <?php
 
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see        https://github.com/JBZoo/Composer-Diff
  */
 
 declare(strict_types=1);
@@ -21,23 +20,12 @@ use JBZoo\Data\Data;
 
 use function JBZoo\Data\data;
 
-/**
- * Class Package
- * @package JBZoo\ComposerDiff
- */
 final class Package
 {
     public const HASH_LENGTH = 7;
 
-    /**
-     * @var Data
-     */
-    protected Data $data;
+    private Data $data;
 
-    /**
-     * Package constructor.
-     * @param array $packageDate
-     */
     public function __construct(array $packageDate)
     {
         $this->data = data($packageDate);
@@ -47,52 +35,40 @@ final class Package
         }
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
-        return (string)$this->data->get('name');
+        return $this->data->getString('name');
     }
 
-    /**
-     * @param bool $prettyPrint
-     * @return string
-     */
     public function getVersion(bool $prettyPrint = false): string
     {
-        $version = (string)$this->data->get('version');
+        $version = $this->data->getString('version');
         if ($prettyPrint) {
             $version = (string)\preg_replace('#^v\.#i', '', $version);
             $version = (string)\preg_replace('#^v#i', '', $version);
         }
 
-        $reference = (string)$this->data->find('source.reference');
+        $reference = $this->data->findString('source.reference');
 
-        if (\strlen($reference) >= self::HASH_LENGTH && 0 === \strpos($version, 'dev-')) {
+        if (\strlen($reference) >= self::HASH_LENGTH && \str_starts_with($version, 'dev-')) {
             $version = \substr($reference, 0, self::HASH_LENGTH);
             if ($prettyPrint) {
-                $version = "{$this->data->get('version')}@{$version}";
+                $version = "{$this->data->getString('version')}@{$version}";
             }
         }
 
         return $version;
     }
 
-    /**
-     * @return string
-     */
     public function getSourceUrl(): string
     {
-        return (string)$this->data->find('source.url');
+        return $this->data->findString('source.url');
     }
 
-    /**
-     * @return string|null
-     */
     public function getPackageUrl(): ?string
     {
-        if ($url = $this->getSourceUrl()) {
+        $url = $this->getSourceUrl();
+        if ($url !== '') {
             return Url::getPackageUrl($url);
         }
 

@@ -1,16 +1,15 @@
 <?php
 
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see        https://github.com/JBZoo/Composer-Diff
  */
 
 declare(strict_types=1);
@@ -19,10 +18,6 @@ namespace JBZoo\ComposerDiff;
 
 use Composer\Semver\Comparator;
 
-/**
- * Class Diff
- * @package JBZoo\ComposerDiff
- */
 final class Diff
 {
     public const MODE_NEW        = 'New';
@@ -32,70 +27,42 @@ final class Diff
     public const MODE_DOWNGRADED = 'Downgraded';
     public const MODE_SAME       = 'Same';
 
-    /**
-     * @var string
-     */
-    private string $mode = self::MODE_SAME;
-
-    /**
-     * @var string|null
-     */
-    private ?string $comparingUrl = null;
-
-    /**
-     * @var Package|null
-     */
+    private string   $mode         = self::MODE_SAME;
+    private ?string  $comparingUrl = null;
+    private ?Package $target       = null;
     private ?Package $source;
 
-    /**
-     * @var Package|null
-     */
-    private ?Package $target = null;
-
-    /**
-     * Diff constructor.
-     * @param Package|null $sourcePackage
-     */
     public function __construct(?Package $sourcePackage = null)
     {
         $this->source = $sourcePackage;
     }
 
-    /**
-     * @param string $newMode
-     * @return $this
-     */
-    public function setMode(string $newMode): Diff
+    public function setMode(string $newMode): self
     {
         $this->mode = $newMode;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getMode(): string
     {
         return $this->mode;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
-        if ($this->source) {
+        if ($this->source !== null) {
             return [
                 'name'         => $this->source->getName(),
                 'url'          => $this->source->getPackageUrl(),
                 'version_from' => $this->source->getVersion(true),
-                'version_to'   => $this->target ? $this->target->getVersion(true) : null,
+                'version_to'   => $this->target?->getVersion(true),
                 'mode'         => $this->mode,
                 'compare'      => $this->comparingUrl,
             ];
         }
 
-        if ($this->target) {
+        if ($this->target !== null) {
             return [
                 'name'         => $this->target->getName(),
                 'url'          => $this->target->getPackageUrl(),
@@ -109,32 +76,30 @@ final class Diff
         throw new Exception('Source and target packages are not defined');
     }
 
-    /**
-     * @param Package $targetPackage
-     * @return $this
-     */
-    public function compareWithPackage(Package $targetPackage): Diff
+    public function compareWithPackage(Package $targetPackage): self
     {
         $this->target = $targetPackage;
 
-        if (!$this->source) {
+        if ($this->source === null) {
             return $this->setMode(self::MODE_NEW);
         }
 
         if ($this->source->getName() !== $this->target->getName()) {
-            throw new Exception("Can't compare versions of different packages. " .
-                "Source:{$this->source->getName()}; Target:{$this->target->getName()};");
+            throw new Exception(
+                "Can't compare versions of different packages. " .
+                "Source:{$this->source->getName()}; Target:{$this->target->getName()};",
+            );
         }
 
-        $sourceVersion = $this->source->getVersion();
-        $targetVersion = $this->target->getVersion();
+        $sourceVersion      = $this->source->getVersion();
+        $targetVersion      = $this->target->getVersion();
         $this->comparingUrl = $this->getComparingUrl($sourceVersion, $targetVersion);
 
         if ($sourceVersion === $targetVersion) {
             return $this->setMode(self::MODE_SAME);
         }
 
-        if (self::isHashVersion($sourceVersion) || Diff::isHashVersion($targetVersion)) {
+        if (self::isHashVersion($sourceVersion) || self::isHashVersion($targetVersion)) {
             return $this->setMode(self::MODE_CHANGED);
         }
 
@@ -149,11 +114,6 @@ final class Diff
         return $this->setMode(self::MODE_CHANGED);
     }
 
-    /**
-     * @param string|null $fromVersion
-     * @param string|null $toVersion
-     * @return string|null
-     */
     public function getComparingUrl(?string $fromVersion, ?string $toVersion): ?string
     {
         if (\in_array($fromVersion, [self::MODE_REMOVED, self::MODE_NEW], true)) {
@@ -164,23 +124,19 @@ final class Diff
             return '';
         }
 
-        if ($this->source) {
+        if ($this->source !== null) {
             return Url::getCompareUrl($this->source->getSourceUrl(), $fromVersion, $toVersion);
         }
 
-        if ($this->target) {
+        if ($this->target !== null) {
             return Url::getCompareUrl($this->target->getSourceUrl(), $fromVersion, $toVersion);
         }
 
         throw new Exception('Source and target packages are not defined');
     }
 
-    /**
-     * @param string $version
-     * @return bool
-     */
     private static function isHashVersion(string $version): bool
     {
-        return \strlen($version) === Package::HASH_LENGTH && \strpos($version, '.') === false;
+        return \strlen($version) === Package::HASH_LENGTH && !\str_contains($version, '.');
     }
 }

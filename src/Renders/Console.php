@@ -1,16 +1,15 @@
 <?php
 
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see        https://github.com/JBZoo/Composer-Diff
  */
 
 declare(strict_types=1);
@@ -22,14 +21,9 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class Console
- * @package JBZoo\ComposerDiff\Renders
- */
 final class Console extends AbstractRender
 {
     /**
-     * @inheritDoc
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
@@ -65,8 +59,8 @@ final class Console extends AbstractRender
                 $mode = "<cyan>{$mode}</cyan>";
             }
 
-            $fromVersion = $row['version_from'] ?: '-';
-            $toVersion = $row['version_to'] ?: '-';
+            $fromVersion = $row['version_from'] ?? '-';
+            $toVersion   = $row['version_to'] ?? '-';
 
             if ($showLinks) {
                 $table->addRow([$row['name'], $mode, $fromVersion, $toVersion, $row['compare']]);

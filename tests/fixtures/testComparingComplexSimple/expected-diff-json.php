@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see       https://github.com/JBZoo/Composer-Diff
  */
 
 return [
@@ -23,7 +24,7 @@ return [
             'mode'         => 'Downgraded',
             'compare'      => 'https://gitlab.com/vendor/downgraded/compare/2.0.0...1.0.0',
         ],
-        'vendor/new'        => [
+        'vendor/new' => [
             'name'         => 'vendor/new',
             'url'          => 'https://gitlab.com/vendor/new',
             'version_from' => null,
@@ -31,7 +32,7 @@ return [
             'mode'         => 'New',
             'compare'      => null,
         ],
-        'vendor/no-tag'     => [
+        'vendor/no-tag' => [
             'name'         => 'vendor/no-tag',
             'url'          => 'https://gitlab.com/vendor/package-1',
             'version_from' => 'dev-master@bbc0fba',
@@ -47,7 +48,7 @@ return [
             'mode'         => 'New',
             'compare'      => null,
         ],
-        'vendor/removed'    => [
+        'vendor/removed' => [
             'name'         => 'vendor/removed',
             'url'          => 'https://gitlab.com/vendor/removed',
             'version_from' => '1.0.0',
@@ -55,13 +56,13 @@ return [
             'mode'         => 'Removed',
             'compare'      => null,
         ],
-        'vendor/upgraded'   => [
+        'vendor/upgraded' => [
             'name'         => 'vendor/upgraded',
             'url'          => 'https://gitlab.com/vendor/upgraded',
             'version_from' => '1.0.0',
             'version_to'   => '2.0.0',
             'mode'         => 'Upgraded',
             'compare'      => 'https://gitlab.com/vendor/upgraded/compare/1.0.0...2.0.0',
-        ]
-    ]
+        ],
+    ],
 ];

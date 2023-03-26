@@ -1,11 +1,15 @@
 {
-    "name"         : "jbzoo/composer-diff",
-    "type"         : "library",
-    "description"  : "See what has changed after a composer update.",
-    "keywords"     : ["composer", "php", "composer.lock", "composer.json", "diff", "composer diff", "composer-diff"],
-    "license"      : "MIT",
+    "name"              : "jbzoo/composer-diff",
+    "type"              : "library",
+    "description"       : "See what has changed after a composer update.",
 
-    "authors"      : [
+    "keywords"          : [
+        "composer", "php", "composer.lock", "composer.json", "diff", "composer diff", "composer-diff"
+    ],
+
+    "license"           : "MIT",
+
+    "authors"           : [
         {
             "name"  : "Denis Smetannikov",
             "email" : "admin@jbzoo.com",
@@ -18,43 +22,45 @@
         }
     ],
 
-    "require"      : {
-        "php"             : ">=7.4",
+    "bin"               : ["composer-diff"],
+
+    "minimum-stability" : "dev",
+    "prefer-stable"     : true,
+
+    "require"           : {
+        "php"             : "^8.1",
         "ext-json"        : "*",
         "ext-filter"      : "*",
 
-        "jbzoo/data"      : "^4.3|^5.0|dev-master|7.x-dev",
-        "jbzoo/markdown"  : "^1.1.0",
-        "jbzoo/cli"       : "^1.0|^2.0",
+        "jbzoo/data"      : "7.x-dev",
+        "jbzoo/markdown"  : "7.x-dev",
+        "jbzoo/cli"       : "7.x-dev",
 
         "symfony/console" : ">=4.4",
-        "symfony/process" : "^4.4|^5.0",
+        "symfony/process" : ">=4.4",
         "composer/semver" : ">=1.0"
     },
 
-    "require-dev"  : {
-        "jbzoo/toolbox-dev"         : "^4.1.1",
+    "require-dev"       : {
+        "jbzoo/toolbox-dev"         : "7.x-dev",
         "roave/security-advisories" : "dev-master",
-        "composer/composer"         : "^1.1|^2.0|^3.0"
+        "composer/composer"         : ">=2.0"
     },
 
-    "autoload"     : {
-        "psr-4" : {
-            "JBZoo\\ComposerDiff\\" : "src"
-        }
+    "autoload"          : {
+        "psr-4" : {"JBZoo\\ComposerDiff\\" : "src"}
     },
 
-    "autoload-dev" : {
-        "classmap" : ["tests"]
+    "autoload-dev"      : {
+        "psr-4" : {"JBZoo\\PHPUnit\\" : "tests"}
     },
 
-    "bin"          : ["composer-diff"],
-    "config"       : {
+    "config"            : {
         "optimize-autoloader" : true,
         "allow-plugins"       : {"composer/package-versions-deprecated" : true}
     },
 
-    "extra"        : {
+    "extra"             : {
         "branch-alias" : {
             "dev-master" : "7.x-dev"
         }

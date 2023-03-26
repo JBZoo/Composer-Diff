@@ -1,16 +1,15 @@
 <?php
 
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see        https://github.com/JBZoo/Composer-Diff
  */
 
 declare(strict_types=1);
@@ -22,33 +21,49 @@ use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Renders\AbstractRender;
 use Symfony\Component\Console\Input\InputOption;
 
-/**
- * Class DiffAction
- * @package JBZoo\ComposerDiff\Commands
- */
 final class DiffAction extends CliCommand
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function configure(): void
     {
-        $envs = \implode(', ', [Comparator::ENV_BOTH, Comparator::ENV_PROD, Comparator::ENV_DEV]);
+        $envs          = \implode(', ', [Comparator::ENV_BOTH, Comparator::ENV_PROD, Comparator::ENV_DEV]);
         $outputFormats = \implode(', ', [AbstractRender::CONSOLE, AbstractRender::MARKDOWN, AbstractRender::JSON]);
 
         $this
             ->setName('diff')
             ->setDescription('Show difference between two versions of composer.lock files')
             // File paths
-            ->addOption('source', null, InputOption::VALUE_REQUIRED, 'The file, git ref, or git ref with filename ' .
-                'to compare FROM', 'HEAD:composer.lock')
-            ->addOption('target', null, InputOption::VALUE_REQUIRED, 'The file, git ref, or git ref with filename ' .
-                'to compare TO', './composer.lock')
+            ->addOption(
+                'source',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The file, git ref, or git ref with filename to compare FROM',
+                'HEAD:composer.lock',
+            )
+            ->addOption(
+                'target',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The file, git ref, or git ref with filename to compare TO',
+                './composer.lock',
+            )
             // Options
-            ->addOption('env', null, InputOption::VALUE_REQUIRED, "Show only selected environment. " .
-                "Available options: <info>{$envs}</info>", Comparator::ENV_BOTH)
-            ->addOption('output', null, InputOption::VALUE_REQUIRED, "Output format. " .
-                "Available options: <info>{$outputFormats}</info>", AbstractRender::CONSOLE)
+            ->addOption(
+                'env',
+                null,
+                InputOption::VALUE_REQUIRED,
+                "Show only selected environment. Available options: <info>{$envs}</info>",
+                Comparator::ENV_BOTH,
+            )
+            ->addOption(
+                'output',
+                null,
+                InputOption::VALUE_REQUIRED,
+                "Output format. Available options: <info>{$outputFormats}</info>",
+                AbstractRender::CONSOLE,
+            )
             ->addOption('no-links', null, InputOption::VALUE_NONE, 'Hide all links in tables')
             ->addOption('strict', null, InputOption::VALUE_NONE, 'Return exit code if you have any difference');
 
@@ -56,14 +71,14 @@ final class DiffAction extends CliCommand
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function executeAction(): int
     {
-        $sourcePath = $this->getOptString('source');
-        $targetPath = $this->getOptString('target');
+        $sourcePath   = $this->getOptString('source');
+        $targetPath   = $this->getOptString('target');
         $outputFormat = \strtolower($this->getOptString('output'));
-        $env = \strtolower($this->getOptString('env'));
+        $env          = \strtolower($this->getOptString('env'));
         $isStrictMode = $this->getOptBool('strict');
 
         $params = [
@@ -94,12 +109,6 @@ final class DiffAction extends CliCommand
         return $errorCode;
     }
 
-    /**
-     * @param string $outputFormat
-     * @param array  $fullChangeLog
-     * @param string $env
-     * @param array  $params
-     */
     private function renderOutput(string $outputFormat, array $fullChangeLog, string $env, array $params): void
     {
         AbstractRender::factory($outputFormat, $params)

@@ -1,16 +1,15 @@
 <?php
 
 /**
- * JBZoo Toolbox - Composer-Diff
+ * JBZoo Toolbox - Composer-Diff.
  *
  * This file is part of the JBZoo Toolbox project.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package    Composer-Diff
  * @license    MIT
  * @copyright  Copyright (C) JBZoo.com, All rights reserved.
- * @link       https://github.com/JBZoo/Composer-Diff
+ * @see        https://github.com/JBZoo/Composer-Diff
  */
 
 declare(strict_types=1);
@@ -20,15 +19,8 @@ namespace JBZoo\ComposerDiff\Renders;
 use JBZoo\Markdown\Table;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class Markdown
- * @package JBZoo\ComposerDiff\Renders
- */
 final class Markdown extends AbstractRender
 {
-    /**
-     * @inheritDoc
-     */
     protected function renderOneEnv(OutputInterface $output, array $changeLog, string $env): void
     {
         $table = new Table();
@@ -42,7 +34,7 @@ final class Markdown extends AbstractRender
                     Table::ALIGN_LEFT,
                     Table::ALIGN_RIGHT,
                     Table::ALIGN_RIGHT,
-                    Table::ALIGN_LEFT
+                    Table::ALIGN_LEFT,
                 ]);
         } else {
             $table
@@ -51,15 +43,15 @@ final class Markdown extends AbstractRender
                     Table::ALIGN_LEFT,
                     Table::ALIGN_LEFT,
                     Table::ALIGN_RIGHT,
-                    Table::ALIGN_RIGHT
+                    Table::ALIGN_RIGHT,
                 ]);
         }
 
         foreach ($changeLog as $diff) {
             $row = $diff->toArray();
 
-            $fromVersion = $row['version_from'] ?: '-';
-            $toVersion = $row['version_to'] ?: '-';
+            $fromVersion = $row['version_from'] ?? '-';
+            $toVersion   = $row['version_to'] ?? '-';
 
             if ($this->showLinks()) {
                 $table->appendRow([
@@ -80,13 +72,8 @@ final class Markdown extends AbstractRender
         $output->writeln('');
     }
 
-    /**
-     * @param string      $title
-     * @param string|null $url
-     * @return string
-     */
     protected static function getLink(string $title, ?string $url = null): string
     {
-        return $url ? "[$title]($url)" : '';
+        return ($url !== '' && $url !== null) ? "[{$title}]({$url})" : '';
     }
 }
