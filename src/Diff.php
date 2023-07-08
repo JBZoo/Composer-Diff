@@ -27,9 +27,9 @@ final class Diff
     public const MODE_DOWNGRADED = 'Downgraded';
     public const MODE_SAME       = 'Same';
 
-    private string   $mode         = self::MODE_SAME;
-    private ?string  $comparingUrl = null;
-    private ?Package $target       = null;
+    private string $mode          = self::MODE_SAME;
+    private ?string $comparingUrl = null;
+    private ?Package $target      = null;
     private ?Package $source;
 
     public function __construct(?Package $sourcePackage = null)

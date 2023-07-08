@@ -29,9 +29,9 @@ abstract class AbstractRender
     public const JSON     = 'json';
 
     /** @var Diff[] */
-    protected array  $fullChangeLog = [];
-    protected string $env           = Comparator::ENV_BOTH;
-    protected Data   $params;
+    protected array $fullChangeLog = [];
+    protected string $env          = Comparator::ENV_BOTH;
+    protected Data $params;
 
     /**
      * @param Diff[] $changeLog
