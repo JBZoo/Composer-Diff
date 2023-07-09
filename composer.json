@@ -36,8 +36,8 @@
         "jbzoo/markdown"  : "7.x-dev",
         "jbzoo/cli"       : "7.x-dev",
 
-        "symfony/console" : ">=4.4",
-        "symfony/process" : ">=4.4",
+        "symfony/console" : ">=5.4",
+        "symfony/process" : ">=5.4",
         "composer/semver" : ">=1.0"
     },
 
@@ -57,7 +57,8 @@
 
     "config"            : {
         "optimize-autoloader" : true,
-        "allow-plugins"       : {"composer/package-versions-deprecated" : true}
+        "allow-plugins"       : {"composer/package-versions-deprecated" : true},
+        "platform-check"      : true
     },
 
     "extra"             : {
