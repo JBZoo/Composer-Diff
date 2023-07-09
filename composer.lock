@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "897277dab674ee6a7f5223ad304cd26f",
+    "content-hash": "30746fd450cc4afea2ad7ca4c6bf2a05",
     "packages": [
         {
             "name": "bluepsyduck/symfony-process-manager",
@@ -150,12 +150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Cli.git",
-                "reference": "252b88b2c7afc1a8f5acea6b0957aca99a22ebbb"
+                "reference": "506dc776d4097a030d72a9a032e18f1d01bbd5a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/252b88b2c7afc1a8f5acea6b0957aca99a22ebbb",
-                "reference": "252b88b2c7afc1a8f5acea6b0957aca99a22ebbb",
+                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/506dc776d4097a030d72a9a032e18f1d01bbd5a6",
+                "reference": "506dc776d4097a030d72a9a032e18f1d01bbd5a6",
                 "shasum": ""
             },
             "require": {
@@ -213,7 +213,7 @@
                 "issues": "https://github.com/JBZoo/Cli/issues",
                 "source": "https://github.com/JBZoo/Cli/tree/master"
             },
-            "time": "2023-03-12T23:16:17+00:00"
+            "time": "2023-07-08T11:52:15+00:00"
         },
         {
             "name": "jbzoo/data",
@@ -221,12 +221,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Data.git",
-                "reference": "c21704f61c30448d2dadf6317beb9b6f3cdf6e4f"
+                "reference": "adf1be07c69bce0713f8293b4af792b7cd725b6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Data/zipball/c21704f61c30448d2dadf6317beb9b6f3cdf6e4f",
-                "reference": "c21704f61c30448d2dadf6317beb9b6f3cdf6e4f",
+                "url": "https://api.github.com/repos/JBZoo/Data/zipball/adf1be07c69bce0713f8293b4af792b7cd725b6d",
+                "reference": "adf1be07c69bce0713f8293b4af792b7cd725b6d",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
                 "issues": "https://github.com/JBZoo/Data/issues",
                 "source": "https://github.com/JBZoo/Data/tree/master"
             },
-            "time": "2023-03-17T23:23:46+00:00"
+            "time": "2023-07-08T11:16:23+00:00"
         },
         {
             "name": "jbzoo/event",
@@ -422,12 +422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Utils.git",
-                "reference": "7c9b8e94f9ac9da6270951e9c80d6e35385a6de7"
+                "reference": "277248ca89a58eb74b09588a2b80b2a7c9abc174"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Utils/zipball/7c9b8e94f9ac9da6270951e9c80d6e35385a6de7",
-                "reference": "7c9b8e94f9ac9da6270951e9c80d6e35385a6de7",
+                "url": "https://api.github.com/repos/JBZoo/Utils/zipball/277248ca89a58eb74b09588a2b80b2a7c9abc174",
+                "reference": "277248ca89a58eb74b09588a2b80b2a7c9abc174",
                 "shasum": ""
             },
             "require": {
@@ -514,7 +514,7 @@
                 "issues": "https://github.com/JBZoo/Utils/issues",
                 "source": "https://github.com/JBZoo/Utils/tree/master"
             },
-            "time": "2023-04-04T23:32:48+00:00"
+            "time": "2023-07-08T11:28:34+00:00"
         },
         {
             "name": "psr/container",
@@ -3094,32 +3094,32 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Codestyle.git",
-                "reference": "fae4ef596b89996f6c7ac5e2cd413a53280c4dbd"
+                "reference": "c68ba65f96407a5f1f6d0aa7e8943e2c9d710f4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Codestyle/zipball/fae4ef596b89996f6c7ac5e2cd413a53280c4dbd",
-                "reference": "fae4ef596b89996f6c7ac5e2cd413a53280c4dbd",
+                "url": "https://api.github.com/repos/JBZoo/Codestyle/zipball/c68ba65f96407a5f1f6d0aa7e8943e2c9d710f4b",
+                "reference": "c68ba65f96407a5f1f6d0aa7e8943e2c9d710f4b",
                 "shasum": ""
             },
             "require": {
-                "friendsofphp/php-cs-fixer": ">=3.16.0",
+                "friendsofphp/php-cs-fixer": ">=3.21.1",
                 "jbzoo/data": "7.x-dev",
-                "kubawerlos/php-cs-fixer-custom-fixers": ">=3.14.0",
-                "nikic/php-parser": ">=4.15.3",
-                "pdepend/pdepend": ">=2.13.0",
+                "kubawerlos/php-cs-fixer-custom-fixers": ">=3.15.0",
+                "nikic/php-parser": ">=4.16.0",
+                "pdepend/pdepend": ">=2.14.0",
                 "phan/phan": ">=5.4.2",
                 "php": "^8.1",
                 "phpmd/phpmd": ">=2.13.0",
                 "phpmetrics/phpmetrics": ">=2.8.2",
-                "phpstan/phpstan": ">=1.10.13",
+                "phpstan/phpstan": ">=1.10.25",
                 "phpstan/phpstan-strict-rules": ">=1.5.1",
                 "povils/phpmnd": ">=3.1.0",
                 "squizlabs/php_codesniffer": ">=3.7.2",
                 "symfony/console": ">=4.4.16",
                 "symfony/finder": ">=4.4.16",
                 "symfony/yaml": ">=4.4.16",
-                "vimeo/psalm": ">=5.9.0"
+                "vimeo/psalm": ">=5.13.1"
             },
             "require-dev": {
                 "jbzoo/phpunit": "7.x-dev",
@@ -3174,7 +3174,7 @@
                 "issues": "https://github.com/JBZoo/Codestyle/issues",
                 "source": "https://github.com/JBZoo/Codestyle/tree/master"
             },
-            "time": "2023-04-17T11:49:05+00:00"
+            "time": "2023-07-08T10:54:53+00:00"
         },
         {
             "name": "jbzoo/jbdump",
