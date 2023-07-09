@@ -46,7 +46,10 @@ jobs:
           coverage: none
           tools: composer
 
-      - name: Build the project
+      - name: Download dependencies
+        run: make build
+
+      - name: Build Phar file
         run: make build-phar-issue
 
       - name: Trying to use the phar file
