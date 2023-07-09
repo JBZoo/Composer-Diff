@@ -24,6 +24,14 @@ build: ##@Project Install all 3rd party dependencies
 	@make create-symlink
 
 
+build-phar-issue:
+	$(call title,"Building PHAR")
+	$(call download_phar,$(BOX_PHAR),"box")
+	rm -f ./build/composer-diff.phar || true
+	$(PHP_BIN) ./vendor/bin/box.phar compile -v
+	$(PHP_BIN) ./build/composer-diff.phar diff --help
+
+
 update: ##@Project Install/Update all 3rd party dependencies
 	$(call title,"Install/Update all 3rd party dependencies")
 	@composer update --optimize-autoloader --no-progress

@@ -18,8 +18,6 @@ namespace JBZoo\ComposerDiff;
 
 use JBZoo\Cli\CliApplication;
 
-const PATH_ROOT = __DIR__;
-
 $cwd = isset($_SERVER['PWD']) && \is_dir($_SERVER['PWD']) ? $_SERVER['PWD'] : \getcwd();
 
 // See https://getcomposer.org/doc/articles/vendor-binaries.md#finding-the-composer-autoloader-from-a-binary

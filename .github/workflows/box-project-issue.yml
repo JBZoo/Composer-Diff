@@ -1,0 +1,60 @@
+#
+# JBZoo Toolbox - Composer-Diff.
+#
+# This file is part of the JBZoo Toolbox project.
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+#
+# @license    MIT
+# @copyright  Copyright (C) JBZoo.com, All rights reserved.
+# @see        https://github.com/JBZoo/Composer-Diff
+#
+
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - 'master'
+  schedule:
+    - cron: '39 */8 * * *'
+
+env:
+  COLUMNS: 120
+  TERM_PROGRAM: Hyper
+
+jobs:
+  phar:
+    name: Phar
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [ 8.1, 8.2 ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+          tools: composer
+
+      - name: Build the project
+        run: make build-phar-issue
+
+      - name: Trying to use the phar file
+        run: ./build/composer-diff.phar diff --help
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        continue-on-error: true
+        with:
+          name: Reports - ${{ matrix.php-version }}
+          path: build/
