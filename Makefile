@@ -26,9 +26,9 @@ build: ##@Project Install all 3rd party dependencies
 
 download-deps:
 	composer update --optimize-autoloader --no-progress
-	curl $(BOX_PHAR) --output "$(PATH_ROOT)/vendor/bin/box.phar" \
-        --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 1 --retry-max-time 40 \
-        --location --fail --silent --show-error
+	curl https://github.com/box-project/box/releases/latest/download/box.phar           \
+        --output "$(PATH_ROOT)/vendor/bin/box.phar"
+
 
 
 update: ##@Project Install/Update all 3rd party dependencies
