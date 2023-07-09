@@ -27,7 +27,7 @@ build: ##@Project Install all 3rd party dependencies
 download-deps:
 	composer update --optimize-autoloader --no-progress
 	curl https://github.com/box-project/box/releases/latest/download/box.phar           \
-        --output "$(PATH_ROOT)/vendor/bin/box.phar"
+        --output ./vendor/bin/box.phar
 
 
 
