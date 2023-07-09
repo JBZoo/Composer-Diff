@@ -46,11 +46,17 @@ jobs:
 
       - name: Show versions of tools
         run: |
+          echo '1. -------'
           which php
+          echo '2. -------'
           php -v
+          echo '3. -------'
           which composer
+          echo '4. -------'
           composer --version
+          echo '5. -------'
           /usr/local/bin/composer --version
+          echo '6. -------'
           php ./vendor/bin/box.phar --version
 
       - name: Build Phar file

@@ -25,7 +25,8 @@ build: ##@Project Install all 3rd party dependencies
 
 
 download-deps:
-	composer update --optimize-autoloader --no-progress
+	@composer update --optimize-autoloader --no-progress
+	@echo $(BOX_PHAR)
 	$(call download_phar,$(BOX_PHAR),"box")
 
 
