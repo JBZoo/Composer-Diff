@@ -28,6 +28,7 @@ build-phar-issue:
 	$(call title,"Building PHAR")
 	$(call download_phar,$(BOX_PHAR),"box")
 	rm -f ./build/composer-diff.phar || true
+	composer --version
 	$(PHP_BIN) ./vendor/bin/box.phar compile -v
 	$(PHP_BIN) ./build/composer-diff.phar diff --help
 
