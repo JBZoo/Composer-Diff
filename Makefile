@@ -37,7 +37,7 @@ create-symlink: ##@Project Create Symlink (alias for testing)
 	@ln -sfv `pwd`/build/composer-diff.phar `pwd`/vendor/bin/composer-diff
 
 
-build-docker:
+build-docker: ##@Project Building Docker Image
 	$(call title,"Building Docker Image")
 	@docker build -t jbzoo-composer-diff .
 

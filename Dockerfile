@@ -31,4 +31,4 @@ RUN cd /app                                                           \
 # Experimental. Forced colored output
 ENV TERM_PROGRAM=Hyper
 
-ENTRYPOINT ["/app/composer-diff"]
+ENTRYPOINT ["php", "/app/composer-diff.php"]
