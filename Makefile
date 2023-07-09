@@ -24,6 +24,15 @@ build: ##@Project Install all 3rd party dependencies
 	@make create-symlink
 
 
+download-deps:
+	composer update --optimize-autoloader --no-progress
+	curl https://github.com/box-project/box/releases/latest/download/box.phar           \
+        --output ./vendor/bin/box.phar                                                  \
+        --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 1 --retry-max-time 40 \
+        --location --fail --silent --show-error
+	chmod +x ./vendor/bin/box.phar
+
+
 update: ##@Project Install/Update all 3rd party dependencies
 	$(call title,"Install/Update all 3rd party dependencies")
 	@composer update --optimize-autoloader --no-progress
