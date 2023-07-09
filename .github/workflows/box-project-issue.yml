@@ -10,7 +10,7 @@
 # @see        https://github.com/JBZoo/Composer-Diff
 #
 
-name: CI
+name: Box Project Issue
 
 on:
   pull_request:
