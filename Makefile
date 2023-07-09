@@ -24,21 +24,9 @@ build: ##@Project Install all 3rd party dependencies
 	@make create-symlink
 
 
-build-phar-issue:
-	$(call title,"Download dependencies")
-	make update
+download-deps:
+	composer update --optimize-autoloader --no-progress
 	$(call download_phar,$(BOX_PHAR),"box")
-	$(call title,"Current versions")
-	php -v
-	composer --version
-	/usr/local/bin/composer --version
-	which composer
-	echo $BOX_PHAR
-	$(PHP_BIN) ./vendor/bin/box.phar --version
-	$(call title,"Compiling phar-file")
-	$(PHP_BIN) ./vendor/bin/box.phar compile -v
-	$(call title,"Try to execute the phar-file")
-	$(PHP_BIN) ./build/composer-diff.phar diff --help
 
 
 update: ##@Project Install/Update all 3rd party dependencies

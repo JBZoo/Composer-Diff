@@ -41,8 +41,20 @@ jobs:
           coverage: none
           tools: composer
 
+      - name: Download Dependencies
+        run: make download-deps
+
+      - name: Show versions of tools
+        run: |
+          which php
+          php -v
+          which composer
+          composer --version
+          /usr/local/bin/composer --version
+          php ./vendor/bin/box.phar --version
+
       - name: Build Phar file
-        run: make build-phar-issue
+        run: php ./vendor/bin/box.phar compile -v
 
       - name: Trying to use the phar file
         run: ./build/composer-diff.phar diff --help
