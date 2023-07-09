@@ -25,11 +25,19 @@ build: ##@Project Install all 3rd party dependencies
 
 
 build-phar-issue:
-	$(call title,"Building PHAR")
+	$(call title,"Download dependencies")
+	make update
 	$(call download_phar,$(BOX_PHAR),"box")
-	rm -f ./build/composer-diff.phar || true
+	$(call title,"Current versions")
+	php -v
 	composer --version
+	/usr/local/bin/composer --version
+	which composer
+	echo $BOX_PHAR
+	$(PHP_BIN) ./vendor/bin/box.phar --version
+	$(call title,"Compiling phar-file")
 	$(PHP_BIN) ./vendor/bin/box.phar compile -v
+	$(call title,"Try to execute the phar-file")
 	$(PHP_BIN) ./build/composer-diff.phar diff --help
 
 
