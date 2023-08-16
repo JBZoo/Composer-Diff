@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace JBZoo\PHPUnit;
 
+use JBZoo\Cli\CliApplication;
 use JBZoo\ComposerDiff\Commands\DiffAction;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
@@ -30,14 +31,14 @@ final class ComposerDiffTest extends AbstractComposerDiffTest
      */
     protected function task(array $params = []): string
     {
-        $application = new Application();
+        $application = new CliApplication();
         $application->add(new DiffAction());
         $application->setDefaultCommand('diff');
         $command = $application->find('diff');
 
         $buffer = new BufferedOutput();
-        $args   = new StringInput(Cli::build('', $params));
-        $code   = $command->run($args, $buffer);
+        $args = new StringInput(Cli::build('', $params));
+        $code = $command->run($args, $buffer);
 
         if ($code > 0) {
             throw new \RuntimeException($buffer->fetch());

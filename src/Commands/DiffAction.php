@@ -114,6 +114,6 @@ final class DiffAction extends CliCommand
         AbstractRender::factory($outputFormat, $params)
             ->setFullChangeLog($fullChangeLog)
             ->setEnv($env)
-            ->render($this->helper->getOutput());
+            ->render($this->outputMode->getOutput());
     }
 }
