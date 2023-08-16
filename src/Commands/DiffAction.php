@@ -21,6 +21,9 @@ use JBZoo\ComposerDiff\Comparator;
 use JBZoo\ComposerDiff\Renders\AbstractRender;
 use Symfony\Component\Console\Input\InputOption;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class DiffAction extends CliCommand
 {
     /**

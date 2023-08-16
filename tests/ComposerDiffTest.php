@@ -20,7 +20,6 @@ use JBZoo\Cli\CliApplication;
 use JBZoo\ComposerDiff\Commands\DiffAction;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
-use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
@@ -37,8 +36,8 @@ final class ComposerDiffTest extends AbstractComposerDiffTest
         $command = $application->find('diff');
 
         $buffer = new BufferedOutput();
-        $args = new StringInput(Cli::build('', $params));
-        $code = $command->run($args, $buffer);
+        $args   = new StringInput(Cli::build('', $params));
+        $code   = $command->run($args, $buffer);
 
         if ($code > 0) {
             throw new \RuntimeException($buffer->fetch());
