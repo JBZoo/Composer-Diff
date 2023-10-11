@@ -60,7 +60,7 @@ jobs:
           php ./vendor/bin/box.phar --version
 
       - name: Build Phar file
-        run: php ./vendor/bin/box.phar compile -v
+        run: php ./vendor/bin/box.phar compile -vvv
 
       - name: Trying to use the phar file
         run: ./build/composer-diff.phar diff --help
