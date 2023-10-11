@@ -1,9 +1,26 @@
 # JBZoo / Composer-Diff
 
 [![CI](https://github.com/JBZoo/Composer-Diff/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/JBZoo/Composer-Diff/actions/workflows/main.yml?query=branch%3Amaster)    [![Coverage Status](https://coveralls.io/repos/github/JBZoo/Composer-Diff/badge.svg?branch=master)](https://coveralls.io/github/JBZoo/Composer-Diff?branch=master)    [![Psalm Coverage](https://shepherd.dev/github/JBZoo/Composer-Diff/coverage.svg)](https://shepherd.dev/github/JBZoo/Composer-Diff)    [![Psalm Level](https://shepherd.dev/github/JBZoo/Composer-Diff/level.svg)](https://shepherd.dev/github/JBZoo/Composer-Diff)    [![CodeFactor](https://www.codefactor.io/repository/github/jbzoo/composer-diff/badge)](https://www.codefactor.io/repository/github/jbzoo/composer-diff/issues)    
-[![Stable Version](https://poser.pugx.org/jbzoo/composer-diff/version)](https://packagist.org/packages/jbzoo/composer-diff/)    [![Total Downloads](https://poser.pugx.org/jbzoo/composer-diff/downloads)](https://packagist.org/packages/jbzoo/composer-diff/stats)    [![Dependents](https://poser.pugx.org/jbzoo/composer-diff/dependents)](https://packagist.org/packages/jbzoo/composer-diff/dependents?order_by=downloads)    [![Visitors](https://visitor-badge.glitch.me/badge?page_id=jbzoo.composer-diff)]()    [![GitHub License](https://img.shields.io/github/license/jbzoo/composer-diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
+[![Stable Version](https://poser.pugx.org/jbzoo/composer-diff/version)](https://packagist.org/packages/jbzoo/composer-diff/)    [![Total Downloads](https://poser.pugx.org/jbzoo/composer-diff/downloads)](https://packagist.org/packages/jbzoo/composer-diff/stats)    [![Dependents](https://poser.pugx.org/jbzoo/composer-diff/dependents)](https://packagist.org/packages/jbzoo/composer-diff/dependents?order_by=downloads)    [![GitHub License](https://img.shields.io/github/license/jbzoo/composer-diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
 
 
+<!--ts-->
+   * [Why?](#why)
+   * [Installation](#installation)
+   * [Usage](#usage)
+   * [Help Description](#help-description)
+   * [Output Examples](#output-examples)
+      * [Default view (--output=console)](#default-view---outputconsole)
+      * [Markdown Output (--output=markdown)](#markdown-output---outputmarkdown)
+      * [JSON Output (--output=json)](#json-output---outputjson)
+   * [Roadmap](#roadmap)
+   * [Unit tests and check code style](#unit-tests-and-check-code-style)
+   * [License](#license)
+   * [See Also](#see-also)
+<!--te-->
+
+
+## Why?
 
 See what packages have been changed after you run `composer update` by comparing `composer.lock` to the `git show HEAD:composer.lock`.
 
@@ -45,30 +62,36 @@ Usage:
   diff [options]
 
 Options:
-      --source=SOURCE      The file, git ref, or git ref with filename to compare FROM [default: "HEAD:composer.lock"]
-      --target=TARGET      The file, git ref, or git ref with filename to compare TO [default: "./composer.lock"]
-      --env=ENV            Show only selected environment. Available options: both, require, require-dev [default: "both"]
-      --output=OUTPUT      Output format. Available options: console, markdown, json [default: "console"]
-      --no-links           Hide all links in tables
-      --strict             Return exit code if you have any difference
-      --no-progress        Disable progress bar animation for logs
-      --mute-errors        Mute any sort of errors. So exit code will be always "0" (if it's possible).
-                           It has major priority then --non-zero-on-error. It's on your own risk!
-      --stdout-only        For any errors messages application will use StdOut instead of StdErr. It's on your own risk!
-      --non-zero-on-error  None-zero exit code on any StdErr message
-      --timestamp          Show timestamp at the beginning of each message
-      --profile            Display timing and memory usage information
-      --cron               Shortcut for crontab. It's basically focused on logs output. It's combination of --timestamp --profile --stdout-only --no-progress -vv
-  -h, --help               Display help for the given command. When no command is given display help for the diff command
-  -q, --quiet              Do not output any message
-  -V, --version            Display this application version
-      --ansi|--no-ansi     Force (or disable --no-ansi) ANSI output
-  -n, --no-interaction     Do not ask any interactive question
-  -v|vv|vvv, --verbose     Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+      --source=SOURCE            The file, git ref, or git ref with filename to compare FROM [default: "HEAD:composer.lock"]
+      --target=TARGET            The file, git ref, or git ref with filename to compare TO [default: "./composer.lock"]
+      --env=ENV                  Show only selected environment. Available options: both, require, require-dev [default: "both"]
+      --output=OUTPUT            Output format. Available options: console, markdown, json [default: "console"]
+      --no-links                 Hide all links in tables
+      --strict                   Return exit code if you have any difference
+      --no-progress              Disable progress bar animation for logs. It will be used only for text output format.
+      --mute-errors              Mute any sort of errors. So exit code will be always "0" (if it's possible).
+                                 It has major priority then --non-zero-on-error. It's on your own risk!
+      --stdout-only              For any errors messages application will use StdOut instead of StdErr. It's on your own risk!
+      --non-zero-on-error        None-zero exit code on any StdErr message.
+      --timestamp                Show timestamp at the beginning of each message.It will be used only for text output format.
+      --profile                  Display timing and memory usage information.
+      --output-mode=OUTPUT-MODE  Output format. Available options:
+                                 text - Default text output format, userfriendly and easy to read.
+                                 cron - Shortcut for crontab. It's basically focused on human-readable logs output.
+                                 It's combination of --timestamp --profile --stdout-only --no-progress -vv.
+                                 logstash - Logstash output format, for integration with ELK stack.
+                                  [default: "text"]
+      --cron                     Alias for --output-mode=cron. Deprecated!
+  -h, --help                     Display help for the given command. When no command is given display help for the diff command
+  -q, --quiet                    Do not output any message
+  -V, --version                  Display this application version
+      --ansi|--no-ansi           Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction           Do not ask any interactive question
+  -v|vv|vvv, --verbose           Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
 
 
-# Output Examples
+## Output Examples
 
 ### Default view (--output=console)
 
@@ -199,10 +222,8 @@ make build
 make test-all
 ```
 
-### PS 
-Special thanks to the project [davidrjonas/composer-lock-diff](https://github.com/davidrjonas/composer-lock-diff) which inspired me to make a great utility :)
 
-### License
+## License
 
 MIT
 
@@ -217,3 +238,5 @@ MIT
 - [Data](https://github.com/JBZoo/Data) - Extended implementation of ArrayObject. Use files as config/array. 
 - [Retry](https://github.com/JBZoo/Retry) - Tiny PHP library providing retry/backoff functionality with multiple backoff strategies and jitter support.
 - [SimpleTypes](https://github.com/JBZoo/SimpleTypes) - Converting any values and measures - money, weight, exchange rates, length, ...
+
+Special thanks to the project [davidrjonas/composer-lock-diff](https://github.com/davidrjonas/composer-lock-diff) which inspired me to make a great utility :)
