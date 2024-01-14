@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace JBZoo\ComposerDiff;
 
 use Composer\Semver\Comparator;
+use Composer\Semver\VersionParser;
 
 final class Diff
 {
@@ -103,11 +104,16 @@ final class Diff
             return $this->setMode(self::MODE_CHANGED);
         }
 
-        if (Comparator::greaterThan($sourceVersion, $targetVersion)) {
+        $parser = new VersionParser();
+
+        $normalizedSource = $parser->normalize($sourceVersion);
+        $normalizedTarget = $parser->normalize($targetVersion);
+
+        if (Comparator::greaterThan($normalizedSource, $normalizedTarget)) {
             return $this->setMode(self::MODE_DOWNGRADED);
         }
 
-        if (Comparator::lessThan($sourceVersion, $targetVersion)) {
+        if (Comparator::lessThan($normalizedSource, $normalizedTarget)) {
             return $this->setMode(self::MODE_UPGRADED);
         }
 
