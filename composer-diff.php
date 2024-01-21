@@ -33,6 +33,17 @@ foreach ($vendorPaths as $file) {
     }
 }
 
+if (!defined('JBZOO_AUTOLOAD_FILE')) {
+    fwrite(
+        STDERR,
+        'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
+        '    composer install' . PHP_EOL . PHP_EOL .
+        'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
+    );
+
+    die(1);
+}
+
 require_once JBZOO_AUTOLOAD_FILE;
 
 $application = new CliApplication('JBZoo/Composer-Diff', '@git-version@');
