@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18350f98f40eef8e03a16e1a7b0e932d",
+    "content-hash": "aadc6f00fe314abce14f4aeefc6dd402",
     "packages": [
         {
             "name": "bluepsyduck/symfony-process-manager",
@@ -146,16 +146,16 @@
         },
         {
             "name": "jbzoo/cli",
-            "version": "7.1.6",
+            "version": "7.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Cli.git",
-                "reference": "e5cde109c25f5fe465f59e759e699112e71d8898"
+                "reference": "d0cb410dd37e5f87497637ab3e8e9451ae798fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/e5cde109c25f5fe465f59e759e699112e71d8898",
-                "reference": "e5cde109c25f5fe465f59e759e699112e71d8898",
+                "url": "https://api.github.com/repos/JBZoo/Cli/zipball/d0cb410dd37e5f87497637ab3e8e9451ae798fc4",
+                "reference": "d0cb410dd37e5f87497637ab3e8e9451ae798fc4",
                 "shasum": ""
             },
             "require": {
@@ -164,12 +164,12 @@
                 "jbzoo/utils": "^7.1",
                 "monolog/monolog": "^3.4",
                 "php": "^8.1",
-                "symfony/console": ">=5.4",
-                "symfony/lock": ">=5.4",
-                "symfony/process": ">=5.4"
+                "symfony/console": ">=6.4",
+                "symfony/lock": ">=6.4",
+                "symfony/process": ">=6.4"
             },
             "require-dev": {
-                "jbzoo/toolbox-dev": "^7.0"
+                "jbzoo/toolbox-dev": "^7.1"
             },
             "type": "library",
             "extra": {
@@ -217,22 +217,22 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Cli/issues",
-                "source": "https://github.com/JBZoo/Cli/tree/7.1.6"
+                "source": "https://github.com/JBZoo/Cli/tree/7.1.7"
             },
-            "time": "2023-12-12T22:40:29+00:00"
+            "time": "2024-01-28T12:35:45+00:00"
         },
         {
             "name": "jbzoo/data",
-            "version": "7.1.0",
+            "version": "7.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Data.git",
-                "reference": "f08f8818ebf5659b8c4a4544f3f7df00dcc2e9a5"
+                "reference": "8666e8cdc912c3fd6176aa0ca5ab29bd1a7d0ab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Data/zipball/f08f8818ebf5659b8c4a4544f3f7df00dcc2e9a5",
-                "reference": "f08f8818ebf5659b8c4a4544f3f7df00dcc2e9a5",
+                "url": "https://api.github.com/repos/JBZoo/Data/zipball/8666e8cdc912c3fd6176aa0ca5ab29bd1a7d0ab2",
+                "reference": "8666e8cdc912c3fd6176aa0ca5ab29bd1a7d0ab2",
                 "shasum": ""
             },
             "require": {
@@ -240,18 +240,18 @@
                 "php": "^8.1"
             },
             "require-dev": {
-                "jbzoo/toolbox-dev": "^7.0",
+                "jbzoo/toolbox-dev": "^7.1",
                 "jbzoo/utils": "^7.1.1",
-                "symfony/polyfill-ctype": ">=1.27.0",
-                "symfony/polyfill-mbstring": ">=1.27.0",
-                "symfony/polyfill-php73": ">=1.27.0",
-                "symfony/polyfill-php80": ">=1.27.0",
-                "symfony/polyfill-php81": ">=1.27.0",
-                "symfony/yaml": ">=4.4"
+                "symfony/polyfill-ctype": ">=1.28.0",
+                "symfony/polyfill-mbstring": ">=1.28.0",
+                "symfony/polyfill-php73": ">=1.28.0",
+                "symfony/polyfill-php80": ">=1.28.0",
+                "symfony/polyfill-php81": ">=1.28.0",
+                "symfony/yaml": ">=6.4"
             },
             "suggest": {
-                "jbzoo/utils": ">=7.0",
-                "symfony/yaml": ">=4.4"
+                "jbzoo/utils": ">=7.1",
+                "symfony/yaml": ">=6.4"
             },
             "type": "library",
             "extra": {
@@ -291,30 +291,30 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Data/issues",
-                "source": "https://github.com/JBZoo/Data/tree/7.1.0"
+                "source": "https://github.com/JBZoo/Data/tree/7.1.1"
             },
-            "time": "2023-09-02T18:42:30+00:00"
+            "time": "2024-01-28T08:47:08+00:00"
         },
         {
             "name": "jbzoo/event",
-            "version": "7.0.0",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Event.git",
-                "reference": "d217cb476a2c8fbbeaf88a7b9a2cd76146a0ec2e"
+                "reference": "09c87f83acc79252cc7f01b173c4c6eb399e62a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Event/zipball/d217cb476a2c8fbbeaf88a7b9a2cd76146a0ec2e",
-                "reference": "d217cb476a2c8fbbeaf88a7b9a2cd76146a0ec2e",
+                "url": "https://api.github.com/repos/JBZoo/Event/zipball/09c87f83acc79252cc7f01b173c4c6eb399e62a1",
+                "reference": "09c87f83acc79252cc7f01b173c4c6eb399e62a1",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1"
             },
             "require-dev": {
-                "jbzoo/data": "^7.0",
-                "jbzoo/toolbox-dev": "^7.0"
+                "jbzoo/data": "^7.1",
+                "jbzoo/toolbox-dev": "^7.1"
             },
             "type": "library",
             "extra": {
@@ -358,30 +358,30 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Event/issues",
-                "source": "https://github.com/JBZoo/Event/tree/7.0.0"
+                "source": "https://github.com/JBZoo/Event/tree/7.0.1"
             },
-            "time": "2023-07-09T20:53:39+00:00"
+            "time": "2024-01-28T08:57:37+00:00"
         },
         {
             "name": "jbzoo/markdown",
-            "version": "7.0.0",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Markdown.git",
-                "reference": "dce2caa8a1abd5084f8719f77dad07fbc1245e68"
+                "reference": "02e9d756ed91d33c63a7794db1279af56e4da5e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Markdown/zipball/dce2caa8a1abd5084f8719f77dad07fbc1245e68",
-                "reference": "dce2caa8a1abd5084f8719f77dad07fbc1245e68",
+                "url": "https://api.github.com/repos/JBZoo/Markdown/zipball/02e9d756ed91d33c63a7794db1279af56e4da5e9",
+                "reference": "02e9d756ed91d33c63a7794db1279af56e4da5e9",
                 "shasum": ""
             },
             "require": {
-                "jbzoo/utils": "^7.0",
+                "jbzoo/utils": "^7.1",
                 "php": "^8.1"
             },
             "require-dev": {
-                "jbzoo/toolbox-dev": "^7.0"
+                "jbzoo/toolbox-dev": "^7.1"
             },
             "type": "library",
             "extra": {
@@ -415,22 +415,22 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Markdown/issues",
-                "source": "https://github.com/JBZoo/Markdown/tree/7.0.0"
+                "source": "https://github.com/JBZoo/Markdown/tree/7.0.1"
             },
-            "time": "2023-07-09T21:31:26+00:00"
+            "time": "2024-01-28T12:43:57+00:00"
         },
         {
             "name": "jbzoo/utils",
-            "version": "7.1.1",
+            "version": "7.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Utils.git",
-                "reference": "501a27310c96030467516d3829fb4e1f1820cb82"
+                "reference": "55ddbe0558f2e4a8f69b4469d9ead97f2de5e13f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Utils/zipball/501a27310c96030467516d3829fb4e1f1820cb82",
-                "reference": "501a27310c96030467516d3829fb4e1f1820cb82",
+                "url": "https://api.github.com/repos/JBZoo/Utils/zipball/55ddbe0558f2e4a8f69b4469d9ead97f2de5e13f",
+                "reference": "55ddbe0558f2e4a8f69b4469d9ead97f2de5e13f",
                 "shasum": ""
             },
             "require": {
@@ -441,9 +441,9 @@
                 "php": "^8.1"
             },
             "require-dev": {
-                "jbzoo/data": "^7.0",
-                "jbzoo/toolbox-dev": "^7.0",
-                "symfony/process": ">=4.4"
+                "jbzoo/data": "^7.1",
+                "jbzoo/toolbox-dev": "^7.1",
+                "symfony/process": ">=6.4"
             },
             "suggest": {
                 "ext-intl": "*",
@@ -514,9 +514,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Utils/issues",
-                "source": "https://github.com/JBZoo/Utils/tree/7.1.1"
+                "source": "https://github.com/JBZoo/Utils/tree/7.1.2"
             },
-            "time": "2023-08-17T00:04:38+00:00"
+            "time": "2024-01-28T08:37:18+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3035,41 +3035,41 @@
         },
         {
             "name": "jbzoo/codestyle",
-            "version": "7.0.3",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Codestyle.git",
-                "reference": "d287cac4768abad891d99b177df796b12c58d300"
+                "reference": "50c3261d9d566d1e1f94b34b8c2a2ef64e035b0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Codestyle/zipball/d287cac4768abad891d99b177df796b12c58d300",
-                "reference": "d287cac4768abad891d99b177df796b12c58d300",
+                "url": "https://api.github.com/repos/JBZoo/Codestyle/zipball/50c3261d9d566d1e1f94b34b8c2a2ef64e035b0c",
+                "reference": "50c3261d9d566d1e1f94b34b8c2a2ef64e035b0c",
                 "shasum": ""
             },
             "require": {
-                "friendsofphp/php-cs-fixer": ">=3.35.1",
+                "friendsofphp/php-cs-fixer": ">=3.48.0",
                 "jbzoo/data": "^7.1",
-                "kubawerlos/php-cs-fixer-custom-fixers": ">=3.16.2",
-                "nikic/php-parser": ">=4.17.1",
-                "pdepend/pdepend": ">=2.15.1",
-                "phan/phan": ">=5.4.2",
+                "kubawerlos/php-cs-fixer-custom-fixers": ">=3.19.2",
+                "nikic/php-parser": ">=4.18.0",
+                "pdepend/pdepend": ">=2.16.2",
+                "phan/phan": ">=5.4.3",
                 "php": "^8.1",
-                "phpmd/phpmd": ">=2.14.1",
+                "phpmd/phpmd": ">=2.15.0",
                 "phpmetrics/phpmetrics": ">=2.8.2",
-                "phpstan/phpstan": ">=1.10.38",
-                "phpstan/phpstan-strict-rules": ">=1.5.1",
-                "povils/phpmnd": ">=3.2.0",
-                "squizlabs/php_codesniffer": ">=3.7.2",
-                "symfony/console": ">=4.4.16",
-                "symfony/finder": ">=4.4.16",
-                "symfony/yaml": ">=4.4.16",
-                "vimeo/psalm": ">=5.15.0"
+                "phpstan/phpstan": ">=1.10.57",
+                "phpstan/phpstan-strict-rules": ">=1.5.2",
+                "povils/phpmnd": ">=3.4.0",
+                "squizlabs/php_codesniffer": ">=3.8.1",
+                "symfony/console": ">=6.4",
+                "symfony/finder": ">=6.4",
+                "symfony/yaml": ">=6.4",
+                "vimeo/psalm": ">=5.20.0"
             },
             "require-dev": {
                 "jbzoo/phpunit": "^7.0",
                 "jbzoo/utils": "^7.1.1",
-                "symfony/var-dumper": ">=4.4.16"
+                "symfony/var-dumper": ">=6.4"
             },
             "type": "library",
             "extra": {
@@ -3116,9 +3116,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Codestyle/issues",
-                "source": "https://github.com/JBZoo/Codestyle/tree/7.0.3"
+                "source": "https://github.com/JBZoo/Codestyle/tree/7.1.0"
             },
-            "time": "2023-10-14T18:58:38+00:00"
+            "time": "2024-01-27T21:57:08+00:00"
         },
         {
             "name": "jbzoo/jbdump",
@@ -3196,16 +3196,16 @@
         },
         {
             "name": "jbzoo/phpunit",
-            "version": "7.0.0",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/PHPUnit.git",
-                "reference": "036ea04884d31ccca54000814f275200d2c8967e"
+                "reference": "4a70dd033b90a08498cbd7147a1c3150198f51f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/PHPUnit/zipball/036ea04884d31ccca54000814f275200d2c8967e",
-                "reference": "036ea04884d31ccca54000814f275200d2c8967e",
+                "url": "https://api.github.com/repos/JBZoo/PHPUnit/zipball/4a70dd033b90a08498cbd7147a1c3150198f51f8",
+                "reference": "4a70dd033b90a08498cbd7147a1c3150198f51f8",
                 "shasum": ""
             },
             "require": {
@@ -3213,17 +3213,17 @@
                 "ext-mbstring": "*",
                 "jbzoo/markdown": "^7.0",
                 "php": "^8.1",
-                "phpunit/phpunit": "^9.6.9",
+                "phpunit/phpunit": "^9.6.16",
                 "ulrichsg/getopt-php": ">=4.0.3"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": ">=7.5.0",
-                "jbzoo/codestyle": "^7.0",
-                "jbzoo/data": "^7.0",
+                "guzzlehttp/guzzle": ">=7.8.1",
+                "jbzoo/codestyle": "^7.1",
+                "jbzoo/data": "^7.1",
                 "jbzoo/http-client": "^7.0",
                 "jbzoo/toolbox-dev": "^7.0",
-                "jbzoo/utils": "^7.0",
-                "symfony/process": ">=6.2.8"
+                "jbzoo/utils": "^7.1",
+                "symfony/process": ">=6.4.2"
             },
             "type": "library",
             "extra": {
@@ -3265,33 +3265,33 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/PHPUnit/issues",
-                "source": "https://github.com/JBZoo/PHPUnit/tree/7.0.0"
+                "source": "https://github.com/JBZoo/PHPUnit/tree/7.1.0"
             },
-            "time": "2023-07-09T18:32:57+00:00"
+            "time": "2024-01-27T22:11:15+00:00"
         },
         {
             "name": "jbzoo/toolbox-dev",
-            "version": "7.0.1",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JBZoo/Toolbox-Dev.git",
-                "reference": "9029c401042f499a8c2e0d24b01e80aa1946a9ba"
+                "reference": "1048efcb712eb2392e19e1b30201d191a97d66ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JBZoo/Toolbox-Dev/zipball/9029c401042f499a8c2e0d24b01e80aa1946a9ba",
-                "reference": "9029c401042f499a8c2e0d24b01e80aa1946a9ba",
+                "url": "https://api.github.com/repos/JBZoo/Toolbox-Dev/zipball/1048efcb712eb2392e19e1b30201d191a97d66ca",
+                "reference": "1048efcb712eb2392e19e1b30201d191a97d66ca",
                 "shasum": ""
             },
             "require": {
                 "fakerphp/faker": ">=1.23.0",
-                "jbzoo/codestyle": "^7.0",
+                "jbzoo/codestyle": "^7.1",
                 "jbzoo/jbdump": ">=1.5.6|^7.0",
                 "jbzoo/markdown": "^7.0",
-                "jbzoo/phpunit": "^7.0",
+                "jbzoo/phpunit": "^7.1",
                 "php": "^8.1",
-                "php-coveralls/php-coveralls": ">=2.5.3",
-                "symfony/var-dumper": ">=4.4"
+                "php-coveralls/php-coveralls": ">=2.7.0",
+                "symfony/var-dumper": ">=6.4"
             },
             "type": "library",
             "extra": {
@@ -3330,9 +3330,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JBZoo/Toolbox-Dev/issues",
-                "source": "https://github.com/JBZoo/Toolbox-Dev/tree/7.0.1"
+                "source": "https://github.com/JBZoo/Toolbox-Dev/tree/7.1.0"
             },
-            "time": "2023-08-15T22:29:20+00:00"
+            "time": "2024-01-27T22:19:13+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -3406,16 +3406,16 @@
         },
         {
             "name": "kubawerlos/php-cs-fixer-custom-fixers",
-            "version": "v3.19.0",
+            "version": "v3.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers.git",
-                "reference": "425ea445cc3e24dc68d6e4625721374c94ee83e5"
+                "reference": "e17ffa5d25dafed7a8bcf545fc1b576a664c87e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kubawerlos/php-cs-fixer-custom-fixers/zipball/425ea445cc3e24dc68d6e4625721374c94ee83e5",
-                "reference": "425ea445cc3e24dc68d6e4625721374c94ee83e5",
+                "url": "https://api.github.com/repos/kubawerlos/php-cs-fixer-custom-fixers/zipball/e17ffa5d25dafed7a8bcf545fc1b576a664c87e7",
+                "reference": "e17ffa5d25dafed7a8bcf545fc1b576a664c87e7",
                 "shasum": ""
             },
             "require": {
@@ -3446,9 +3446,9 @@
             "description": "A set of custom fixers for PHP CS Fixer",
             "support": {
                 "issues": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers/issues",
-                "source": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers/tree/v3.19.0"
+                "source": "https://github.com/kubawerlos/php-cs-fixer-custom-fixers/tree/v3.19.2"
             },
-            "time": "2024-01-15T20:46:38+00:00"
+            "time": "2024-01-25T16:31:36+00:00"
         },
         {
             "name": "microsoft/tolerant-php-parser",
@@ -3556,16 +3556,16 @@
         },
         {
             "name": "netresearch/jsonmapper",
-            "version": "v4.2.0",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweiske/jsonmapper.git",
-                "reference": "f60565f8c0566a31acf06884cdaa591867ecc956"
+                "reference": "18133a2d8c24e10e58e02b700308ed3a4a60c97f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/f60565f8c0566a31acf06884cdaa591867ecc956",
-                "reference": "f60565f8c0566a31acf06884cdaa591867ecc956",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/18133a2d8c24e10e58e02b700308ed3a4a60c97f",
+                "reference": "18133a2d8c24e10e58e02b700308ed3a4a60c97f",
                 "shasum": ""
             },
             "require": {
@@ -3576,7 +3576,7 @@
                 "php": ">=7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "~7.5 || ~8.0 || ~9.0",
+                "phpunit/phpunit": "~7.5 || ~8.0 || ~9.0 || ~10.0",
                 "squizlabs/php_codesniffer": "~3.5"
             },
             "type": "library",
@@ -3601,9 +3601,9 @@
             "support": {
                 "email": "cweiske@cweiske.de",
                 "issues": "https://github.com/cweiske/jsonmapper/issues",
-                "source": "https://github.com/cweiske/jsonmapper/tree/v4.2.0"
+                "source": "https://github.com/cweiske/jsonmapper/tree/v4.4.0"
             },
-            "time": "2023-04-09T17:37:40+00:00"
+            "time": "2024-01-28T07:31:37+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4467,16 +4467,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.56",
+            "version": "1.10.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "27816a01aea996191ee14d010f325434c0ee76fa"
+                "reference": "1627b1d03446904aaa77593f370c5201d2ecc34e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/27816a01aea996191ee14d010f325434c0ee76fa",
-                "reference": "27816a01aea996191ee14d010f325434c0ee76fa",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/1627b1d03446904aaa77593f370c5201d2ecc34e",
+                "reference": "1627b1d03446904aaa77593f370c5201d2ecc34e",
                 "shasum": ""
             },
             "require": {
@@ -4525,7 +4525,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-15T10:43:00+00:00"
+            "time": "2024-01-24T11:51:34+00:00"
         },
         {
             "name": "phpstan/phpstan-strict-rules",
@@ -5383,12 +5383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "f81bd7cb90f5f30d3b246e342843ae905947158f"
+                "reference": "cea5a32b418b44dc5a480049f531f53563c26210"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f81bd7cb90f5f30d3b246e342843ae905947158f",
-                "reference": "f81bd7cb90f5f30d3b246e342843ae905947158f",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/cea5a32b418b44dc5a480049f531f53563c26210",
+                "reference": "cea5a32b418b44dc5a480049f531f53563c26210",
                 "shasum": ""
             },
             "conflict": {
@@ -5428,7 +5428,7 @@
                 "backpack/crud": "<3.4.9",
                 "bacula-web/bacula-web": "<8.0.0.0-RC2-dev",
                 "badaso/core": "<2.7",
-                "bagisto/bagisto": "<0.1.5",
+                "bagisto/bagisto": "<1.3.2",
                 "barrelstrength/sprout-base-email": "<1.2.7",
                 "barrelstrength/sprout-forms": "<3.9",
                 "barryvdh/laravel-translation-manager": "<0.6.2",
@@ -5787,7 +5787,7 @@
                 "phpxmlrpc/extras": "<0.6.1",
                 "phpxmlrpc/phpxmlrpc": "<4.9.2",
                 "pi/pi": "<=2.5",
-                "pimcore/admin-ui-classic-bundle": "<1.2.2",
+                "pimcore/admin-ui-classic-bundle": "<1.3.2",
                 "pimcore/customer-management-framework-bundle": "<4.0.6",
                 "pimcore/data-hub": "<1.2.4",
                 "pimcore/demo": "<10.3",
@@ -5811,7 +5811,7 @@
                 "prestashop/ps_facetedsearch": "<3.4.1",
                 "prestashop/ps_linklist": "<3.1",
                 "privatebin/privatebin": "<1.4",
-                "processwire/processwire": "<=3.0.200",
+                "processwire/processwire": "<=3.0.210",
                 "propel/propel": ">=2.0.0.0-alpha1,<=2.0.0.0-alpha7",
                 "propel/propel1": ">=1,<=1.7.1",
                 "pterodactyl/panel": "<1.7",
@@ -5852,13 +5852,13 @@
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
                 "silverstripe-australia/advancedreports": ">=1,<=2",
-                "silverstripe/admin": "<1.13.6",
+                "silverstripe/admin": "<1.13.19|>=2,<2.1.8",
                 "silverstripe/assets": ">=1,<1.11.1",
                 "silverstripe/cms": "<4.11.3",
                 "silverstripe/comments": ">=1.3,<1.9.99|>=2,<2.9.99|>=3,<3.1.1",
                 "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
-                "silverstripe/framework": "<4.13.14|>=5,<5.0.13",
-                "silverstripe/graphql": "<3.8.2|>=4,<4.1.3|>=4.2,<4.2.5|>=4.3,<4.3.4|>=5,<5.0.3",
+                "silverstripe/framework": "<4.13.39|>=5,<5.1.11",
+                "silverstripe/graphql": "<3.8.2|>=4,<4.3.7|>=5,<5.1.3",
                 "silverstripe/hybridsessions": ">=1,<2.4.1|>=2.5,<2.5.1",
                 "silverstripe/recipe-cms": ">=4.5,<4.5.3",
                 "silverstripe/registry": ">=2.1,<2.1.2|>=2.2,<2.2.1",
@@ -6105,7 +6105,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-17T21:04:22+00:00"
+            "time": "2024-01-24T22:04:16+00:00"
         },
         {
             "name": "sabre/event",

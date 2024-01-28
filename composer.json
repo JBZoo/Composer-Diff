@@ -32,17 +32,17 @@
         "ext-json"        : "*",
         "ext-filter"      : "*",
 
-        "jbzoo/data"      : "^7.0",
+        "jbzoo/data"      : "^7.1",
         "jbzoo/markdown"  : "^7.0",
         "jbzoo/cli"       : "^7.1.1",
 
-        "symfony/console" : ">=5.4",
-        "symfony/process" : ">=5.4",
+        "symfony/console" : ">=6.4",
+        "symfony/process" : ">=6.4",
         "composer/semver" : ">=1.0"
     },
 
     "require-dev"       : {
-        "jbzoo/toolbox-dev"         : "^7.0",
+        "jbzoo/toolbox-dev"         : "^7.1",
         "roave/security-advisories" : "dev-master",
         "composer/composer"         : ">=2.0"
     },
