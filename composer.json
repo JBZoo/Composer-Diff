@@ -38,13 +38,13 @@
 
         "symfony/console" : ">=6.4",
         "symfony/process" : ">=6.4",
-        "composer/semver" : ">=1.0"
+        "composer/semver" : ">=3.4"
     },
 
     "require-dev"       : {
         "jbzoo/toolbox-dev"         : "^7.1",
         "roave/security-advisories" : "dev-master",
-        "composer/composer"         : ">=2.0"
+        "composer/composer"         : ">=2.7.7"
     },
 
     "autoload"          : {
