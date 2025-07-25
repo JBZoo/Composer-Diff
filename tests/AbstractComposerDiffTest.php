@@ -217,6 +217,26 @@ abstract class AbstractComposerDiffTest extends PHPUnit
                 __DIR__ . '/fixtures/testComparingChangedPackage/composer-lock-to.json',
             )),
         );
+
+        isSame(
+            [
+                'require' => [
+                    [
+                        'name'         => 'vendor-1/package-1',
+                        'url'          => 'https://gitlab.com/vendor-1/package-1',
+                        'version_from' => '1.x-dev@bbc0fba',
+                        'version_to'   => '1.x-dev@4121ea4',
+                        'mode'         => 'Changed',
+                        'compare'      => 'https://gitlab.com/vendor-1/package-1/compare/bbc0fba...4121ea4',
+                    ],
+                ],
+                'require-dev' => [],
+            ],
+            $this->toArray(Comparator::compare(
+                __DIR__ . '/fixtures/testComparingChangedPackageSuffix/composer-lock-from.json',
+                __DIR__ . '/fixtures/testComparingChangedPackageSuffix/composer-lock-to.json',
+            )),
+        );
     }
 
     public function testComparingComplex(): void
