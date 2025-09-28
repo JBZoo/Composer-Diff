@@ -52,7 +52,7 @@ final class Package
 
         if (
             \strlen($reference) >= self::HASH_LENGTH
-            && (\str_starts_with($version, 'dev-') || (\str_ends_with($version, '-dev')))
+            && (\str_starts_with($version, 'dev-') || \str_ends_with($version, '-dev'))
         ) {
             $version = \substr($reference, 0, self::HASH_LENGTH);
             if ($prettyPrint) {
