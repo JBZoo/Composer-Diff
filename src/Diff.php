@@ -87,8 +87,8 @@ final class Diff
 
         if ($this->source->getName() !== $this->target->getName()) {
             throw new Exception(
-                "Can't compare versions of different packages. " .
-                "Source:{$this->source->getName()}; Target:{$this->target->getName()};",
+                "Can't compare versions of different packages. "
+                . "Source:{$this->source->getName()}; Target:{$this->target->getName()};",
             );
         }
 

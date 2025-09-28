@@ -19,9 +19,4 @@ namespace JBZoo\PHPUnit;
 final class ComposerDiffPackageTest extends \JBZoo\Codestyle\PHPUnit\AbstractPackageTest
 {
     protected string $packageName = 'Composer-Diff';
-
-    public function testGithubActionsWorkflow(): void
-    {
-        skip('TODO: Make the related trait much flexible');
-    }
 }
