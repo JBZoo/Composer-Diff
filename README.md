@@ -12,49 +12,87 @@
 [![GitHub License](https://img.shields.io/github/license/jbzoo/composer-diff)](https://github.com/JBZoo/Composer-Diff/blob/master/LICENSE)
 
 
+A powerful CLI tool for visualizing changes in Composer dependencies after running `composer update`. Compare two `composer.lock` files and see exactly what packages were added, removed, upgraded, or downgraded with beautiful output formatting and direct links to changelogs.
+
+## Table of Contents
+
 <!--ts-->
-   * [Why?](#why)
+   * [Features](#features)
    * [Installation](#installation)
-   * [Usage](#usage)
+      * [Via Composer (Recommended)](#via-composer-recommended)
+      * [Standalone PHAR](#standalone-phar)
+   * [Basic Usage](#basic-usage)
    * [Help Description](#help-description)
    * [Output Examples](#output-examples)
       * [Default view (--output=console)](#default-view---outputconsole)
       * [Markdown Output (--output=markdown)](#markdown-output---outputmarkdown)
       * [JSON Output (--output=json)](#json-output---outputjson)
+   * [Advanced Usage](#advanced-usage)
+      * [Compare Specific Files](#compare-specific-files)
+      * [Environment Filtering](#environment-filtering)
+      * [Output Formatting](#output-formatting)
+      * [Real-world Examples](#real-world-examples)
+   * [Requirements](#requirements)
+   * [Architecture](#architecture)
+      * [Change Detection Logic](#change-detection-logic)
+      * [Supported Git Platforms](#supported-git-platforms)
+   * [Development](#development)
+      * [Setup](#setup)
+      * [Testing](#testing)
+      * [Building PHAR](#building-phar)
    * [Roadmap](#roadmap)
-   * [Unit tests and check code style](#unit-tests-and-check-code-style)
    * [License](#license)
    * [See Also](#see-also)
 <!--te-->
 
 
-## Why?
+## Features
 
-See what packages have been changed after you run `composer update` by comparing `composer.lock` to the `git show HEAD:composer.lock`.
-
+- **Visual Dependency Tracking**: See exactly what changed after `composer update` with color-coded output
+- **Multiple Output Formats**: Console tables, Markdown for PRs, or JSON for automation and CI/CD pipelines
+- **Smart Version Detection**: Automatically detects upgrades, downgrades, new, removed, and changed packages
+- **Direct Links to Changes**: Generates comparison URLs for GitHub, GitLab, and Bitbucket repositories
+- **Environment Filtering**: Compare production (`require`) and development (`require-dev`) dependencies separately or together
+- **Git Integration**: Compare current lock file with any git reference (HEAD, branches, tags)
+- **Dev Package Support**: Handles dev branches with commit hash detection and comparison
+- **CI/CD Friendly**: Perfect for automated workflows, deployment pipelines, and Pull Request automation
+- **PHAR Distribution**: Standalone executable or Composer installation options
 
 ## Installation
 
-```shell
-composer require        jbzoo/composer-diff # For specific project
-composer global require jbzoo/composer-diff # As global tool
-
-# OR use phar file.
-wget https://github.com/JBZoo/Composer-Diff/releases/latest/download/composer-diff.phar
-```
-
-## Usage
+### Via Composer (Recommended)
 
 ```bash
+# Install for specific project
+composer require jbzoo/composer-diff
+
+# Install globally
+composer global require jbzoo/composer-diff
+```
+
+### Standalone PHAR
+
+```bash
+# Download latest release
+wget https://github.com/JBZoo/Composer-Diff/releases/latest/download/composer-diff.phar
+
+# Make it executable
+chmod +x composer-diff.phar
+```
+
+## Basic Usage
+
+```bash
+# Update your dependencies first
 composer update
 
-# if it's installed via composer
-php ./vendor/bin/composer-diff
-
-# OR (if installed globally)
+# Show what changed (compares HEAD:composer.lock with ./composer.lock)
 composer-diff
 
-# OR (if you downloaded phar file)
+# If installed locally in project
+php ./vendor/bin/composer-diff
+
+# If using PHAR file
 php composer-diff.phar
 ```
 
@@ -214,6 +252,128 @@ Rendered in your readme or PR/MR description:
 }
 ```
 
+
+## Advanced Usage
+
+### Compare Specific Files
+```bash
+# Compare two specific composer.lock files
+composer-diff --source="old/composer.lock" --target="new/composer.lock"
+
+# Compare Git references
+composer-diff --source="HEAD~1:composer.lock" --target="HEAD:composer.lock"
+
+# Compare with specific branch or tag
+composer-diff --source="v1.0.0:composer.lock" --target="./composer.lock"
+```
+
+### Environment Filtering
+```bash
+# Production dependencies only
+composer-diff --env=require
+
+# Development dependencies only
+composer-diff --env=require-dev
+
+# Both environments (default)
+composer-diff --env=both
+```
+
+### Output Formatting
+```bash
+# Markdown output for Pull Requests
+composer-diff --output=markdown
+
+# JSON output for automation
+composer-diff --output=json
+
+# Hide comparison links
+composer-diff --no-links
+
+# Strict mode (exit code 1 if differences found)
+composer-diff --strict
+```
+
+### Real-world Examples
+```bash
+# Generate PR description after update
+composer update
+composer-diff --output=markdown >> pr-description.md
+
+# CI/CD pipeline check
+composer-diff --strict --output=json > changes.json
+
+# Compare major version upgrades
+composer-diff --source="tags/v1.0:composer.lock" --target="tags/v2.0:composer.lock"
+```
+
+## Requirements
+
+- **PHP**: ^8.2
+- **Extensions**: ext-json, ext-filter
+- **Composer**: ^2.0 (for development)
+
+## Architecture
+
+The tool is built with a clean, object-oriented architecture:
+
+- **`DiffAction`**: Main CLI command handler (Symfony Console)
+- **`Comparator`**: Orchestrates comparison between composer.lock files
+- **`ComposerLock`**: Parses and manages composer.lock data
+- **`Package`**: Represents individual packages with version handling
+- **`Diff`**: Compares package versions and determines change types
+- **`Url`**: Generates comparison URLs for Git hosting platforms
+- **Renderers**: Multiple output formats (Console, Markdown, JSON)
+
+### Change Detection Logic
+
+The tool intelligently categorizes changes:
+
+- **New**: Package added to dependencies
+- **Removed**: Package removed from dependencies
+- **Upgraded**: Semantic version increased (1.0.0 → 2.0.0)
+- **Downgraded**: Semantic version decreased (2.0.0 → 1.0.0)
+- **Changed**: Dev branches with different commit hashes
+- **Same**: No changes (filtered out by default)
+
+### Supported Git Platforms
+
+Automatically generates comparison URLs for:
+
+- **GitHub**: `github.com/user/repo/compare/v1.0.0...v2.0.0`
+- **GitLab**: `gitlab.com/user/repo/compare/v1.0.0...v2.0.0`
+- **Bitbucket**: `bitbucket.org/user/repo/branches/compare/v1.0.0%0Dv2.0.0`
+
+## Development
+
+### Setup
+```bash
+# Clone and install dependencies
+git clone https://github.com/JBZoo/Composer-Diff.git
+cd Composer-Diff
+make build
+```
+
+### Testing
+```bash
+# Run all tests
+make test-all
+
+# Run specific test suites
+make test          # PHPUnit tests
+make test-drupal   # Real Drupal upgrade test
+make test-manual   # Manual output examples
+make codestyle     # Code quality checks
+```
+
+### Building PHAR
+```bash
+# Build standalone PHAR executable
+make build-phar
+
+# Create symlink for local testing
+make create-symlink
+```
 
 ## Roadmap
 
