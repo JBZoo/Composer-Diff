@@ -31,6 +31,17 @@ if ((isset($_composer_autoload_path) && \file_exists($autoloadFile = $_composer_
     throw new \RuntimeException("Could not locate autoload.php. cwd is {$cwd}; __DIR__ is " . __DIR__);
 }
 
+if (!\defined('JBZOO_AUTOLOAD_FILE')) {
+    \fwrite(
+        \STDERR,
+        'You need to set up the project dependencies using Composer:' . \PHP_EOL . \PHP_EOL
+        . '    composer install' . \PHP_EOL . \PHP_EOL
+        . 'You can learn all about Composer on https://getcomposer.org/.' . \PHP_EOL,
+    );
+
+    exit(1);
+}
+
 require_once JBZOO_AUTOLOAD_FILE;
 
 $application = new CliApplication('JBZoo/Composer-Diff', '@git-version@');
