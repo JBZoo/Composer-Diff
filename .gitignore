@@ -16,3 +16,4 @@ build
 vendor
 phpunit.xml
 *.cache
+.claude
