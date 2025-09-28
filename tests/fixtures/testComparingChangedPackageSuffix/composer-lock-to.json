@@ -1,0 +1,13 @@
+{
+    "packages" : [
+        {
+            "name"    : "vendor-1/package-1",
+            "version" : "1.x-dev",
+            "source"  : {
+                "type"      : "git",
+                "url"       : "git@gitlab.com:vendor-1/package-1.git",
+                "reference" : "4121ea4a825bbc0fba999014432ff2f928045a3e"
+            }
+        }
+    ]
+}
