@@ -142,7 +142,6 @@ jobs:
   phar:
     name: Phar
     runs-on: ubuntu-latest
-    needs: [ phpunit, linters, report ]
     strategy:
       matrix:
         php-version: [ 8.2, 8.3, 8.4 ]
@@ -180,7 +179,6 @@ jobs:
   docker:
     name: Docker
     runs-on: ubuntu-latest
-    needs: [ phar ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
