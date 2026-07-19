@@ -18,10 +18,10 @@ namespace JBZoo\ComposerDiff;
 
 final class Url
 {
-    public const BITBUCKET = 'bitbucket';
-    public const GITHUB    = 'github';
-    public const GITLAB    = 'gitlab';
-    public const UNKNOWN   = 'unknown';
+    public const string BITBUCKET = 'bitbucket';
+    public const string GITHUB    = 'github';
+    public const string GITLAB    = 'gitlab';
+    public const string UNKNOWN   = 'unknown';
 
     public static function getCompareUrl(?string $sourceUrl, ?string $fromVersion, ?string $toVersion): ?string
     {

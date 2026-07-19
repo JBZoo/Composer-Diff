@@ -19,7 +19,7 @@ namespace JBZoo\PHPUnit;
 use JBZoo\Utils\Cli;
 use JBZoo\Utils\Sys;
 
-final class ComposerDiffPharTest extends AbstractComposerDiffTest
+final class ComposerDiffPharTest extends AbstractComposerDiffTestCase
 {
     /**
      * @throws \Exception

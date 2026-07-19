@@ -21,12 +21,12 @@ use Composer\Semver\VersionParser;
 
 final class Diff
 {
-    public const MODE_NEW        = 'New';
-    public const MODE_REMOVED    = 'Removed';
-    public const MODE_CHANGED    = 'Changed';
-    public const MODE_UPGRADED   = 'Upgraded';
-    public const MODE_DOWNGRADED = 'Downgraded';
-    public const MODE_SAME       = 'Same';
+    public const string MODE_NEW        = 'New';
+    public const string MODE_REMOVED    = 'Removed';
+    public const string MODE_CHANGED    = 'Changed';
+    public const string MODE_UPGRADED   = 'Upgraded';
+    public const string MODE_DOWNGRADED = 'Downgraded';
+    public const string MODE_SAME       = 'Same';
 
     private string $mode          = self::MODE_SAME;
     private ?string $comparingUrl = null;

@@ -24,7 +24,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use function JBZoo\Data\json;
 use function JBZoo\Data\phpArray;
 
-abstract class AbstractComposerDiffTest extends PHPUnit
+abstract class AbstractComposerDiffTestCase extends PHPUnit
 {
     private const URL_GITHUB_1 = 'git@github.com:JBZoo/Utils.git';
     private const URL_GITHUB_2 = 'https://github.com/JBZoo/Utils.git';

@@ -24,9 +24,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class AbstractRender
 {
-    public const CONSOLE  = 'console';
-    public const MARKDOWN = 'markdown';
-    public const JSON     = 'json';
+    public const string CONSOLE  = 'console';
+    public const string MARKDOWN = 'markdown';
+    public const string JSON     = 'json';
 
     /** @var Diff[] */
     protected array $fullChangeLog = [];

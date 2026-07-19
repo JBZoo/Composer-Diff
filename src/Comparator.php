@@ -23,9 +23,9 @@ use function JBZoo\Data\json;
 
 final class Comparator
 {
-    public const ENV_BOTH = 'both';
-    public const ENV_PROD = 'require';
-    public const ENV_DEV  = 'require-dev';
+    public const string ENV_BOTH = 'both';
+    public const string ENV_PROD = 'require';
+    public const string ENV_DEV  = 'require-dev';
 
     public static function compare(string $sourceFile, string $targetFile): array
     {
