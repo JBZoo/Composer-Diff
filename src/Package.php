@@ -22,7 +22,7 @@ use function JBZoo\Data\data;
 
 final class Package
 {
-    public const HASH_LENGTH = 7;
+    public const int HASH_LENGTH = 7;
 
     private Data $data;
 

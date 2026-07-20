@@ -112,14 +112,14 @@ Uses JBZoo's standardized development toolchain:
 
 ### Production
 - `php: ^8.2` with `ext-json` and `ext-filter`
-- `jbzoo/cli: ^7.2.4` - Enhanced Symfony Console wrapper
-- `jbzoo/data: ^7.2` - Data manipulation utilities
-- `jbzoo/markdown: ^7.0.2` - Markdown generation
+- `jbzoo/cli: ^8.0` - Enhanced Symfony Console wrapper
+- `jbzoo/data: ^8.0` - Data manipulation utilities
+- `jbzoo/markdown: ^8.0` - Markdown generation
 - `symfony/console: >=6.4`, `symfony/process: >=6.4`
 - `composer/semver: >=1.0` - Version comparison logic
 
 ### Development
-- `jbzoo/toolbox-dev: ^7.3` - Complete development toolchain
+- `jbzoo/toolbox-dev: ^8.0` - Complete development toolchain
 - `composer/composer: >=2.0` - For testing with real composer.lock files
 
 ## File Structure Patterns

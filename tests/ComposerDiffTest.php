@@ -23,7 +23,7 @@ use JBZoo\Utils\Sys;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-final class ComposerDiffTest extends AbstractComposerDiffTest
+final class ComposerDiffTest extends AbstractComposerDiffTestCase
 {
     /**
      * @throws \Exception
@@ -31,7 +31,8 @@ final class ComposerDiffTest extends AbstractComposerDiffTest
     protected function task(array $params = []): string
     {
         $application = new CliApplication();
-        $application->add(new DiffAction());
+        // Symfony Console 8.0 removed Application::add(); addCommands() exists on 7.3+/8.x.
+        $application->addCommands([new DiffAction()]);
         $application->setDefaultCommand('diff');
         $command = $application->find('diff');
 
@@ -53,7 +54,11 @@ final class ComposerDiffTest extends AbstractComposerDiffTest
         return Cli::exec(
             \implode(' ', [
                 'COLUMNS=120',
-                Sys::getBinary(),
+                // -d error_reporting mutes E_DEPRECATED in the child: the --prefer-lowest CI leg pulls
+                // old transitive dev-tool deps (amphp/*, sabre/event via php-coveralls) whose files-
+                // autoload emits "implicitly nullable" deprecations on PHP 8.5+ that Cli::exec captures
+                // into the report/help output. Production (the phar or a no-dev install) never loads them.
+                Sys::getBinary() . ' -d error_reporting=' . (\E_ALL & ~\E_DEPRECATED),
                 "{$rootDir}/composer-diff.php",
                 '--no-interaction',
                 '--no-ansi',
